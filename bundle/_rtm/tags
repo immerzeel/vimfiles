@@ -1,0 +1,43 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+add_task	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:add_task(name)$/;"	f	language:Vim
+api_request	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:api_request(method, query, cookie, returnheader)$/;"	f	language:Vim
+b:frob	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^let b:frob = ''$/;"	v	language:Vim
+BRTM	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^command! -nargs=? BRTM :call <SID>rtm_api(<q-args>, join(getline(1, "$")), 0)$/;"	c	language:Vim
+byte	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:byte(nr)$/;"	f	language:Vim
+chain_sign	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:chain_sign(query)$/;"	f	language:Vim
+char	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:char(charcode)$/;"	f	language:Vim
+check_err	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:check_err(res)$/;"	f	language:Vim
+check_token	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:check_token(token)$/;"	f	language:Vim
+create_timeline	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:create_timeline()$/;"	f	language:Vim
+CRTM	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^command! -nargs=? CRTM :call <SID>rtm_api(<q-args>, getline('.'), 1)$/;"	c	language:Vim
+g:rtm_vim_version	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^let g:rtm_vim_version = "1.0"$/;"	v	language:Vim
+gen_sign	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:gen_sign(query)$/;"	f	language:Vim
+get_frob	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:get_frob()$/;"	f	language:Vim
+get_token	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:get_token(frob)$/;"	f	language:Vim
+get_token_url	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:get_token_url(frob)$/;"	f	language:Vim
+get_url	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:get_url(endpoint, method, query)$/;"	f	language:Vim
+hex	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:hex(nr)$/;"	f	language:Vim
+optimize_name	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:optimize_name(name)$/;"	f	language:Vim
+quote	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:quote(str)$/;"	f	language:Vim
+RTM	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^command! -nargs=? RTM :call <SID>rtm_command(<q-args>)$/;"	c	language:Vim
+rtm_activate	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:rtm_activate()$/;"	f	language:Vim
+rtm_api	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:rtm_api(option, line, update)$/;"	f	language:Vim
+rtm_command	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:rtm_command(option)$/;"	f	language:Vim
+rtm_get_token	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:rtm_get_token()$/;"	f	language:Vim
+rtm_imported	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^let rtm_imported = 1$/;"	v	language:Vim
+s:default_err_msg	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^let s:default_err_msg = 'Sorry, but an RTM.vim script error occured. Plese report any issues you have noticed. ' . s:project_issue$/;"	v	language:Vim
+s:project_home	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^let s:project_home = "http:\/\/bitbucket.org\/Surgo\/rtm.vim\/"$/;"	v	language:Vim
+s:project_issue	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^let s:project_issue = s:project_home . 'issues\/'$/;"	v	language:Vim
+s:rtm_api_key	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^  let s:rtm_api_key = rtm_api_key$/;"	v	language:Vim
+s:rtm_auth_endpoint	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^let s:rtm_auth_endpoint = "http:\/\/www.rememberthemilk.com\/services\/auth\/"$/;"	v	language:Vim
+s:rtm_rest_endpoint	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^let s:rtm_rest_endpoint = "http:\/\/api.rememberthemilk.com\/services\/rest\/"$/;"	v	language:Vim
+s:rtm_shared_secret	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^  let s:rtm_shared_secret = rtm_shared_secret$/;"	v	language:Vim
+s:rtm_token	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^  let s:rtm_token = s:check_token(rtm_token)$/;"	v	language:Vim
+s:save_cpo	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^let s:save_cpo = &cpo$/;"	v	language:Vim
+unquote	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:unquote(str)$/;"	f	language:Vim
+urlencode	C:\Users\pascal\vimfiles\bundle\_rtm\rtm.vim	/^function! s:urlencode(query, sep, equal)$/;"	f	language:Vim

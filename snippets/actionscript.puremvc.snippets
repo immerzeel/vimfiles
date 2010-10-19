@@ -1,0 +1,208 @@
+
+# }}}
+# PUREMVC FRAMEWORK
+# {{{
+
+snippet facade
+	package ${1:// package}
+	{
+		import org.puremvc.as3.interfaces.IFacade;
+		import org.puremvc.as3.patterns.facade.Facade;
+		import $1.model.*;	
+		import $1.view.*;	
+		import $1.controller.*;	
+
+		public class ApplicationFacade extends Facade implements IFacade 
+		{
+			public static const STARTUP:String = "startup";
+		
+			public static function getInstance():ApplicationFacade 
+			{
+				if (instance == null) instance = new ApplicationFacade();
+				return instance as ApplicationFacade;
+			}
+			
+			override protected function initializeController():void 
+			{
+				super.initializeController();
+				
+					registerCommand(STARTUP, StartupCommand);
+			}
+			
+			public function startup(application:Object):void 
+			{
+				sendNotification(STARTUP, application);
+			}
+		}
+	}
+snippet mediator
+	package ${1:// package}.view 
+	{
+		import flash.events.Event;
+
+		import org.puremvc.as3.interfaces.IMediator;
+		import org.puremvc.as3.interfaces.INotification;
+		import org.puremvc.as3.patterns.mediator.Mediator;
+
+		import $1.ApplicationFacade;
+		import $1.view.components.$3;		
+
+		public class ${2:`Filename('', 'FooMediator')`} extends Mediator implements IMediator 
+		{
+			public static const NAME:String = '$2';
+
+			public function $2(viewComponent:Object) 
+			{
+				super(NAME, viewComponent);
+			}
+
+			override public function listNotificationInterests():Array 
+			{
+				return [];
+			}
+
+			override public function handleNotification(note:INotification):void 
+			{
+				switch(note.getName()) 
+				{
+					${4:// TODO}	
+				}
+			}
+
+			protected function get view():${3:ComponentClass} 
+			{
+				return viewComponent as $3;
+			}
+		}
+	}
+snippet simplecommand
+	package ${1:// package}.controller
+	{
+		import org.puremvc.as3.interfaces.ICommand;
+		import org.puremvc.as3.interfaces.INotification;
+		import org.puremvc.as3.patterns.command.SimpleCommand;
+		
+		public class ${2:`Filename('', 'FooCommand')`} extends SimpleCommand implements ICommand 
+		{
+			override public function execute(note:INotification):void 
+			{
+				${3:// TODO}
+			}
+		}
+	}
+snippet macrocommand
+	package ${1:// package}.controller
+	{
+		import org.puremvc.as3.patterns.command.MacroCommand;
+		
+		public class ${2:`Filename('', 'FooCommand')`} extends MacroCommand 
+		{
+			override protected function initializeMacroCommand():void 
+			{
+				addSubCommand(${3:});
+			}
+		}
+	}
+snippet proxy
+	package ${1:// package}.model
+	{
+		import org.puremvc.as3.interfaces.IProxy;
+		import org.puremvc.as3.patterns.proxy.Proxy;
+
+		public class ${2:`Filename('', 'FooProxy')`} extends Proxy implements IProxy
+		{
+			public static const NAME:String = '$2';
+
+			public function $2(data:Object=null)
+			{
+				super(NAME, data);
+				${3:}
+			}
+		}
+	}
+snippet remoteproxy
+	package ${1:// package}.model
+	{
+		import flash.events.Event;
+		import org.puremvc.as3.interfaces.IProxy;
+		import org.puremvc.as3.patterns.proxy.Proxy;
+
+		public class ${2:`Filename('', 'FooProxy')`} extends Proxy implements IProxy
+		{
+			public static const NAME:String = '$2';
+
+			public function $2(data:Object=null)
+			{
+				super(NAME, data);
+				${3:}
+			}
+
+			public function onResult(event:Event):void
+			{
+			}
+
+			public function onFault(event:Event):void
+			{
+			}
+		}
+	}
+snippet view
+	package ${1:// package}.view.components
+	{
+		import flash.display.$4;
+		import flash.events.Event;
+		import flash.events.MouseEvent;
+
+
+
+		public class ${2:`Filename('', 'FooView')`} ${3:extends} ${4:Sprite}
+		{
+			public function $2()
+			{
+				${5:}
+				init();
+			}
+
+			public function init():void
+			{
+			}
+			
+			public function show():void
+			{
+			}
+
+			public function hide():void
+			{
+			}
+		}
+	}
+snippet main
+	package ${1:// package} 
+	{
+		import flash.display.Sprite;
+		import nl.demonsters.debugger.MonsterDebugger;
+
+		public class Main extends Sprite
+		{
+			private var monsterDebugger:MonsterDebugger;
+
+			public function Main() 
+			{
+				ApplicationFacade.getInstance().startup(this);
+				init();
+			}
+
+			public function init():void 
+			{
+				monsterDebugger = new MonsterDebugger(this);
+			}
+		}
+	}
+snippet appl
+	ApplicationFacade.${1:}
+snippet sn
+	sendNotification(ApplicationFacade.${1:EVENT});
+snippet retreiveProxy
+	retrieveProxy(${1:FooProxy}.NAME) as $1;
+
+# }}}
