@@ -1,0 +1,51 @@
+[submodule "bundle\\vim-abolish"]
+	path = bundle\\vim-abolish
+	url = git://github.com/tpope/vim-abolish.git
+[submodule "bundle\\vim-fugitive"]
+	path = bundle\\vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "bundle\\vim-repeat"]
+	path = bundle\\vim-repeat
+	url = git://github.com/tpope/vim-repeat.git
+[submodule "bundle\\vim-speeddating"]
+	path = bundle\\vim-speeddating
+	url = git://github.com/tpope/vim-speeddating.git
+[submodule "bundle\\vim-surround"]
+	path = bundle\\vim-surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule "bundle\\vim-unimpaired"]
+	path = bundle\\vim-unimpaired
+	url = git://github.com/tpope/vim-unimpaired.git
+[submodule "bundle\\vim-vividchalk"]
+	path = bundle\\vim-vividchalk
+	url = git://github.com/tpope/vim-vividchalk.git
+[submodule "bundle\\vim-delimitmate"]
+	path = bundle\\vim-delimitmate
+	url = git://github.com/Raimondi/delimitMate.git
+[submodule "bundle\\vim-flex4"]
+	path = bundle\\vim-flex4
+	url = git://github.com/vim-scripts/Flex-4.git
+[submodule "bundle\\vim-nerdcommenter"]
+	path = bundle\\vim-nerdcommenter
+	url = git://github.com/scrooloose/nerdcommenter.git
+[submodule "bundle\\vim-nerdtree"]
+	path = bundle\\vim-nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "bundle\\vim-gist"]
+	path = bundle\\vim-gist
+	url = git://github.com/mattn/gist-vim.git
+[submodule "bundle\\vim-session"]
+	path = bundle\\vim-session
+	url = git://github.com/vim-scripts/session.vim--Odding.git
+[submodule "bundle\\vim-supertab"]
+	path = bundle\\vim-supertab
+	url = git://github.com/tsaleh/vim-supertab.git
+[submodule "bundle\\vim-tabular"]
+	path = bundle\\vim-tabular
+	url = git://github.com/godlygeek/tabular.git
+[submodule "bundle\\vim-zencoding"]
+	path = bundle\\vim-zencoding
+	url = git://github.com/mattn/zencoding-vim.git
+[submodule "bundle\\vim-snipmate"]
+	path = bundle\\vim-snipmate
+	url = git://github.com/msanders/snipmate.vim.git
