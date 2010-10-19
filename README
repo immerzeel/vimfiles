@@ -7,6 +7,6 @@ WINDOWS
         mklink /H vimfiles\vimrc _vimrc
 
     UPDATE
-        cd <home_dir>\vimfiles\bundles
+        cd <home_dir>\vimfiles
         git submodule init
         git submodule update
