@@ -18,6 +18,7 @@ set noerrorbells                  " no audible signal as well.
 syntax on                         " Syntax coloring on.
 set synmaxcol=2048                " Maximum number of columns to search for syntax items.
 set textwidth=79                  " Maximum text width.
+set linespace=3                   " Set the line height.
 set nowrap                        " Do not wrap long lines.
 set scrolloff=4                   " Keep the cursor padded with lines when scrolling.
 set sidescrolloff=4               " Keep the cursor padded when side scrolling.
@@ -27,6 +28,7 @@ set mousehide                     " Hide the mouse cursor while typing.
 set completeopt=menu              " Don't show extra info on completions.
 set sessionoptions-=options,folds " Don't save these settings to a session file.
 let mapleader=","                 " Use this character instead of '/'.
+set timeoutlen=500                " Shorten the lag after typing the leader key.
 
 " }}}
 " SYSTEM
@@ -54,9 +56,9 @@ set undoreload=10000        " maximum number lines to save for undo on a buffer 
 " FORMATING
 " {{{
 
-set formatoptions=croqt
-"                 |||||
-"                 ||||+ Break text on textwidth.
+set formatoptions=croq                  " t
+"                 ||||                  " |
+"                 ||||                  " + Break text on textwidth.
 "                 |||+ Let 'gq' format comments.
 "                 ||+ Insert * when using 'O' or 'o' in Normal mode.
 "                 |+ Insert * when typing <Enter> in Insert mode.
@@ -70,7 +72,7 @@ set comments=sl:/**,mb:\ *,exl:\ */,sr:/*,mb:*,exl:*/,://
 set foldenable                                                       " Turn folding on.
 set foldmethod=marker                                                " Fold on marker.
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo " Open folded text on these actions.
-set foldlevel=100                                                    " Don't autofold. Use manual folding.
+set foldlevel=30                                                      " Don't autofold. Use manual folding.
 
 " }}}
 " INDENT
@@ -156,8 +158,8 @@ set statusline=%F\ %m\ %r\ %y\ %{fugitive#statusline()}%=%(Line:\ %l/%L\ [%p%%]\
 "               |   + Modified flag.
 "               + Full path to file.
 
+set completeopt=longest,menuone 
 set wildmenu              " Turn on command line completion wild style.
-" set wildmode=full       " Complete to full string that matches.
 set wildmode=list:longest " List all matches and complete to the longest string.
 set showmode              " Show in which mode it is in.
 set showcmd               " Show the command being used.
@@ -230,6 +232,9 @@ let g:snip_author='Pascal Immerzeel'
 let g:fuf_enumeratingLimit=50   " Limit the popup list to 50 items.
 let g:fuf_autoPreview=0         " Donot show a preview of selected item."
 
+
+
+nnoremap <leader>ft :call fuf#givenfile#launch('', 0, '> ', split(glob('./**/*'), "\n"))<CR>
 nnoremap <leader>fb :FufBuffer<cr>
 nnoremap <leader>ff :FufFileWithCurrentBufferDir<cr>
 nnoremap <leader>ft :FufTaggedFile<cr>
@@ -255,7 +260,8 @@ nmap <leader>n :NERDTreeToggle<cr>
 " NERD COMMENTER
 " {{{
 
-let NERDSpaceDelims=1 " Pad the opening comment delimiter with a space.
+let NERDSpaceDelims=1    " Pad the opening comment delimiter with a space.
+let NERDTreeShowHidden=1 " Show hidden files.
 
 " }}}
 " NON PUBLIC SETTINGS
