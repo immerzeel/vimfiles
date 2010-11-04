@@ -70,7 +70,7 @@ set comments=sl:/**,mb:\ *,exl:\ */,sr:/*,mb:*,exl:*/,://
 " {{{
 
 set foldenable                                                       " Turn folding on.
-set foldmethod=marker                                                " Fold on marker.
+set foldmethod=syntax                                                " How the fold is used
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo " Open folded text on these actions.
 set foldlevel=30                                                      " Don't autofold. Use manual folding.
 
@@ -224,6 +224,7 @@ let g:easytags_include_members=1               " Include class members.
 " {{{
 
 let g:snip_author='Pascal Immerzeel'
+let snippets_dir=$HOME."/vimfiles/snippets".",".$HOME."/vimfiles/bundle/vim-snipmate/snippets" 
 
 " }}}
 " FUZZYFINDER
@@ -234,9 +235,10 @@ let g:fuf_autoPreview=0         " Donot show a preview of selected item."
 
 
 
-nnoremap <leader>ft :call fuf#givenfile#launch('', 0, '> ', split(glob('./**/*'), "\n"))<CR>
-nnoremap <leader>fb :FufBuffer<cr>
+nnoremap <leader>fd :call fuf#givenfile#launch('', 0, '> ', split(glob('./**/*'), "\n"))<cr>
 nnoremap <leader>ff :FufFileWithCurrentBufferDir<cr>
+nnoremap <leader>fl :FufLine<cr>
+nnoremap <leader>fb :FufBuffer<cr>
 nnoremap <leader>ft :FufTaggedFile<cr>
 nnoremap <leader>fj :FufJumpList<cr>
 nnoremap <leader>fc :FufChangeList<cr>
