@@ -1,7 +1,4 @@
-#
 # CLASS
-# {{{
-
 snippet package
 	package ${1:// package} 
 	{
@@ -16,37 +13,29 @@ snippet package
 		}
 	}
 
-# }}}
 # IMPORTS
-# {{{
-
 snippet imfd
 	import flash.display.${1:MovieClip};${2}
 snippet imfe
 	import flash.events.${1:Event};${2}
 
-# }}}
-# COMMENTS
-# {{{
+# METADATA
+snippet [SWF]
+	[SWF(width="${1:900}", height="${2:450}", frameRate="${3:31}", backgroundColor="${4:#FFFFFF}")]
 
+# COMMENTS
 snippet /**
 	/**
 	 * ${1:}
 	 */
 
-# }}}
 # VARIABLES
-# {{{
-
 snippet var
 	${2:public} var ${1:varName}:${3:Type};${4}
 snippet const
 	${1:public} static const ${2:varName}:${3:Type} = ${4:};${5}
 
-# }}}
 # EVENTS
-# {{{
-
 snippet add
 	addEventListener(${1:EventType}, ${2:functionName});${3}
 snippet rem
@@ -58,10 +47,7 @@ snippet e:e
 snippet e:m
 	event:MouseEvent${1}
 
-# }}}
 # FUNCTIONS
-# {{{
-
 snippet fun
 	/**
 	 * ${5}
@@ -89,10 +75,7 @@ snippet get
 		return _$1;
 	}${3}
 
-# }}}
 # LOOPS
-# {{{
-
 snippet if
 	if (${1:/* condition */}) 
 	{
@@ -142,17 +125,11 @@ snippet case
 		${2:// TODO}
 		break;${3}
 
-# }}}
 # FUNCTION CALLS
-# {{{
-
 snippet trace
 	trace(${1: /* arguments */});
 
-# }}}
 # PROFILING
-# {{{
-
 snippet imug
 	import flash.utils.getTimer;
 snippet starttime
@@ -160,28 +137,19 @@ snippet starttime
 snippet elapsedtime
 	var elapsedTime:int = getTimer() - startTime;
 
-# }}}
 # MONSTER DEBUGGER
-# {{{
-
 snippet immd
 	import nl.demonsters.debugger.MonsterDebugger;${1}
 snippet mdt
 	MonsterDebugger.trace(this, ${1:/* arguments */});${2}
 
-# }}}
 # THUNDERBOLT DEBUGGER
-# {{{
-
 snippet imtd
 	import org.osflash.thunderbolt.Logger;${1}
 snippet thl
 	Logger.${1:debug}('${2:description}', ${3:...rest});${3}
 
-# }}}
 # TWEENMAX
-# {{{
-
 snippet imgs
 	import com.greensock.TweenMax;
 	import com.greensock.easing.${1:*};
@@ -196,19 +164,13 @@ snippet append
 snippet appendM
 	timeline.appendMultiple([${4}], ${1:0}, TweenAlign.${2:NORMAL}, ${3:0});
 
-# }}}
 # GAIA FRAMEWORK
-# {{{
-
 snippet goto
 	Gaia.api.goto(Pages.${1:HOME});${2}
 snippet log
 	GaiaDebug.log{${1}};
 
-# }}}
 # PUSH BUTTON ENGINE
-# {{{
-
 snippet impb
 	import com.pblabs.engine.core.*;
 	import com.pblabs.engine.entity.*;
@@ -241,10 +203,7 @@ snippet component
 		}
 	}
 
-# }}}
 # DESIGN PATTERNS
-# {{{
-
 snippet singleton
 	private static var instance:${1:Type};
 	public static function getInstance():${1:Type}
@@ -254,13 +213,8 @@ snippet singleton
 	}
 	${2}
 
-# }}}
 # POLYGONAL LABS
-# {{{
-
 snippet imas
 	import de.polygonal.core.util.Assert;${1}
 snippet assert
 	Assert.assert(${1:condition}, '${2:description}');${3}
-
-# }}}
