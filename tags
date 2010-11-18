@@ -5,23 +5,23 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 ;;	C:\Users\pascal\vimfiles\vimrc	/^imap ;; <esc>   " Remap the ESC key, to keep the fingers on HOME row.$/;"	m	language:Vim
-<C-Enter>	C:\Users\pascal\vimfiles\vimrc	/^map <C-Enter> :silent !test_movie.jsfl<cr>$/;"	m	language:Vim
 <down>	C:\Users\pascal\vimfiles\vimrc	/^map! <down> <nop>$/;"	m	language:Vim
 <leader><insert>	C:\Users\pascal\vimfiles\vimrc	/^nmap <leader><insert> :silent !ctags -aR *<cr> " Manual add a tags file to the current directory, include subdirs aswell.$/;"	m	language:Vim
 <leader><space>	C:\Users\pascal\vimfiles\vimrc	/^map <leader><space> :noh<cr> " Disable highlighted search results.$/;"	m	language:Vim
 <leader>ev	C:\Users\pascal\vimfiles\vimrc	/^nmap <leader>ev :vsplit $MYVIMRC<cr>        " Make _vimrc easy accessible.$/;"	m	language:Vim
 <leader>fb	C:\Users\pascal\vimfiles\vimrc	/^nnoremap <leader>fb :FufBuffer<cr>$/;"	m	language:Vim
 <leader>fc	C:\Users\pascal\vimfiles\vimrc	/^nnoremap <leader>fc :FufChangeList<cr>$/;"	m	language:Vim
+<leader>fd	C:\Users\pascal\vimfiles\vimrc	/^nnoremap <leader>fd :call fuf#givenfile#launch('', 0, '> ', split(glob('.\/**\/*'), "\\n"))<cr>$/;"	m	language:Vim
 <leader>ff	C:\Users\pascal\vimfiles\vimrc	/^nnoremap <leader>ff :FufFileWithCurrentBufferDir<cr>$/;"	m	language:Vim
 <leader>fh	C:\Users\pascal\vimfiles\vimrc	/^nnoremap <leader>fh :FufHelp<cr>$/;"	m	language:Vim
 <leader>fj	C:\Users\pascal\vimfiles\vimrc	/^nnoremap <leader>fj :FufJumpList<cr>$/;"	m	language:Vim
+<leader>fl	C:\Users\pascal\vimfiles\vimrc	/^nnoremap <leader>fl :FufLine<cr>$/;"	m	language:Vim
 <leader>fq	C:\Users\pascal\vimfiles\vimrc	/^nnoremap <leader>fq :FufQuickfix<cr>$/;"	m	language:Vim
 <leader>fr	C:\Users\pascal\vimfiles\vimrc	/^nnoremap <leader>fr :FufRenewCache<cr>$/;"	m	language:Vim
 <leader>ft	C:\Users\pascal\vimfiles\vimrc	/^nnoremap <leader>ft :FufTaggedFile<cr>$/;"	m	language:Vim
 <leader>n	C:\Users\pascal\vimfiles\vimrc	/^nmap <leader>n :NERDTreeToggle<cr>$/;"	m	language:Vim
 <left>	C:\Users\pascal\vimfiles\vimrc	/^map! <left> <nop>$/;"	m	language:Vim
 <right>	C:\Users\pascal\vimfiles\vimrc	/^map! <right> <nop>$/;"	m	language:Vim
-<S-C-Enter>	C:\Users\pascal\vimfiles\vimrc	/^map <S-C-Enter> :silent !publish_all.jsfl<cr>$/;"	m	language:Vim
 <up>	C:\Users\pascal\vimfiles\vimrc	/^map! <up> <nop>$/;"	m	language:Vim
 g:easytags_file	C:\Users\pascal\vimfiles\vimrc	/^let g:easytags_file='tags'$/;"	v	language:Vim
 g:easytags_include_members	C:\Users\pascal\vimfiles\vimrc	/^let g:easytags_include_members=1               " Include class members.$/;"	v	language:Vim
@@ -30,4 +30,6 @@ g:fuf_enumeratingLimit	C:\Users\pascal\vimfiles\vimrc	/^let g:fuf_enumeratingLim
 g:netrw_liststyle	C:\Users\pascal\vimfiles\vimrc	/^let g:netrw_liststyle=3   " Show tree style listing.$/;"	v	language:Vim
 g:snip_author	C:\Users\pascal\vimfiles\vimrc	/^let g:snip_author='Pascal Immerzeel'$/;"	v	language:Vim
 mapleader	C:\Users\pascal\vimfiles\vimrc	/^let mapleader=","                 " Use this character instead of '\/'.$/;"	v	language:Vim
-NERDSpaceDelims	C:\Users\pascal\vimfiles\vimrc	/^let NERDSpaceDelims=1 " Pad the opening comment delimiter with a space.$/;"	v	language:Vim
+NERDSpaceDelims	C:\Users\pascal\vimfiles\vimrc	/^let NERDSpaceDelims=1    " Pad the opening comment delimiter with a space.$/;"	v	language:Vim
+NERDTreeShowHidden	C:\Users\pascal\vimfiles\vimrc	/^let NERDTreeShowHidden=1 " Show hidden files.$/;"	v	language:Vim
+snippets_dir	C:\Users\pascal\vimfiles\vimrc	/^let snippets_dir=$HOME."\/vimfiles\/snippets"$/;"	v	language:Vim
