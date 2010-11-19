@@ -20,6 +20,9 @@ snippet imfe
 	import flash.events.${1:Event};${2}
 
 # METADATA
+snippet embed
+	[Embed(source="${1:../assets/}")]
+	private var ${2:embeddedName}:Class
 snippet [SWF]
 	[SWF(width="${1:900}", height="${2:450}", frameRate="${3:31}", backgroundColor="${4:#FFFFFF}")]
 
@@ -212,9 +215,3 @@ snippet singleton
 		return instance as ${1:Type};
 	}
 	${2}
-
-# POLYGONAL LABS
-snippet imas
-	import de.polygonal.core.util.Assert;${1}
-snippet assert
-	Assert.assert(${1:condition}, '${2:description}');${3}
