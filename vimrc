@@ -35,7 +35,7 @@ set backupdir=$TEMP " Save backup
 set directory=$TEMP " Save swap files in this location.
 set autochdir       " Automatically change the current directory to the file's location.
 set hidden          " Allow changing from an unsaved buffer.
-set noshellslash    " Although backslashes suck, EasyTag conflicts with 'shellslash'.
+set shellslash    " Although backslashes suck, EasyTag conflicts with 'shellslash'.
 
 " UNDO
 set undodir=$HOME/.vim-undo
@@ -56,7 +56,7 @@ set comments=sl:/**,mb:\ *,exl:\ */,sr:/*,mb:*,exl:*/,://
 
 " FOLDING
 set foldenable                                                       " Turn folding on.
-set foldmethod=syntax                                                " How the fold is used
+set foldmethod=manual                                                " How the fold is used
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo " Open folded text on these actions.
 set foldlevel=30                                                      " Don't autofold. Use manual folding.
 
@@ -73,15 +73,15 @@ set expandtab    " Convert tabs to spaces.
 set smarttab     " A Tab expands to spaces in front of a line.
 
 " USER INTERFACE
-colorscheme vividchalk              " Color scheme of VIM.
-set colorcolumn=+1                  " Show a colored column to indicate the textwidth limit.
-highlight ColorColumn guibg=#111111 " Change the color of the colorcolumn.
+set background=light               " background settings for solarized
+colorscheme vividchalk             " Color scheme of VIM.
 set guioptions=ace
 "              |||
 "              ||+ Use simple dialogs rather then popups
 "              |+ Use GUI tabs, not console style tabs.
 "              + Autoselect and yank the text to system clipboard. 
-set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI " Set the GUI font.
+" set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI " Set the GUI font.
+set guifont=Consolas:h10:cANSI " Set the GUI font.
 
 set showmatch      " Show matching brace.
 set relativenumber " Show line numbers relative to the current line.
@@ -95,7 +95,13 @@ map! <down> <nop>
 map! <left> <nop>
 map! <right> <nop>
 
-imap ;; <esc>   " Remap the ESC key, to keep the fingers on HOME row.
+" Use shortcuts to navigate the windows.
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" imap ;; <Esc>   " Remap the ESC key, to keep the fingers on HOME row.
 
 autocmd GUIEnter * simalt ~ x " Start maximize!
 "                           |
@@ -135,10 +141,11 @@ set showcmd               " Show the command being used.
 set cursorline  " Highlight the line where the cursor is.
 
 " SEARCH
+set magic      " For use of regular expressions in search
 set incsearch  " Start search while typing.
 set hlsearch   " Highlight the search results.
 set wrapscan   " Search from to the beginning of the file, when the end is reached.
-set ignorecase " Ignore case-sensitivity in searches.
+set smartcase  " when capitals are used, activate case-sensitive search automatically 
 set gdefault   " Use global(g) option by default.
 set path+=./** " Search recursively down the current path.
 map <leader><space> :noh<cr> " Disable highlighted search results.
@@ -154,27 +161,31 @@ autocmd FileType actionscript set dictionary=$HOME/vimfiles/dict/actionscript.di
 autocmd FileType actionscript map <C-Enter> :silent !test_movie.jsfl<cr>
 autocmd FileType actionscript map <S-C-Enter> :silent !publish_all.jsfl<cr>
 
+" JSFL
+autocmd BufNewFile,BufRead *.jsfl set filetype=javascript
 " VIMOUTLINER
 autocmd BufRead,BufNewFile *.otl set filetype=vo_base
 autocmd BufRead,BufNewFile *.oln set filetype=xoutliner
 
 " EASYTAGS
 nmap <leader><insert> :silent !ctags -aR *<cr> " Manual add a tags file to the current directory, include subdirs aswell.
-set tags=./tags;/.;**/tags                     " Lookup ctags' tags file up the directory, until one is found.
+" set tags=./tags;/.;**/tags                     " Lookup ctags' tags file up the directory, until one is found.
+set tags=tags;**/tags                                   " Loook up until a 'tags' file is found.
 let g:easytags_file='tags'
 let g:easytags_include_members=1               " Include class members.
 
 " SNIPMATE 
 let g:snip_author='Pascal Immerzeel'
-let snippets_dir=$HOME."/vimfiles/snippets"
+let snippets_dir="$HOME/vimfiles/snippets,$HOME/vimfiles/bundle/vim-snipmate-snippets"
 
 " FUZZYFINDER
 let g:fuf_enumeratingLimit=50   " Limit the popup list to 50 items.
-let g:fuf_autoPreview=0         " Donot show a preview of selected item."
+let g:fuf_autoPreview=0         " Donot show a preview of selected item.
 
 nnoremap <leader>fd :call fuf#givenfile#launch('', 0, '> ', split(glob('./**/*'), "\n"))<cr>
 nnoremap <leader>ff :FufFileWithCurrentBufferDir<cr>
 nnoremap <leader>fl :FufLine<cr>
+nnoremap <leader>fi :FufFile<cr>
 nnoremap <leader>fb :FufBuffer<cr>
 nnoremap <leader>ft :FufTaggedFile<cr>
 nnoremap <leader>fj :FufJumpList<cr>
@@ -188,10 +199,16 @@ let g:netrw_liststyle=3   " Show tree style listing.
 
 " NERDTREE
 nmap <leader>n :NERDTreeToggle<cr>
+let NERDTreeShowHidden=0 " Show hidden files.
+
 
 " NERD COMMENTER
 let NERDSpaceDelims=1    " Pad the opening comment delimiter with a space.
-let NERDTreeShowHidden=1 " Show hidden files.
+
+" SYNCTASTIC
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_quiet_warnings=1
 
 " NON PUBLIC SETTINGS
 so ~/_vimrc_private

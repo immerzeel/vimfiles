@@ -21,9 +21,9 @@ snippet imfe
 
 # METADATA
 snippet embed
-	[Embed(source="${1:../assets/}")]
-	private var ${2:embeddedName}:Class
-snippet [SWF]
+	[Embed(source='${1:../assets/}' mimeType='${2:image/png}']
+	private var ${3:embeddedName}:Class
+snippet SWF
 	[SWF(width="${1:900}", height="${2:450}", frameRate="${3:31}", backgroundColor="${4:#FFFFFF}")]
 
 # COMMENTS
