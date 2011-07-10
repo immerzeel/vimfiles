@@ -38,7 +38,7 @@ set directory=$TEMP " Save swap files in this location.
 set autochdir       " Automatically change the current directory to the file's location.
 set hidden          " Allow changing from an unsaved buffer.
 set shellslash      " Although backslashes suck, EasyTag conflicts with 'shellslash'.
-set debug=msg       " Error messages don't disappear after one second on startup.
+" set debug=msg       " Error messages don't disappear after one second on startup.
 
 " UNDO
 set undodir=$HOME/.vim-undo
