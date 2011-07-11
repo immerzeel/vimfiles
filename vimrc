@@ -37,8 +37,8 @@ set backupdir=$TEMP " Save backup
 set directory=$TEMP " Save swap files in this location.
 set autochdir       " Automatically change the current directory to the file's location.
 set hidden          " Allow changing from an unsaved buffer.
-set shellslash      " Although backslashes suck, EasyTag conflicts with 'shellslash'.
-" set debug=msg       " Error messages don't disappear after one second on startup.
+set noshellslash    " Although backslashes suck, EasyTag conflicts with 'shellslash'.
+set debug=msg       " Error messages don't disappear after one second on startup.
 
 " UNDO
 set undodir=$HOME/.vim-undo
@@ -182,6 +182,7 @@ autocmd FileType actionscript map <S-C-Enter> :silent !publish_all.jsfl<cr>
 
 " JSFL
 autocmd BufNewFile,BufRead *.jsfl set filetype=javascript
+
 " VIMOUTLINER
 autocmd BufRead,BufNewFile *.otl set filetype=vo_base
 autocmd BufRead,BufNewFile *.oln set filetype=xoutliner
@@ -195,7 +196,7 @@ let g:easytags_include_members=1               " Include class members.
 
 " SNIPMATE 
 let g:snip_author='Pascal Immerzeel'
-let snippets_dir="$HOME/vimfiles/snippets,$HOME/vimfiles/bundle/vim-snipmate-snippets"
+let snippets_dir="$HOME/vimfiles/snippets"
 
 " FUZZYFINDER
 let g:fuf_enumeratingLimit=50   " Limit the popup list to 50 items.
@@ -219,7 +220,7 @@ let g:netrw_liststyle=3   " Show tree style listing.
 " NERDTREE
 nmap <leader>n :NERDTreeToggle<cr>
 let NERDTreeShowHidden=0 " Donot hidden files.
-let NERDCreateDefaultMappings=0 
+" let NERDCreateDefaultMappings=0 
 let NERDShutUp=1
 let NERDTreeHijackNetrw=0
 
@@ -229,7 +230,7 @@ let NERDSpaceDelims=1    " Pad the opening comment delimiter with a space.
 " SYNCTASTIC
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
-let g:syntastic_quiet_warnings=1
+" let g:syntastic_quiet_warnings=1
 
 " NON PUBLIC SETTINGS
 so ~/_vimrc_private
