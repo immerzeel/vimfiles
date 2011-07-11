@@ -61,9 +61,6 @@
 [submodule "bundle/vim-syntastic"]
 	path = bundle/vim-syntastic
 	url = git://github.com/scrooloose/syntastic.git
-[submodule "bundle/vim-snipmate-snippets"]
-	path = bundle/vim-snipmate-snippets
-	url = https://github.com/scrooloose/snipmate-snippets
 [submodule "bundle/vim-twitvim"]
 	path = bundle/vim-twitvim
 	url = git://github.com/vim-scripts/TwitVim.git
