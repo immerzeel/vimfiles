@@ -8,33 +8,33 @@ filetype off                    " force reloading *after* pathogen loaded
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-filetype plugin on                " enable detection, plugins. 
+filetype plugin on                      " enable detection, plugins.
 
-set visualbell                  " Do not flash the screen when error occurs.
-set noerrorbells                  " no audible signal as well.
+set visualbell                          " Do not flash the screen when error occurs.
+set noerrorbells                        " no audible signal as well.
 
-syntax on                         " Syntax coloring on.
-set synmaxcol=2048                " Maximum number of columns to search for syntax items.
-" set textwidth=79                  " Maximum text width.
-set linespace=3                   " Set the line height.
-set nowrap                        " Do not wrap long lines.
-set scrolloff=2                   " Keep the cursor padded with lines when scrolling.
-set sidescrolloff=2               " Keep the cursor padded when side scrolling.
-set backspace=2                   " Allow backspacing over anything.
-set nostartofline                 " Leave the cursor where it was.
-set mousehide                     " Hide the mouse cursor while typing.
-set mouse=nvi                     " Allow the mouse in Normal, Visual and Insert mode.
-set completeopt=menu              " Don't show extra info on completions.
+syntax on                               " Syntax coloring on.
+set synmaxcol=2048                      " Maximum number of columns to search for syntax items.
+                                        " set textwidth=79                                      " Maximum text width.
+set linespace=3                         " Set the line height.
+set nowrap                              " Do not wrap long lines.
+set scrolloff=2                         " Keep the cursor padded with lines when scrolling.
+set sidescrolloff=2                     " Keep the cursor padded when side scrolling.
+set backspace=2                         " Allow backspacing over anything.
+set nostartofline                       " Leave the cursor where it was.
+set mousehide                           " Hide the mouse cursor while typing.
+set mouse=nvi                           " Allow the mouse in Normal, Visual and Insert mode.
+set completeopt=menu                    " Don't show extra info on completions.
 set sessionoptions-=options,folds,slash " Don't save these settings to a session file.
-let mapleader=","                 " Use this character instead of '/'.
-set timeoutlen=500                " Shorten the lag after typing the leader key.
-set ttimeoutlen=50                " Make ESC work a little bit faster.
+let mapleader=","                       " Use this character instead of '/'.
+set timeoutlen=500                      " Shorten the lag after typing the leader key.
+set ttimeoutlen=50                      " Make ESC work a little bit faster.
 
 " SYSTEM
 set encoding=utf-8
 set autoread                  " Detect changes made outside of VIM and reload the buffer.
-set backupdir=$HOME\.vim-temp " Save backup
-set directory=$HOME\.vim-temp " Save swap files in this location.
+set backupdir=$TEMP           " Save backup
+set directory=$TEMP,.         " Save swap files in this location.
 set autochdir                 " Automatically change the current directory to the file's location.
 set hidden                    " Allow changing from an unsaved buffer.
 set debug=msg                 " Error messages don't disappear after one second on startup.
@@ -42,12 +42,9 @@ set debug=msg                 " Error messages don't disappear after one second 
 " SHELL
 set shellslash      " Although backslashes suck, EasyTag conflicts with 'shellslash'.
 set shell=powershell
-" set shellcmdflag=-c
-" set shellxquote=\"
-" set shellpipe=\|\ tee
 
 " UNDO
-set undodir=$HOME/.vim-undo
+set undodir=$TEMP
 set undofile
 set undolevels=1000         " maximum number of changes that can be undone
 set undoreload=10000        " maximum number lines to save for undo on a buffer reload
@@ -69,7 +66,6 @@ set comments=sl:/**,mb:\ *,exl:\ */,sr:/*,mb:*,exl:*/,://
 set foldenable                                                       " Turn folding on.
 set foldmethod=manual                                                " How the fold is used
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo " Open folded text on these actions.
-set foldlevel=30                                                      " Don't autofold. Use manual folding.
 
 " INDENT
 filetype indent on " Indentation based on filetype.
