@@ -15,7 +15,7 @@ set noerrorbells                  " no audible signal as well.
 
 syntax on                         " Syntax coloring on.
 set synmaxcol=2048                " Maximum number of columns to search for syntax items.
-set textwidth=79                  " Maximum text width.
+" set textwidth=79                  " Maximum text width.
 set linespace=3                   " Set the line height.
 set nowrap                        " Do not wrap long lines.
 set scrolloff=2                   " Keep the cursor padded with lines when scrolling.
@@ -25,20 +25,26 @@ set nostartofline                 " Leave the cursor where it was.
 set mousehide                     " Hide the mouse cursor while typing.
 set mouse=nvi                     " Allow the mouse in Normal, Visual and Insert mode.
 set completeopt=menu              " Don't show extra info on completions.
-set sessionoptions-=options,folds " Don't save these settings to a session file.
+set sessionoptions-=options,folds,slash " Don't save these settings to a session file.
 let mapleader=","                 " Use this character instead of '/'.
 set timeoutlen=500                " Shorten the lag after typing the leader key.
 set ttimeoutlen=50                " Make ESC work a little bit faster.
 
 " SYSTEM
 set encoding=utf-8
-set autoread        " Detect changes made outside of VIM and reload the buffer.
-set backupdir=$TEMP " Save backup
-set directory=$TEMP " Save swap files in this location.
-set autochdir       " Automatically change the current directory to the file's location.
-set hidden          " Allow changing from an unsaved buffer.
-set noshellslash    " Although backslashes suck, EasyTag conflicts with 'shellslash'.
-set debug=msg       " Error messages don't disappear after one second on startup.
+set autoread                  " Detect changes made outside of VIM and reload the buffer.
+set backupdir=$HOME\.vim-temp " Save backup
+set directory=$HOME\.vim-temp " Save swap files in this location.
+set autochdir                 " Automatically change the current directory to the file's location.
+set hidden                    " Allow changing from an unsaved buffer.
+set debug=msg                 " Error messages don't disappear after one second on startup.
+
+" SHELL
+set shellslash      " Although backslashes suck, EasyTag conflicts with 'shellslash'.
+set shell=powershell
+" set shellcmdflag=-c
+" set shellxquote=\"
+" set shellpipe=\|\ tee
 
 " UNDO
 set undodir=$HOME/.vim-undo
@@ -108,11 +114,11 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-autocmd GUIEnter * simalt ~ x " Start maximize!
+" autocmd GUIEnter * simalt ~ x " Start maximize!
 "                           |
 "                           + Maximize in English version.
 "
-" autocmd GUIEnter * simalt ~ m " Start maximize!
+autocmd GUIEnter * simalt ~ m " Start maximize!
 "                           |
 "                           + Maximize in Dutch version (for some reason we use Dutch Windows at work).
 
@@ -233,4 +239,4 @@ let g:syntastic_auto_loc_list=1
 " let g:syntastic_quiet_warnings=1
 
 " NON PUBLIC SETTINGS
-so ~/_vimrc_private
+" so ~/_vimrc_private
