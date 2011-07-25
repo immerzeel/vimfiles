@@ -15,7 +15,6 @@ set noerrorbells                        " no audible signal as well.
 
 syntax on                               " Syntax coloring on.
 set synmaxcol=2048                      " Maximum number of columns to search for syntax items.
-                                        " set textwidth=79                                      " Maximum text width.
 set linespace=3                         " Set the line height.
 set nowrap                              " Do not wrap long lines.
 set scrolloff=2                         " Keep the cursor padded with lines when scrolling.
@@ -32,25 +31,25 @@ set ttimeoutlen=50                      " Make ESC work a little bit faster.
 
 " SYSTEM
 set encoding=utf-8
-set autoread                  " Detect changes made outside of VIM and reload the buffer.
-set backupdir=$TEMP           " Save backup
-set directory=$TEMP,.         " Save swap files in this location.
-set autochdir                 " Automatically change the current directory to the file's location.
-set hidden                    " Allow changing from an unsaved buffer.
-set debug=msg                 " Error messages don't disappear after one second on startup.
+set autoread          " Detect changes made outside of VIM and reload the buffer.
+set backupdir=$TEMP   " Save backup
+set directory=$TEMP,. " Save swap files in this location.
+set autochdir         " Automatically change the current directory to the file's location.
+set hidden            " Allow changing from an unsaved buffer.
+set debug=msg         " Error messages don't disappear after one second on startup.
 
 " SHELL
-set shellslash      " Although backslashes suck, EasyTag conflicts with 'shellslash'.
-set shell=powershell
+set shellslash       " Although backslashes suck, EasyTag conflicts with 'shellslash'.
+set shell=powershell " Use the Windows 7 alternative shell for commandline.
 
 " UNDO
-set undodir=$TEMP
-set undofile
-set undolevels=1000         " maximum number of changes that can be undone
-set undoreload=10000        " maximum number lines to save for undo on a buffer reload
+set undofile         " Create a per file undo history.
+set undodir=$TEMP    " Save undo files in this directory.
+set undolevels=1000  " Maximum number of changes that can be undone
+set undoreload=10000 " Maximum number lines to save for undo on a buffer reload
 
 " PASTE
-set pastetoggle=<F2>        " Disable indenting when pasting from outside VIM.
+set pastetoggle=<F2> " Disable indenting when pasting from outside VIM.
 
 " FORMATING
 set formatoptions=croq                  " t
@@ -110,27 +109,27 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" autocmd GUIEnter * simalt ~ x " Start maximize!
+autocmd GUIEnter * simalt ~ x " Start maximize!
 "                           |
 "                           + Maximize in English version.
 "
-autocmd GUIEnter * simalt ~ m " Start maximize!
+" autocmd GUIEnter * simalt ~ m " Start maximize!
 "                           |
 "                           + Maximize in Dutch version (for some reason we use Dutch Windows at work).
 
 " LIST
 set list                                                            " Show tabs and end of lines as character.
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+,eol:¬     " Define the characters to represent tab / EOL.
+set listchars=tab:>\ ,trail:·,extends:»,precedes:«,nbsp:+,eol:¬     " Define the characters to represent tab / EOL.
 
 " STATUSLINE
 set laststatus=2
-set statusline=%F\ %m\ %r\ %y\ %{fugitive#statusline()}%=%(Line:\ %l/%L\ [%p%%]\ Col:\ %c\ Buf:\ #%n%)\   
+set statusline=%F\ %m\ %r\ %y\ %{fugitive#statusline()}%=%(Line:\ %l/%L\ [%p%%]\ Col:\ %c\ Buf:\ #%n%)\
 "               |   |   |   |    |                     |           |  |    |            |          |
-"               |   |   |   |    |                     |           |  |    |            |          + Buffer. 
-"               |   |   |   |    |                     |           |  |    |            + Column number.         
-"               |   |   |   |    |                     |           |  |    + Percentage of file.           
+"               |   |   |   |    |                     |           |  |    |            |          + Buffer.
+"               |   |   |   |    |                     |           |  |    |            + Column number.
+"               |   |   |   |    |                     |           |  |    + Percentage of file.
 "               |   |   |   |    |                     |           |  + Total number of lines.
-"               |   |   |   |    |                     |           + Line number.  
+"               |   |   |   |    |                     |           + Line number.
 "               |   |   |   |    |                     + Define a group and make it right aligned.
 "               |   |   |   |    + Show Git repository status.
 "               |   |   |   + Filetype mode.
@@ -138,7 +137,7 @@ set statusline=%F\ %m\ %r\ %y\ %{fugitive#statusline()}%=%(Line:\ %l/%L\ [%p%%]\
 "               |   + Modified flag.
 "               + Full path to file.
 
-set completeopt=longest,menuone 
+set completeopt=longest,menuone
 set wildmenu                   " Turn on command line completion wild style.
 " set wildmode=list:longest    " List all matches and complete to the longest string.
 set wildmode=longest:full,full " List all matches and complete to the longest string.
