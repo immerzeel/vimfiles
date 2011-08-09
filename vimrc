@@ -23,7 +23,6 @@ set backspace=2                         " Allow backspacing over anything.
 set nostartofline                       " Leave the cursor where it was.
 set mousehide                           " Hide the mouse cursor while typing.
 set mouse=nvi                           " Allow the mouse in Normal, Visual and Insert mode.
-set completeopt=menu                    " Don't show extra info on completions.
 set sessionoptions-=options,folds,slash " Don't save these settings to a session file.
 let mapleader=","                       " Use this character instead of '/'.
 set timeoutlen=500                      " Shorten the lag after typing the leader key.
@@ -31,25 +30,29 @@ set ttimeoutlen=50                      " Make ESC work a little bit faster.
 
 " SYSTEM
 set encoding=utf-8
-set autoread          " Detect changes made outside of VIM and reload the buffer.
-set backupdir=$TEMP   " Save backup
-set directory=$TEMP,. " Save swap files in this location.
-set autochdir         " Automatically change the current directory to the file's location.
-set hidden            " Allow changing from an unsaved buffer.
-set debug=msg         " Error messages don't disappear after one second on startup.
+set autoread                  " Detect changes made outside of VIM and reload the buffer.
+set backupdir=$TEMP           " Save backup
+set directory=$TEMP,.         " Save swap files in this location.
+set autochdir                 " Automatically change the current directory to the file's location.
+set hidden                    " Allow changing from an unsaved buffer.
+set debug=msg                 " Error messages don't disappear after one second on startup.
 
 " SHELL
-set shellslash       " Although backslashes suck, EasyTag conflicts with 'shellslash'.
-set shell=powershell " Use the Windows 7 alternative shell for commandline.
+set noshellslash                " Although backslashes suck, EasyTag and Syntastic conflicts with 'shellslash'.
+
+set shell=powershell.exe
+set shellcmdflag=-c
+set shellpipe=>
+set shellredir=>
 
 " UNDO
-set undofile         " Create a per file undo history.
-set undodir=$TEMP    " Save undo files in this directory.
-set undolevels=1000  " Maximum number of changes that can be undone
-set undoreload=10000 " Maximum number lines to save for undo on a buffer reload
+set undodir=$TEMP
+set undofile
+set undolevels=1000         " maximum number of changes that can be undone
+set undoreload=10000        " maximum number lines to save for undo on a buffer reload
 
 " PASTE
-set pastetoggle=<F2> " Disable indenting when pasting from outside VIM.
+set pastetoggle=<F2>        " Disable indenting when pasting from outside VIM.
 
 " FORMATING
 set formatoptions=croq                  " t
@@ -81,14 +84,14 @@ vnoremap <Space> I<Space><Esc>gv " Add a space before selected block and reselec
 
 " USER INTERFACE
 set background=dark                " background settings for solarized
-colorscheme solarized              " Color scheme of VIM.
+colorscheme vividchalk             " Color scheme of VIM.
 set guioptions=ace
 "              |||
 "              ||+ Use simple dialogs rather then popups
 "              |+ Use GUI tabs, not console style tabs.
 "              + Autoselect and yank the text to system clipboard. 
 " set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI " Set the GUI font.
-set guifont=Consolas:h10:cANSI " Set the GUI font.
+set guifont=Consolas:h8:cANSI " Set the GUI font.
 
 set showmatch         " Show matching brace.
 set relativenumber    " Show line numbers relative to the current line.
@@ -109,11 +112,11 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-autocmd GUIEnter * simalt ~ x " Start maximize!
+" autocmd GUIEnter * simalt ~ x " Start maximize!
 "                           |
 "                           + Maximize in English version.
 "
-" autocmd GUIEnter * simalt ~ m " Start maximize!
+autocmd GUIEnter * simalt ~ m " Start maximize!
 "                           |
 "                           + Maximize in Dutch version (for some reason we use Dutch Windows at work).
 
@@ -137,9 +140,7 @@ set statusline=%F\ %m\ %r\ %y\ %{fugitive#statusline()}%=%(Line:\ %l/%L\ [%p%%]\
 "               |   + Modified flag.
 "               + Full path to file.
 
-set completeopt=longest,menuone
 set wildmenu                   " Turn on command line completion wild style.
-" set wildmode=list:longest    " List all matches and complete to the longest string.
 set wildmode=longest:full,full " List all matches and complete to the longest string.
 set showmode                   " Show in which mode it is in.
 set showcmd                    " Show the command being used.
@@ -177,7 +178,7 @@ nmap <leader>ev :vsplit $MYVIMRC<cr>        " Make _vimrc easy accessible.
 
 " ACTIONSCRIPT 
 autocmd BufNewFile,BufRead *.as set filetype=actionscript                          " ActionScript. Override the standard Altas (*.as).
-autocmd FileType actionscript set dictionary=$HOME/vimfiles/dict/actionscript.dict
+" autocmd FileType actionscript set dictionary=$HOME/vimfiles/dict/actionscript.dict
 autocmd FileType actionscript map <C-Enter> :silent !test_movie.jsfl<cr>
 autocmd FileType actionscript map <S-C-Enter> :silent !publish_all.jsfl<cr>
 
@@ -232,6 +233,9 @@ let NERDSpaceDelims=1    " Pad the opening comment delimiter with a space.
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 " let g:syntastic_quiet_warnings=1
+
+" ZENCODING
+let g:user_zen_leader_key = "<c-e>"
 
 " NON PUBLIC SETTINGS
 " so ~/_vimrc_private

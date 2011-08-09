@@ -4,7 +4,7 @@ My Vimfiles settings and bundles.
 WINDOWS
     INSTALL
         cd <home_dir>
-        mklink /H vimfiles\vimrc _vimrc
+        mklink /H _vimrc vimfiles\vimrc
 
     UPDATE
         cd <home_dir>\vimfiles
