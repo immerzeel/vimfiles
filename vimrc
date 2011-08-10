@@ -116,7 +116,6 @@ else
     autocmd GUIEnter * simalt ~ x " Start maximize!
     "                           |
     "                           + Maximize in English version.
-endif
 "
 
 " LIST
@@ -238,7 +237,6 @@ let g:user_zen_leader_key = "<c-e>"
 
 " MATCHIT
 " Using the plugin distributed with VIM
-runtime macros/matchit.vim
 
 " NON PUBLIC SETTINGS
 " so ~/_vimrc_private
