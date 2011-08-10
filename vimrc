@@ -92,7 +92,11 @@ set showmatch         " Show matching brace.
 set relativenumber    " Show line numbers relative to the current line.
 set fillchars=""      " No characters in windows separators.
 set lazyredraw        " Don't redraw while performing macros.
-set shortmess=I       " Disable intro screen.
+set shortmess=atI
+"             |||
+"             ||+ Disable intro screen.
+"             |+ Truncate file message at the start if path doesn't fit.
+"             + Collection of abbriviating methods.
 set virtualedit=block " Allow the cursor on non-character positions.
 
 " Use the HJKL keys for navigation. NO CHEATING WITH ARROW KEYS!
@@ -107,6 +111,8 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" Show the buffers list and prefill :b
+nnoremap <F4> :ls<CR>:b
 
 if v:lang =~ "nl_NL"
     autocmd GUIEnter * simalt ~ m " Start maximize!
@@ -116,6 +122,7 @@ else
     autocmd GUIEnter * simalt ~ x " Start maximize!
     "                           |
     "                           + Maximize in English version.
+endif
 "
 
 " LIST
@@ -237,6 +244,7 @@ let g:user_zen_leader_key = "<c-e>"
 
 " MATCHIT
 " Using the plugin distributed with VIM
+runtime macros/matchit.vim
 
 " NON PUBLIC SETTINGS
 " so ~/_vimrc_private
