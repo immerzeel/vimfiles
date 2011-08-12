@@ -61,7 +61,7 @@ set comments=sl:/**,mb:\ *,exl:\ */,sr:/*,mb:*,exl:*/,://
 
 " FOLDING
 set foldenable                                                       " Turn folding on.
-set foldmethod=manual                                                " How the fold is used
+set foldmethod=syntax                                                " How the fold is used
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo " Open folded text on these actions.
 
 " INDENT
@@ -76,6 +76,33 @@ set tabstop=4    " Tab equals N space(bar)s.
 set expandtab    " Convert tabs to spaces.
 set smarttab     " A Tab expands to spaces in front of a line.
 vnoremap <Space> I<Space><Esc>gv " Add a space before selected block and reselect the previous section.
+
+" BUFFERS
+map <right> :bn<cr>
+map <left> :bp<cr>
+nnoremap <F4> :ls<CR>:b " Show the buffers list and prefill :b
+
+" GUI TABS
+set tabpagemax=15
+map <leader>tn :tabnew<cr>
+map <leader>te :tabedit
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+
+" ARROW KEYS
+" Use the HJKL keys for navigation. NO CHEATING WITH ARROW KEYS!
+map! <up> <nop>
+map! <down> <nop>
+map! <left> <nop>
+map! <right> <nop>
+
+" WINDOWS
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+
 
 " USER INTERFACE
 set background=dark                " background settings for solarized
@@ -99,22 +126,7 @@ set shortmess=atI
 "             + Collection of abbriviating methods.
 set virtualedit=block " Allow the cursor on non-character positions.
 
-" Use the HJKL keys for navigation. NO CHEATING WITH ARROW KEYS!
-map! <up> <nop>
-map! <down> <nop>
-map! <left> <nop>
-map! <right> <nop>
-
-" Use shortcuts to navigate the windows.
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-" Show the buffers list and prefill :b
-nnoremap <F4> :ls<CR>:b
-
-if v:lang =~ "nl_NL"
+if v:lang =~ "NL"
     autocmd GUIEnter * simalt ~ m " Start maximize!
 "                              |
 "                              + Maximize in Dutch version (for some reason we use Dutch Windows at work).
@@ -209,10 +221,9 @@ let snippets_dir="$HOME/vimfiles/snippets"
 let g:fuf_enumeratingLimit=50   " Limit the popup list to 50 items.
 let g:fuf_autoPreview=0         " Donot show a preview of selected item.
 
-nnoremap <leader>fd :call fuf#givenfile#launch('', 0, '> ', split(glob('./**/*'), "\n"))<cr>
-nnoremap <leader>ff :FufFileWithCurrentBufferDir<cr>
-nnoremap <leader>fl :FufLine<cr>
+nnoremap <leader>ff :FufFileWithCurrentBufferDir **/<cr>
 nnoremap <leader>fi :FufFile<cr>
+nnoremap <leader>fl :FufLine<cr>
 nnoremap <leader>fb :FufBuffer<cr>
 nnoremap <leader>ft :FufTaggedFile<cr>
 nnoremap <leader>fj :FufJumpList<cr>
@@ -225,9 +236,9 @@ nnoremap <leader>fr :FufRenewCache<cr>
 let g:netrw_liststyle=3   " Show tree style listing.
 
 " NERDTREE
-nmap <leader>n :NERDTreeToggle<cr>
-let NERDTreeShowHidden=0 " Donot hidden files.
-" let NERDCreateDefaultMappings=0 
+nmap <leader>n :NERDTreeToggle<cr> " Toggle the NERDTree side window.
+nmap <leader>nf :NERDTreeFind<cr>  " Find the current file in NERDTree.
+let NERDTreeShowHidden=0           " Donot hidden files.
 let NERDShutUp=1
 let NERDTreeHijackNetrw=0
 
@@ -237,7 +248,7 @@ let NERDSpaceDelims=1    " Pad the opening comment delimiter with a space.
 " SYNCTASTIC
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
-" let g:syntastic_quiet_warnings=1
+let g:syntastic_quiet_warnings=1
 
 " ZENCODING
 let g:user_zen_leader_key = "<c-e>"
