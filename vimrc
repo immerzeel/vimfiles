@@ -5,10 +5,9 @@ set nocompatible                  " Turn of Vi compatibility.
 " the ~/.vim/bundle directory
 filetype off                    " force reloading *after* pathogen loaded
 
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+call pathogen#infect()
 
-filetype plugin on                      " enable detection, plugins.
+filetype plugin indent on               " enable detection, plugins.
 
 set visualbell                          " Do not flash the screen when error occurs.
 set noerrorbells                        " no audible signal as well.
@@ -38,7 +37,7 @@ set hidden                    " Allow changing from an unsaved buffer.
 set debug=msg                 " Error messages don't disappear after one second on startup.
 
 " SHELL
-set shellslash                " Although backslashes suck, EasyTag and Syntastic conflicts with 'shellslash'.
+set noshellslash                " Although backslashes suck, EasyTag and Syntastic conflicts with 'shellslash'.
 
 " UNDO
 set undodir=$TEMP
@@ -75,12 +74,13 @@ set shiftwidth=4 " Number of spaces for an indent.
 set tabstop=4    " Tab equals N space(bar)s.
 set expandtab    " Convert tabs to spaces.
 set smarttab     " A Tab expands to spaces in front of a line.
-vnoremap <Space> I<Space><Esc>gv " Add a space before selected block and reselect the previous section.
+
+" Add a space before selected block and reselect the previous section.
+vnoremap <Space> I<Space><Esc>gv 
 
 " BUFFERS
-map <right> :bn<cr>
-map <left> :bp<cr>
-nnoremap <F4> :ls<CR>:b " Show the buffers list and prefill :b
+" Show the buffers list and prefill :b
+nnoremap <F4> :ls<CR>:b 
 
 " GUI TABS
 set tabpagemax=15
@@ -88,6 +88,39 @@ map <leader>tn :tabnew<cr>
 map <leader>te :tabedit
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
+
+" set up tab tooltips with every buffer name
+function! GuiTabToolTip()
+  let tip = ''
+  let bufnrlist = tabpagebuflist(v:lnum)
+  for bufnr in bufnrlist
+    " separate buffer entries
+    if tip!=''
+      let tip .= " \n "
+    endif
+    " Add name of buffer
+    let name=bufname(bufnr)
+    if name == ''
+      " give a name to no name documents
+      if getbufvar(bufnr,'&buftype')=='quickfix'
+        let name = '[Quickfix List]'
+      else
+        let name = '[No Name]'
+      endif
+    endif
+    let tip.=name
+    " add modified/modifiable flags
+    if getbufvar(bufnr, "&modified")
+      let tip .= ' [+]'
+    endif
+    if getbufvar(bufnr, "&modifiable")==0
+      let tip .= ' [-]'
+    endif
+  endfor
+  return tip
+endfunction
+set guitabtooltip=%{GuiTabToolTip()}
+set guitablabel=%N\ %t
 
 " ARROW KEYS
 " Use the HJKL keys for navigation. NO CHEATING WITH ARROW KEYS!
@@ -201,7 +234,7 @@ autocmd FileType actionscript map <S-C-Enter> :silent !publish_all.jsfl<cr>
 
 " JSFL
 autocmd BufNewFile,BufRead *.jsfl set filetype=javascript
-
+"
 " VIMOUTLINER
 autocmd BufRead,BufNewFile *.otl set filetype=vo_base
 autocmd BufRead,BufNewFile *.oln set filetype=xoutliner
@@ -216,12 +249,14 @@ let g:easytags_include_members=1               " Include class members.
 " SNIPMATE 
 let g:snip_author='Pascal Immerzeel'
 let snippets_dir="$HOME/vimfiles/snippets"
+nmap <leader>es :NERDTree $HOME/vimfiles/snippets<cr>
+
 
 " FUZZYFINDER
-let g:fuf_enumeratingLimit=50   " Limit the popup list to 50 items.
+let g:fuf_enumeratingLimit=150  " Limit the popup list to 50 items.
 let g:fuf_autoPreview=0         " Donot show a preview of selected item.
 
-nnoremap <leader>ff :FufFileWithCurrentBufferDir **/<cr>
+nnoremap <leader>ff :FufFile **/<cr>
 nnoremap <leader>fi :FufFile<cr>
 nnoremap <leader>fl :FufLine<cr>
 nnoremap <leader>fb :FufBuffer<cr>
@@ -240,12 +275,12 @@ nmap <leader>n :NERDTreeToggle<cr> " Toggle the NERDTree side window.
 nmap <leader>nf :NERDTreeFind<cr>  " Find the current file in NERDTree.
 let NERDTreeShowHidden=0           " Donot hidden files.
 let NERDShutUp=1
-let NERDTreeHijackNetrw=0
+let NERDTreeHijackNetrw=1
 
 " NERD COMMENTER
 let NERDSpaceDelims=1    " Pad the opening comment delimiter with a space.
 
-" SYNCTASTIC
+" SYNTASTIC
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_quiet_warnings=1
