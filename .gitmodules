@@ -22,9 +22,6 @@
 [submodule "bundle/vim-delimitmate"]
 	path = bundle/vim-delimitmate
 	url = git://github.com/Raimondi/delimitMate.git
-[submodule "bundle/vim-flex4"]
-	path = bundle/vim-flex4
-	url = git://github.com/vim-scripts/Flex-4.git
 [submodule "bundle/vim-nerdcommenter"]
 	path = bundle/vim-nerdcommenter
 	url = git://github.com/scrooloose/nerdcommenter.git
@@ -46,9 +43,6 @@
 [submodule "bundle/vim-zencoding"]
 	path = bundle/vim-zencoding
 	url = git://github.com/mattn/zencoding-vim.git
-[submodule "bundle/vim-snipmate"]
-	path = bundle/vim-snipmate
-	url = git://github.com/msanders/snipmate.vim.git
 [submodule "bundle/vim-fuzzyfinder"]
 	path = bundle/vim-fuzzyfinder
 	url = git://github.com/vim-scripts/FuzzyFinder.git
@@ -73,6 +67,6 @@
 [submodule "bundle/vim-tagbar"]
 	path = bundle/vim-tagbar
 	url = git://github.com/majutsushi/tagbar.git
-[submodule "bundle/vim-shell"]
-	path = bundle/vim-shell
-	url = git://github.com/xolox/vim-shell.git
+[submodule "bundle/vim-ultisnips"]
+	path = bundle/vim-ultisnips
+	url = git://github.com/vim-scripts/UltiSnips.git

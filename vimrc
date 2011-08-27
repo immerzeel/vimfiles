@@ -239,16 +239,13 @@ autocmd BufNewFile,BufRead *.jsfl set filetype=javascript
 autocmd BufRead,BufNewFile *.otl set filetype=vo_base
 autocmd BufRead,BufNewFile *.oln set filetype=xoutliner
 
-" EASYTAGS
+" TAGS
 nmap <leader><insert> :silent !ctags -aR *<cr> " Manual add a tags file to the current directory, include subdirs aswell.
-" set tags=./tags;/.;**/tags                   " Lookup ctags' tags file up the directory, until one is found.
-set tags=tags;**/tags                          " Loook up until a 'tags' file is found.
-let g:easytags_file='tags'
-let g:easytags_include_members=1               " Include class members.
 
-" SNIPMATE 
-let g:snip_author='Pascal Immerzeel'
-let snippets_dir="$HOME/vimfiles/snippets"
+" ULTISNIPS
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDir="$HOME/vimfiles/snippets"
+let g:UltiSnipsSnippetDirectoriesr="snippets"
 nmap <leader>es :NERDTree $HOME/vimfiles/snippets<cr>
 
 

@@ -1,0 +1,52 @@
+snippet addEvent "addEvent"
+addEventListener(${1:Application}View.${2:CLICK}, this.on${2:method}, this);${3:}
+
+endsnippet
+
+snippet case "case"
+case ${1:NotificationNames.}:
+	${2:}
+	break;
+
+endsnippet
+
+snippet currentTarget "currentTarget"
+var item = $(event.currentTarget);${1:}
+
+endsnippet
+
+snippet getview "getview"
+var view = this.getView()${1:}
+
+endsnippet
+
+snippet registerCommand "registerCommand"
+this.registerCommand(${1:NotificationNames}, ${2:Command})${3:}
+
+endsnippet
+
+snippet retreiveMediator "retreiveMediator"
+this.${1:application}Mediator = this.facade.retrieveMediator(MediatorNames.${2:APPLICATION}_MEDIATOR);${3:}
+
+endsnippet
+
+snippet retrieveProxy "retrieveProxy"
+this.${1:application}Proxy = this.facade.retrieveProxy(ProxyNames.${2:APPLICATION}_PROXY);${3:}
+
+endsnippet
+
+snippet sendnote "sendnote"
+this.sendNotification(${1:NotificationNames}, ${2:view})${3:}
+
+endsnippet
+
+snippet that "that"
+var that = this;${1:}
+
+endsnippet
+
+snippet type "type"
+${1:TYPE}:"$1"${2:}
+
+endsnippet
+

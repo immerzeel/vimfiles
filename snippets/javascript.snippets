@@ -1,0 +1,56 @@
+snippet anon "anon"
+function(${1}) {${2}}${3}
+
+endsnippet
+
+snippet class "class"
+`!v expand("%:t:r")`
+
+endsnippet
+
+snippet for "for"
+for (var ${1:i} = 0; $1 < ${2:array}.length; ++$1) 
+{
+	$2[$1];
+}
+
+endsnippet
+
+snippet if "if"
+if (${1:true}) 
+{ 
+	${2} 
+}
+
+endsnippet
+
+snippet ife "ife"
+if (${1:true}) 
+{
+	${2}
+} 
+else 
+{
+	${3}
+}${4}
+
+endsnippet
+
+snippet log "log"
+console.log(`!v Filename('"$1",')` ${1:});${2:}
+
+endsnippet
+
+snippet proto "proto"
+`!v expand("%:t:r")`.prototype.${1:method} = function(${2:argument}) 
+{
+	${3:// body}
+};
+
+endsnippet
+
+snippet var "var"
+`!v expand("%:t:r")`.prototype.${1:variable} = ${2:value};${3:}
+
+endsnippet
+
