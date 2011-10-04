@@ -1,52 +1,34 @@
-snippet addEvent "addEvent"
+snippet addEvent "addEventListener(View.EVENT, this.onMethod, this);"
 addEventListener(${1:Application}View.${2:CLICK}, this.on${2:method}, this);${3:}
-
 endsnippet
 
-snippet case "case"
+snippet case "case NotificationNames.NOTE_NAME:"
 case ${1:NotificationNames.}:
 	${2:}
 	break;
-
 endsnippet
 
-snippet currentTarget "currentTarget"
-var item = $(event.currentTarget);${1:}
-
+snippet currentTarget "var item = $(event.currentTarget);"
+var item = ${1:$}(event.currentTarget);${2:}
 endsnippet
 
-snippet getview "getview"
+snippet getview "var view = thisgetView();"
 var view = this.getView()${1:}
-
 endsnippet
 
-snippet registerCommand "registerCommand"
-this.registerCommand(${1:NotificationNames}, ${2:Command})${3:}
-
+snippet registerCommand "registerCommand(NotificationNames.NOTE_NAME, Command);"
+this.registerCommand(${1:NotificationNames}, ${2:Command});${3:}
 endsnippet
 
-snippet retreiveMediator "retreiveMediator"
+snippet retreiveMediator "this.mediator = this.facade.retrieve(MediatorNames.MEDIATOR_NAME);"
 this.${1:application}Mediator = this.facade.retrieveMediator(MediatorNames.${2:APPLICATION}_MEDIATOR);${3:}
-
 endsnippet
 
-snippet retrieveProxy "retrieveProxy"
+snippet retrieveProxy "this.proxy = this.facade.retrieve(ProxyNames.PROXY_NAME);"
 this.${1:application}Proxy = this.facade.retrieveProxy(ProxyNames.${2:APPLICATION}_PROXY);${3:}
-
 endsnippet
 
-snippet sendnote "sendnote"
-this.sendNotification(${1:NotificationNames}, ${2:view})${3:}
-
-endsnippet
-
-snippet that "that"
-var that = this;${1:}
-
-endsnippet
-
-snippet type "type"
-${1:TYPE}:"$1"${2:}
-
+snippet sendnote "this.sendNotification(NotificationNames.NOTE_NAME, view);"
+this.sendNotification(${1:NotificationNames}, ${2:view});${3:}
 endsnippet
 

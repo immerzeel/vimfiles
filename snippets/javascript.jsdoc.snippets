@@ -1,0 +1,70 @@
+snippet @class "Synonym for @constructor; but allows description and @property tags"
+/** 
+ *  ${1:description}
+ *  @class 
+ */
+endsnippet
+
+snippet @extends "Extends another class"
+@extends ${1:ClassName}
+endsnippet
+
+snippet @property "@property {type} description (Class)"
+@property {${1:string}} ${2:description}
+endsnippet
+
+snippet @param "@param {type} description (Method)"
+@param {${1:string}} ${2:description}
+endsnippet
+
+
+snippet @returns "@returns {type} description"
+@returns {${1:string}} ${2:description}
+endsnippet
+
+snippet @constructor "@constructor"
+/** @constructor */
+endsnippet
+
+snippet @type "@type {type}"
+/** @type ${1:string} */
+endsnippet 
+
+snippet @public "Public variable"
+@public
+endsnippet
+
+snippet @private "Private variable"
+@public
+endsnippet
+
+snippet @static "Static variable"
+@public
+endsnippet
+
+snippet @file "@fileOverview"
+@fileOverview ${1:description}
+
+snippet @author "@author"
+@author <a href='mailto:${1:pascal@immerzeelpictures.com}'>P.J.E. Immerzeel</a>
+endsnippet
+
+snippet @ver "@version"
+@version ${1:1.0}
+endsnippet
+
+snippet @since "@since"
+@since ${1:1.0}
+endsnippet
+
+snippet @ex "@example"
+@example
+$0
+endsnippet
+
+snippet @see "@see"
+@see ${1:link}
+endsnippet
+
+snippet @link "{@link ...}"
+{@link ${1:link}}${2:}

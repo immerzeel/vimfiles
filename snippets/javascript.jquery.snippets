@@ -1,57 +1,49 @@
-snippet $ "$"
-$("${1}")${2}
-
+snippet $ "$('...')"
+$('${1}')${2}
 endsnippet
 
-snippet animate "animate"
-animate({"${1}":"${2}"}, ${3:speed})${4}
-
+snippet jq "JQuery('...')"
+$('${1}')${2}
 endsnippet
 
-snippet attr "attr"
-attr({"${1:attr1}": "${2:value1}")${3}
-
+snippet that "var that = this;"
+var that = this;${1:}
 endsnippet
 
-snippet bind "bind"
+snippet animate "animate({key: value}, speed)"
+animate({'${1}':'${2}'}, ${3:speed})${4}
+endsnippet
+
+snippet attr "attr({'key': 'value'})"
+attr({'${1:key}': '${2:value}')${3}
+endsnippet
+
+snippet css "css({'key': 'value'}"
+css({'${1:key}': '${2:value}')${3}
+endsnippet
+
+snippet bind "bind (Button)"
 bind({
-click: function(event) {that.on${1:Item}Click(event)},
+    click: function(event) {that.on${1:Item}Click(event)},
 	mouseleave: function(event) {that.on$1Leave(event)},
 	mouseenter: function(event) {that.on$1Enter(event)}
 });${3:}
-
 endsnippet
 
-snippet css "css"
-css({${1:}: "${2:}"})${3}
-
-endsnippet
-
-snippet delegate "delegate"
+snippet delegate "delegate (Button)"
 delegate("${1:element}", {
-click: function(event) {that.on${2:Item}Click(event)},
+    click: function(event) {that.on${2:Item}Click(event)},
 	mouseleave: function(event) {that.on$2Leave(event)},
 	mouseenter: function(event) {that.on$2Enter(event)}
 });${3:}
-
 endsnippet
 
-snippet getscript "getscript"
-:q
-
-{
-	${2://optional stuff to do after getScript;}
-});
-
+snippet stop "stop(true, true)"
+.stop(${1:true}, ${1:true})${3:}
 endsnippet
 
-snippet stop "stop"
-.stop(true, true)${1:}
 
-endsnippet
-
-snippet trig "trig"
+snippet trig "trigger(event)"
 trigger("${1:click}")${2}
-
 endsnippet
 
