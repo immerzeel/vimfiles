@@ -5,7 +5,11 @@ set nocompatible                  " Turn of Vi compatibility.
 " the ~/.vim/bundle directory
 filetype off                    " force reloading *after* pathogen loaded
 
+" PATHOGEN
+let g:pathogen_disabled = ["~\vimfiles\bundle\vim-supertab"]
+
 call pathogen#infect()
+" set runtimepath-=~\vimfiles\bundle\vim-supertab
 
 filetype plugin indent on               " enable detection, plugins.
 
@@ -37,7 +41,7 @@ set hidden                    " Allow changing from an unsaved buffer.
 set debug=msg                 " Error messages don't disappear after one second on startup.
 
 " SHELL
-set noshellslash                " Although backslashes suck, EasyTag and Syntastic conflicts with 'shellslash'.
+set noshellslash                " Although backslashes suck, EasyTag and Syntastic conflict with 'shellslash'.
 
 " UNDO
 set undodir=$TEMP
@@ -84,10 +88,15 @@ nnoremap <F4> :ls<CR>:b
 
 " GUI TABS
 set tabpagemax=15
-map <leader>tn :tabnew<cr>
-map <leader>te :tabedit
 map <leader>tc :tabclose<cr>
+map <leader>te :tabedit
+map <leader>tf :tabfirst<cr>
+map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
+map <leader>tn :tabnext<cr>
+map <leader>to :tabonly<cr>
+map <leader>tp :tabprevious<cr>
+map <leader>tt :tabnew<cr>
 
 " set up tab tooltips with every buffer name
 function! GuiTabToolTip()
@@ -232,6 +241,11 @@ autocmd BufNewFile,BufRead *.as set filetype=actionscript                       
 autocmd FileType actionscript map <C-Enter> :silent !test_movie.jsfl<cr>
 autocmd FileType actionscript map <S-C-Enter> :silent !publish_all.jsfl<cr>
 
+" JAVASCRIPT
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
+
 " JSFL
 autocmd BufNewFile,BufRead *.jsfl set filetype=javascript
 "
@@ -245,7 +259,7 @@ nmap <leader><insert> :silent !ctags -aR *<cr> " Manual add a tags file to the c
 " ULTISNIPS
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetDir="$HOME/vimfiles/snippets"
-let g:UltiSnipsSnippetDirectoriesr="snippets"
+let g:UltiSnipsSnippetDirectories="snippets"
 nmap <leader>es :NERDTree $HOME/vimfiles/snippets<cr>
 
 
@@ -270,9 +284,9 @@ let g:netrw_liststyle=3   " Show tree style listing.
 " NERDTREE
 nmap <leader>n :NERDTreeToggle<cr> " Toggle the NERDTree side window.
 nmap <leader>nf :NERDTreeFind<cr>  " Find the current file in NERDTree.
-let NERDTreeShowHidden=0           " Donot hidden files.
-let NERDShutUp=1
-let NERDTreeHijackNetrw=1
+" let NERDTreeShowHidden=0           " Donot hidden files.
+" let NERDShutUp=1
+" let NERDTreeHijackNetrw=1
 
 " NERD COMMENTER
 let NERDSpaceDelims=1    " Pad the opening comment delimiter with a space.
