@@ -1,15 +1,10 @@
 " GENERAL
 set nocompatible                  " Turn of Vi compatibility.
 
-" Use pathogen to easily modify the runtime path to include all plugins under
-" the ~/.vim/bundle directory
 filetype off                    " force reloading *after* pathogen loaded
 
 " PATHOGEN
-let g:pathogen_disabled = ["~\vimfiles\bundle\vim-supertab"]
-
 call pathogen#infect()
-" set runtimepath-=~\vimfiles\bundle\vim-supertab
 
 filetype plugin indent on               " enable detection, plugins.
 
@@ -254,21 +249,20 @@ autocmd BufRead,BufNewFile *.otl set filetype=vo_base
 autocmd BufRead,BufNewFile *.oln set filetype=xoutliner
 
 " TAGS
-nmap <leader><insert> :silent !ctags -aR *<cr> " Manual add a tags file to the current directory, include subdirs aswell.
+nmap <leader><insert> :silent !ctags -aR *<cr> " Manual add a tags file to the current directory, include subdirs as well.
 
 " ULTISNIPS
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetDir="$HOME/vimfiles/snippets"
-let g:UltiSnipsSnippetDirectories="snippets"
-nmap <leader>es :NERDTree $HOME/vimfiles/snippets<cr>
+let g:UltiSnipsSnippetDir="~\vimfiles"
+let g:UltiSnipsSnippetDirectories=['UltiSnips']
+nmap <leader>es :NERDTree ~\vimfiles\snippets<cr>
 
 
 " FUZZYFINDER
 let g:fuf_enumeratingLimit=150  " Limit the popup list to 50 items.
 let g:fuf_autoPreview=0         " Donot show a preview of selected item.
 
-nnoremap <leader>ff :FufFile **/<cr>
-nnoremap <leader>fi :FufFile<cr>
+nnoremap <leader>fF :FufFile **/<cr>
+nnoremap <leader>ff :FufFile<cr>
 nnoremap <leader>fl :FufLine<cr>
 nnoremap <leader>fb :FufBuffer<cr>
 nnoremap <leader>ft :FufTaggedFile<cr>
