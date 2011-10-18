@@ -1,28 +1,28 @@
-snippet anon "function(...) {...}"
-function(${1}) {${2}}${3}
+snippet anon "function(...) {...}" !
+function(${1}) {$0}
 endsnippet
 
-snippet class "class"
+snippet class "class" !
 `!v expand("%:t:r")`
 endsnippet
 
-snippet :, "key: value,"
+snippet :, "key: value," !
 ${1:key}: ${0:value},
 endsnippet
 
-snippet for "for (...)"
+snippet for "for (...)" !
 for (var ${1:i} = 0; $1 < ${2:array}.length; ++$1) {
 	$2[$1];
 }
 endsnippet
 
-snippet if "if {...}"
+snippet if "if {...}" !
 if (${1:true}) { 
 	${2} 
 }
 endsnippet
 
-snippet ife "if {...} else {...}"
+snippet ife "if {...} else {...}" !
 if (${1:true}) {
 	${2}
 } else {
@@ -30,17 +30,21 @@ if (${1:true}) {
 }${4}
 endsnippet
 
-snippet proto "Class.prototype.method = function(...) {...};"
+snippet proto "Class.prototype.method = function(...) {...};" !
 `!v expand("%:t:r")`.prototype.${1:method} = function(${2:argument}) {
 	${3:// body}
 };
 endsnippet
+.
+snippet const "Class.variable = value;" !
+`!v expand("%:t:r")`.${1:variable} = ${2:value};${3:}
+endsnippet
 
-snippet var "Class.prototype.variable = value;"
+snippet var "Class.prototype.variable = value;" !
 `!v expand("%:t:r")`.prototype.${1:variable} = ${2:value};${3:}
 endsnippet
 
-snippet Debug "Debug (Class)"
+snippet Debug "Debug (Class)" !
 function Debug() {}
 Debug.log = function(str) {
     try {
@@ -53,11 +57,11 @@ Debug.log = function(str) {
 }
 endsnippet
 
-snippet debug "Debug.log(...);"
+snippet debug "Debug.log(...);" !
 debug.log(`!v Filename('"$1",')` ${1:})${2:}
 endsnippet
 
-snippet log "log(...)"
+snippet log "log(...)" !
 if (console) console.log(`!v Filename('"$1",')` ${1:});${2:}
 endsnippet
 
