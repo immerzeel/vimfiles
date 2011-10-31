@@ -28,15 +28,18 @@ set ttimeoutlen=50                      " Make ESC work a little bit faster.
 
 " SYSTEM
 set encoding=utf-8
-set autoread                  " Detect changes made outside of VIM and reload the buffer.
-set backupdir=$TEMP           " Save backup
-set directory=$TEMP,.         " Save swap files in this location.
-set autochdir                 " Automatically change the current directory to the file's location.
-set hidden                    " Allow changing from an unsaved buffer.
-set debug=msg                 " Error messages don't disappear after one second on startup.
+set autoread                       " Detect changes made outside of VIM and reload the buffer.
+set backupdir=$TEMP                " Save backup
+" set directory=$TEMP,.            " Save swapfiles in this location.
+set noswapfile                     " Disable swapfiles, the collide all the time.               
+set autochdir                      " Automatically change the current directory to the file's location.
+set hidden                         " Allow changing from an unsaved buffer.
+set debug=msg                      " Error messages don't disappear after one second on startup.
+
+nnoremap ,cd :cd %:p:h<CR>:pwd<CR> " Change working directory to the current file path.
 
 " SHELL
-set noshellslash                " Although backslashes suck, EasyTag and Syntastic conflict with 'shellslash'.
+set shellslash                " Although backslashes suck, EasyTag and Syntastic conflict with 'shellslash'.
 
 " UNDO
 set undodir=$TEMP
@@ -85,53 +88,32 @@ nnoremap <F4> :ls<CR>:b
 set tabpagemax=15
 map <leader>tc :tabclose<cr>
 map <leader>te :tabedit
-map <leader>tf :tabfirst<cr>
-map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
-map <leader>tn :tabnext<cr>
-map <leader>to :tabonly<cr>
-map <leader>tp :tabprevious<cr>
 map <leader>tt :tabnew<cr>
 
-" set up tab tooltips with every buffer name
-function! GuiTabToolTip()
-  let tip = ''
-  let bufnrlist = tabpagebuflist(v:lnum)
-  for bufnr in bufnrlist
-    " separate buffer entries
-    if tip!=''
-      let tip .= " \n "
-    endif
-    " Add name of buffer
-    let name=bufname(bufnr)
-    if name == ''
-      " give a name to no name documents
-      if getbufvar(bufnr,'&buftype')=='quickfix'
-        let name = '[Quickfix List]'
-      else
-        let name = '[No Name]'
-      endif
-    endif
-    let tip.=name
-    " add modified/modifiable flags
-    if getbufvar(bufnr, "&modified")
-      let tip .= ' [+]'
-    endif
-    if getbufvar(bufnr, "&modifiable")==0
-      let tip .= ' [-]'
-    endif
-  endfor
-  return tip
-endfunction
-set guitabtooltip=%{GuiTabToolTip()}
 set guitablabel=%N\ %t
 
 " ARROW KEYS
 " Use the HJKL keys for navigation. NO CHEATING WITH ARROW KEYS!
-map! <up> <nop>
-map! <down> <nop>
-map! <left> <nop>
-map! <right> <nop>
+noremap <up> <nop>
+nnoremap <up> <nop>
+vnoremap <up> <nop>
+inoremap <up> <nop>
+
+noremap <down> <nop>
+nnoremap <down> <nop>
+vnoremap <down> <nop>
+inoremap <down> <nop>
+
+noremap <left> <nop>
+nnoremap <left> <nop>
+vnoremap <left> <nop>
+inoremap <left> <nop>
+
+noremap <right> <nop>
+nnoremap <right> <nop>
+vnoremap <right> <nop>
+inoremap <right> <nop>
 
 " WINDOWS
 map <C-h> <C-w>h
@@ -139,7 +121,11 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-
+" F1 key for saving file, instead of help.
+noremap  <F1> <Esc>:w<CR>
+inoremap <F1> <Esc>:w<CR>
+nnoremap <F1> <Esc>:w<CR>
+vnoremap <F1> <Esc>:w<CR>
 
 " USER INTERFACE
 set background=dark                " background settings for solarized
@@ -240,6 +226,7 @@ autocmd FileType actionscript map <S-C-Enter> :silent !publish_all.jsfl<cr>
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
+let javascript_enable_domhtmlcss=1
 
 " JSFL
 autocmd BufNewFile,BufRead *.jsfl set filetype=javascript
@@ -248,14 +235,16 @@ autocmd BufNewFile,BufRead *.jsfl set filetype=javascript
 autocmd BufRead,BufNewFile *.otl set filetype=vo_base
 autocmd BufRead,BufNewFile *.oln set filetype=xoutliner
 
-" TAGS
+" TAGBAR
 nmap <leader><insert> :silent !ctags -aR *<cr> " Manual add a tags file to the current directory, include subdirs as well.
+
+let g:tagbar_usearrows=1
+nnoremap <leader>l :TagbarToggle<CR>
 
 " ULTISNIPS
 let g:UltiSnipsSnippetDir="~\vimfiles"
 let g:UltiSnipsSnippetDirectories=['UltiSnips']
 nmap <leader>es :NERDTree ~\vimfiles\snippets<cr>
-
 
 " FUZZYFINDER
 let g:fuf_enumeratingLimit=150  " Limit the popup list to 50 items.
@@ -284,6 +273,9 @@ nmap <leader>nf :NERDTreeFind<cr>  " Find the current file in NERDTree.
 
 " NERD COMMENTER
 let NERDSpaceDelims=1    " Pad the opening comment delimiter with a space.
+
+" SNIPMATE 
+let g:snip_author='Pascal Immerzeel'
 
 " SYNTASTIC
 let g:syntastic_enable_signs=1
