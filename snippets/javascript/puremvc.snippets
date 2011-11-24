@@ -1,0 +1,22 @@
+snippet addEvent
+	addEventListener(${1:Application}View.${2:CLICK}, this.on${2:method}, this);${3:}
+
+snippet case
+	case ${1:NotificationNames.}:
+	${2:}
+	break;
+
+snippet currentTarget
+	var item = ${1:$}(event.currentTarget);${2:}
+
+snippet getview
+	var view = this.getView()${1:}
+
+snippet registerCommand
+	this.registerCommand(${1:NotificationNames}, ${2:Command});${3:}
+
+snippet retreiveMediator
+	this.${1:application}Mediator = this.facade.retrieveMediator(MediatorNames.${2:APPLICATION}_MEDIATOR);${3:}
+
+snippet retrieveProxy
+	this.${1:application}Proxy = this.facade.retrieveProxy(ProxyNames.${2:APPLICATION}_PROXY);${3:}

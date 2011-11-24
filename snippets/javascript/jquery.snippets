@@ -1,0 +1,28 @@
+snippet $
+	$('${1}')${2}
+snippet jq
+	jQuery('${1}')${2}
+snippet that
+	var that = this;${1:}
+snippet animate
+	animate({'${1}':'${2}'}, ${3:speed})${4}
+snippet attr
+	attr({'${1:key}': '${2:value}'})${3}
+snippet css
+	css({'${1:key}': '${2:value}')${3}
+snippet bind
+	bind({
+		click: function(event) {that.on${1:Item}Click(event)},
+		mouseleave: function(event) {that.on$1Leave(event)},
+		mouseenter: function(event) {that.on$1Enter(event)}
+	});${3:}
+snippet delegate
+	delegate("${1:element}", {
+		click: function(event) {that.on${2:Item}Click(event)},
+		mouseleave: function(event) {that.on$2Leave(event)},
+		mouseenter: function(event) {that.on$2Enter(event)}
+	});${3:}
+snippet stop
+	.stop(${1:true}, ${1:true})${3:}
+snippet trig
+	trigger("${1:click}")${2}

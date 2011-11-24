@@ -67,3 +67,18 @@
 [submodule "bundle/vim-command-t"]
 	path = bundle/vim-command-t
 	url = git://github.com/wincent/Command-T.git
+[submodule "bundle/vim-yankring"]
+	path = bundle/vim-yankring
+	url = git://github.com/vim-scripts/YankRing.vim.git
+[submodule "bundle/vim-closetag"]
+	path = bundle/vim-closetag
+	url = git://github.com/vim-scripts/closetag.vim.git
+[submodule "bundle/vim-better-css-syntax"]
+	path = bundle/vim-better-css-syntax
+	url = git://github.com/ChrisYip/Better-CSS-Syntax-for-Vim.git
+[submodule "bundle/vim-css-color"]
+	path = bundle/vim-css-color
+	url = git://github.com/ap/vim-css-color.git
+[submodule "bundle/vim-javascript-indent"]
+	path = bundle/vim-javascript-indent
+	url = git://github.com/vim-scripts/JavaScript-Indent.git
