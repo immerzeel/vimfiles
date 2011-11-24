@@ -14,29 +14,23 @@ set noerrorbells                        " no audible signal as well.
 syntax on                               " Syntax coloring on.
 set synmaxcol=2048                      " Maximum number of columns to search for syntax items.
 set linespace=3                         " Set the line height.
-set nowrap                              " Do not wrap long lines.
 set scrolloff=2                         " Keep the cursor padded with lines when scrolling.
 set sidescrolloff=2                     " Keep the cursor padded when side scrolling.
 set backspace=2                         " Allow backspacing over anything.
+set nowrap                              " Do not wrap long lines.
 set nostartofline                       " Leave the cursor where it was.
 set mousehide                           " Hide the mouse cursor while typing.
 set mouse=nvi                           " Allow the mouse in Normal, Visual and Insert mode.
 set sessionoptions-=options,folds,slash " Don't save these settings to a session file.
 let mapleader=","                       " Use this character instead of '/'.
-set timeoutlen=500                      " Shorten the lag after typing the leader key.
-set ttimeoutlen=50                      " Make ESC work a little bit faster.
 
 " SYSTEM
 set encoding=utf-8
 set autoread                       " Detect changes made outside of VIM and reload the buffer.
 set backupdir=$TEMP                " Save backup
-" set directory=$TEMP,.            " Save swapfiles in this location.
-set noswapfile                     " Disable swapfiles, the collide all the time.               
-set autochdir                      " Automatically change the current directory to the file's location.
+set noswapfile                     " Disable swapfiles, the collide all the time.
 set hidden                         " Allow changing from an unsaved buffer.
 set debug=msg                      " Error messages don't disappear after one second on startup.
-
-nnoremap ,cd :cd %:p:h<CR>:pwd<CR> " Change working directory to the current file path.
 
 " SHELL
 set shellslash                " Although backslashes suck, EasyTag and Syntastic conflict with 'shellslash'.
@@ -77,13 +71,6 @@ set tabstop=4    " Tab equals N space(bar)s.
 set expandtab    " Convert tabs to spaces.
 set smarttab     " A Tab expands to spaces in front of a line.
 
-" Add a space before selected block and reselect the previous section.
-vnoremap <Space> I<Space><Esc>gv 
-
-" BUFFERS
-" Show the buffers list and prefill :b
-nnoremap <F4> :ls<CR>:b 
-
 " GUI TABS
 set tabpagemax=15
 map <leader>tc :tabclose<cr>
@@ -116,20 +103,43 @@ vnoremap <right> <nop>
 inoremap <right> <nop>
 
 " WINDOWS
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 
-" F1 key for saving file, instead of help.
-noremap  <F1> <Esc>:w<CR>
-inoremap <F1> <Esc>:w<CR>
-nnoremap <F1> <Esc>:w<CR>
-vnoremap <F1> <Esc>:w<CR>
+" HELP / MANUAL
+" F1 key for Escape key, instead of help. That is the key I want to hit!
+noremap  <F1> <Esc>
+inoremap <F1> <Esc>
+
+" Nullify the <shift -k> for manual.
+nnoremap K <nop>
+
+" Change working directory to the current file path.
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR> 
+
+" Map ; to : as well, to prevent typo.
+nnoremap ; :
+
+" Faster ESC
+inoremap jk <esc>
 
 " USER INTERFACE
-set background=dark                " background settings for solarized
-colorscheme vividchalk             " Color scheme of VIM.
+
+" Different cursors for different modes.
+set guicursor=n-c:block-Cursor-blinkon0
+set guicursor+=v:block-vCursor-blinkon0
+set guicursor+=i-ci:ver20-iCursor
+
+highlight SpellBad term=underline gui=undercurl guisp=Orange
+
+" SOLARIZED COLOR SCHEME
+set background=dark                 " background settings for solarized
+let g:solarized_hitrail=1           " Correct the high contrast characters in the cursorline.
+
+colorscheme solarized               " Color scheme of VIM.
+
 set guioptions=ace
 "              |||
 "              ||+ Use simple dialogs rather then popups
@@ -158,7 +168,6 @@ else
     "                           |
     "                           + Maximize in English version.
 endif
-"
 
 " LIST
 set list                                                            " Show tabs and end of lines as character.
@@ -181,7 +190,7 @@ set statusline=%F\ %m\ %r\ %y\ %{fugitive#statusline()}%=%(Line:\ %l/%L\ [%p%%]\
 "               + Full path to file.
 
 set wildmenu                   " Turn on command line completion wild style.
-set wildmode=longest:full,full " List all matches and complete to the longest string.
+set wildmode=list:longest      " List all matches and complete to the longest string.
 set showmode                   " Show in which mode it is in.
 set showcmd                    " Show the command being used.
 set cmdheight=2                " Set the command height under the statusline.
@@ -190,14 +199,23 @@ set cmdheight=2                " Set the command height under the statusline.
 set cursorline  " Highlight the line where the cursor is.
 
 " SEARCH
-set magic      " For use of regular expressions in search
+set ignorecase " ignore case in search.
 set incsearch  " Start search while typing.
 set hlsearch   " Highlight the search results.
 set wrapscan   " Search from to the beginning of the file, when the end is reached.
 set smartcase  " when capitals are used, activate case-sensitive search automatically 
 set gdefault   " Use global(g) option by default.
 set path+=./** " Search recursively down the current path.
-map <leader><space> :noh<cr> " Disable highlighted search results.
+
+" Disable highlighted search results.
+map <leader><space> :noh<cr> 
+
+" Use sane regex in normal mode.
+nnoremap / /\v
+vnoremap / /\v
+
+" Substitute
+nnoremap <leader>s :%s//<left>
 
 " open URL under cursor in browser.
 function! OpenURL(url)
@@ -209,23 +227,44 @@ command! -nargs=1 OpenURL :call OpenURL(<q-args>)
 nnoremap gb :OpenURL <cfile><CR>
 nnoremap gS :OpenURL http://www.stackoverflow.com/search?q=<cword><CR>
 nnoremap gG :OpenURL http://www.google.com/search?q=<cword><CR>
-nnoremap gW :OpenURL http://en.wikipedia.org/wiki/Special:Search?search=<cword><CR>
 
+
+" ANY FILE
+autocmd FocusLost * :wa " Save when losing focus.
+
+" Resize splits when the window is resized
+autocmd VimResized * exe "normal! \<c-w>="
 
 " VIMRC
-autocmd bufwritepost _vimrc source $MYVIMRC " Source the vimrc file after saving it.
-nmap <leader>ev :vsplit $MYVIMRC<cr>        " Make _vimrc easy accessible.
+" Source the vimrc file after saving it.
+autocmd bufwritepost _vimrc source $MYVIMRC 
+" Make _vimrc easy accessible.
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 " ACTIONSCRIPT 
-autocmd BufNewFile,BufRead *.as set filetype=actionscript                          " ActionScript. Override the standard Altas (*.as).
+" ActionScript. Override the standard Altas (*.as).
+autocmd BufNewFile,BufRead *.as set filetype=actionscript
 " autocmd FileType actionscript set dictionary=$HOME/vimfiles/dict/actionscript.dict
 autocmd FileType actionscript map <C-Enter> :silent !test_movie.jsfl<cr>
 autocmd FileType actionscript map <S-C-Enter> :silent !publish_all.jsfl<cr>
 
 " JAVASCRIPT
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
+autocmd FileType javascript set makeprg=jshint\ %
+autocmd FileType javascript set errorformat=%l:%c\ ->\ %m
+
+autocmd FileType javascript nnoremap gJ :OpenURL https://developer.mozilla.org/en-US/search?q=<cword><CR>
+autocmd FileType javascript nnoremap gQ :OpenURL http://api.jquery.com/<cword><CR>
+
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html set makeprg=tidy\ -quiet\ -errors\ %
+autocmd FileType html set errorformat=line\ %l\ column\ %v\ -\ %m
+" autocmd FileType html set makeprg="tidy --new-blocklevel-tags 'section, article, aside, hgroup, header, footer, nav, figure, figcaption' --new-inline-tags 'video, audio, embed, mark, progress, meter, time, ruby, rt, rp, canvas, command, details, datalist' --new-empty-tags 'wbr, keygen' -e ".shellescape(expand('%'))." 2>&1 \\| grep -v '\<table\> lacks \"summary\" attribute' \\| grep -v 'not approved by W3C'"
+
+" CSS
+autocmd FileType css set foldmethod=marker
+autocmd FileType css set foldmarker={,}
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 let javascript_enable_domhtmlcss=1
 
 " JSFL
@@ -236,46 +275,29 @@ autocmd BufRead,BufNewFile *.otl set filetype=vo_base
 autocmd BufRead,BufNewFile *.oln set filetype=xoutliner
 
 " TAGBAR
-nmap <leader><insert> :silent !ctags -aR *<cr> " Manual add a tags file to the current directory, include subdirs as well.
+" Manual add a tags file to the current directory, include subdirs as well.
+nmap <leader><insert> :silent !ctags -aR *<cr> 
 
 let g:tagbar_usearrows=1
 nnoremap <leader>l :TagbarToggle<CR>
-
-" ULTISNIPS
-let g:UltiSnipsSnippetDir="~\vimfiles"
-let g:UltiSnipsSnippetDirectories=['UltiSnips']
-nmap <leader>es :NERDTree ~\vimfiles\snippets<cr>
-
-" FUZZYFINDER
-let g:fuf_enumeratingLimit=150  " Limit the popup list to 50 items.
-let g:fuf_autoPreview=0         " Donot show a preview of selected item.
-
-nnoremap <leader>fF :FufFile **/<cr>
-nnoremap <leader>ff :FufFile<cr>
-nnoremap <leader>fl :FufLine<cr>
-nnoremap <leader>fb :FufBuffer<cr>
-nnoremap <leader>ft :FufTaggedFile<cr>
-nnoremap <leader>fj :FufJumpList<cr>
-nnoremap <leader>fc :FufChangeList<cr>
-nnoremap <leader>fq :FufQuickfix<cr>
-nnoremap <leader>fh :FufHelp<cr>
-nnoremap <leader>fr :FufRenewCache<cr>
 
 " NETRW
 let g:netrw_liststyle=3   " Show tree style listing.
 
 " NERDTREE
-nmap <leader>n :NERDTreeToggle<cr> " Toggle the NERDTree side window.
-nmap <leader>nf :NERDTreeFind<cr>  " Find the current file in NERDTree.
-" let NERDTreeShowHidden=0           " Donot hidden files.
-" let NERDShutUp=1
-" let NERDTreeHijackNetrw=1
+noremap <leader>n :NERDTreeToggle<cr> " Toggle the NERDTree side window.
+noremap <leader>nf :NERDTreeFind<cr>  " Find the current file in NERDTree.
+let NERDTreeHighlightCursorLine=1
+let NERDTreeIgnore=[]
+let NERDTreeMinimalUI=1
+let NERDTreeDirArrows=1
 
 " NERD COMMENTER
 let NERDSpaceDelims=1    " Pad the opening comment delimiter with a space.
 
 " SNIPMATE 
 let g:snip_author='Pascal Immerzeel'
+nnoremap <leader>es :vsplit ~/vimfiles/snippets/<cr>
 
 " SYNTASTIC
 let g:syntastic_enable_signs=1
@@ -284,6 +306,9 @@ let g:syntastic_quiet_warnings=1
 
 " ZENCODING
 let g:user_zen_leader_key = "<c-e>"
+
+" YANKRING
+nnoremap <leader>y :YRShow<CR>
 
 " MATCHIT
 " Using the plugin distributed with VIM
