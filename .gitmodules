@@ -82,3 +82,12 @@
 [submodule "bundle/vim-javascript-indent"]
 	path = bundle/vim-javascript-indent
 	url = git://github.com/vim-scripts/JavaScript-Indent.git
+[submodule "bundle/vim-coffee-script"]
+	path = bundle/vim-coffee-script
+	url = git://github.com/kchmck/vim-coffee-script.git
+[submodule "bundle/vim-eco"]
+	path = bundle/vim-eco
+	url = git://github.com/jayferd/eco.vim.git
+[submodule "bundle/vim-stylus"]
+	path = bundle/vim-stylus
+	url = git://github.com/wavded/vim-stylus.git
