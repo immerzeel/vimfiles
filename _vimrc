@@ -146,7 +146,7 @@ set guioptions=ace
 "              |+ Use GUI tabs, not console style tabs.
 "              + Autoselect and yank the text to system clipboard. 
 " set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI " Set the GUI font.
-set guifont=Consolas:h8:cANSI " Set the GUI font.
+set guifont=Consolas:h9:cANSI " Set the GUI font.
 
 set showmatch         " Show matching brace.
 set relativenumber    " Show line numbers relative to the current line.
@@ -230,7 +230,12 @@ nnoremap gG :OpenURL http://www.google.com/search?q=<cword><CR>
 
 
 " ANY FILE
-autocmd FocusLost * :wa " Save when losing focus.
+ " Save when losing focus.
+autocmd FocusLost * :w
+
+" Highlight lines that are longer than 74 characters.
+autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+autocmd BufEnter * match OverLength /\%74v.*/
 
 " Resize splits when the window is resized
 autocmd VimResized * exe "normal! \<c-w>="
@@ -238,6 +243,7 @@ autocmd VimResized * exe "normal! \<c-w>="
 " VIMRC
 " Source the vimrc file after saving it.
 autocmd bufwritepost _vimrc source $MYVIMRC 
+
 " Make _vimrc easy accessible.
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
