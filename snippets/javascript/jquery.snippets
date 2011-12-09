@@ -1,7 +1,11 @@
 snippet $
 	$('${1}')${2}
+snippet $this
+	$(this)
 snippet jq
 	jQuery('${1}')${2}
+snippet jqthis
+	jQuery(this)${1}
 snippet that
 	var that = this;${1:}
 snippet animate
@@ -9,7 +13,7 @@ snippet animate
 snippet attr
 	attr({'${1:key}': '${2:value}'})${3}
 snippet css
-	css({'${1:key}': '${2:value}')${3}
+	css({'${1:key}': '${2:value}'})${3}
 snippet bind
 	bind({
 		click: function(event) {that.on${1:Item}Click(event)},

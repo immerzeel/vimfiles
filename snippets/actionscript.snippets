@@ -4,7 +4,7 @@ snippet main
 		import flash.Events.*;
 	
 		public class Main extends Sprite {
-			public function Main (	) {
+			public function Main () {
 				trace("start");
 				stage.scaleMode = StageScaleMode.NO_SCALE;
 				stage.addEventListener(Event.RESIZE, resizeListener);
@@ -15,13 +15,11 @@ snippet main
 				trace("New width:  " + stage.stageWidth);
 				trace("New height: " + stage.stageHeight);
 			}
-	
 		}
-	
 	}
 snippet class
 	${1:public|internal} class ${2:name} ${3:extends } {
-		public function $2 (	) {
+		public function $2 () {
 			("start");
 		}
 	}
@@ -91,7 +89,7 @@ snippet get_set
 	function get ${1:name} {
 		return ${2}
 	}
-	function set $1 (newValue) {
+	function set $1 (value) {
 		${3}
 	}
 snippet interface
@@ -106,34 +104,29 @@ snippet try
 	} finally {
 		${3}
 	}
-# For Loop (same as c.snippet)
 snippet for
 	for (${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
 		${4:/* code */}
 	}
-# Custom For Loop
 snippet forr
 	for (${1:i} = ${2:0}; ${3:$1 < 10}; $1${4:++}) {
 		${5:/* code */}
 	}
-# If Condition
 snippet if
 	if (${1:/* condition */}) {
 		${2:/* code */}
 	}
-snippet el
+snippet else
 	else {
 		${1}
 	}
-# Ternary conditional
-snippet t
+snippet t Ternary conditional
 	${1:/* condition */} ? ${2:a} : ${3:b}
 snippet fun
 	function ${1:function_name}(${2})${3}
 	{
 		${4:/* code */}
 	}
-# FlxSprite (usefull when using the flixel library)
 snippet FlxSprite
 	package
 	{
