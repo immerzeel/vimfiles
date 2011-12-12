@@ -22,9 +22,6 @@
 [submodule "bundle/vim-delimitmate"]
 	path = bundle/vim-delimitmate
 	url = git://github.com/Raimondi/delimitMate.git
-[submodule "bundle/vim-nerdcommenter"]
-	path = bundle/vim-nerdcommenter
-	url = git://github.com/scrooloose/nerdcommenter.git
 [submodule "bundle/vim-nerdtree"]
 	path = bundle/vim-nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
@@ -40,9 +37,6 @@
 [submodule "bundle/vim-git"]
 	path = bundle/vim-git
 	url = git://github.com/tpope/vim-git.git
-[submodule "bundle/vim-syntastic"]
-	path = bundle/vim-syntastic
-	url = git://github.com/scrooloose/syntastic.git
 [submodule "bundle/vim-twitvim"]
 	path = bundle/vim-twitvim
 	url = git://github.com/vim-scripts/TwitVim.git

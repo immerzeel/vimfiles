@@ -296,14 +296,18 @@ let NERDTreeDirArrows=1
 " NERD COMMENTER
 let NERDSpaceDelims=1    " Pad the opening comment delimiter with a space.
 
-" SNIPMATE 
+" SNIPMATE
 let g:snip_author='Pascal Immerzeel'
 nnoremap <leader>es :vsplit ~/vimfiles/snippets/<cr>
 
-" SYNTASTIC
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_quiet_warnings=1
+" COMMAND-T
+" <leader>t is bound to open CommandT by default
+nnoremap <leader>tf :CommandTFlush<cr>
+
+" Open in current buffer directory
+" http://vimcasts.org/e/14
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>T :CommandT %%<cr>
 
 " ZENCODING
 let g:user_zen_leader_key = "<c-e>"
@@ -314,6 +318,9 @@ nnoremap <leader>y :YRShow<CR>
 " MATCHIT
 " Using the plugin distributed with VIM
 runtime macros/matchit.vim
+
+" EXPERIMENTAL
+command! KillWhitespace :normal :%s/ *$//g<cr><c-o><cr> 
 
 " NON PUBLIC SETTINGS
 " so ~/_vimrc_private
