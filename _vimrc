@@ -120,7 +120,7 @@ inoremap <F1> <Esc>
 nnoremap K <nop>
 
 " Change working directory to the current file path.
-nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR> 
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " Map ; to : as well, to prevent typo.
 nnoremap ; :
@@ -141,7 +141,7 @@ set guioptions=ace
 "              |||
 "              ||+ Use simple dialogs rather then popups
 "              |+ Use GUI tabs, not console style tabs.
-"              + Autoselect and yank the text to system clipboard. 
+"              + Autoselect and yank the text to system clipboard.
 " set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI " Set the GUI font.
 set guifont=Consolas:h10:cANSI " Set the GUI font.
 
@@ -200,12 +200,12 @@ set ignorecase " ignore case in search.
 set incsearch  " Start search while typing.
 set hlsearch   " Highlight the search results.
 set wrapscan   " Search from to the beginning of the file, when the end is reached.
-set smartcase  " when capitals are used, activate case-sensitive search automatically 
+set smartcase  " when capitals are used, activate case-sensitive search automatically
 set gdefault   " Use global(g) option by default.
 set path+=./** " Search recursively down the current path.
 
 " Disable highlighted search results.
-map <leader><space> :noh<cr> 
+map <leader><space> :noh<cr>
 
 " Use sane regex in normal mode.
 nnoremap / /\v
@@ -227,7 +227,14 @@ nnoremap gG :OpenURL http://www.google.com/search?q=<cword><CR>
 
 " ANY FILE
  " Save when losing focus.
-autocmd FocusLost * :w
+autocmd FocusLost * :call AutoSave()
+function! AutoSave()
+    if exists(&filetype) && &filetype != 'vim'
+        echo &filetype
+    else
+        echo 'no filetype'
+    endif
+endfunction
 
 " Highlight lines that are longer than 80 characters.
 autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
@@ -243,7 +250,7 @@ autocmd BufWritePost _vimrc source $MYVIMRC
 " Make _vimrc easy accessible.
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
-" ACTIONSCRIPT 
+" ACTIONSCRIPT
 " ActionScript. Override the standard Altas (*.as).
 autocmd BufNewFile,BufRead *.as set filetype=actionscript
 " autocmd FileType actionscript set dictionary=$HOME/vimfiles/dict/actionscript.dict
@@ -278,7 +285,7 @@ autocmd BufRead,BufNewFile *.oln set filetype=xoutliner
 
 " TAGBAR
 " Manual add a tags file to the current directory, include subdirs as well.
-nmap <leader><insert> :silent !ctags -aR *<cr> 
+nmap <leader><insert> :silent !ctags -aR *<cr>
 
 let g:tagbar_usearrows=1
 nnoremap <leader>l :TagbarToggle<CR>
@@ -292,9 +299,6 @@ let NERDTreeHighlightCursorLine=1
 let NERDTreeIgnore=[]
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
-
-" NERD COMMENTER
-let NERDSpaceDelims=1    " Pad the opening comment delimiter with a space.
 
 " SNIPMATE
 let g:snip_author='Pascal Immerzeel'
@@ -314,13 +318,15 @@ let g:user_zen_leader_key = "<c-e>"
 
 " YANKRING
 nnoremap <leader>y :YRShow<CR>
+let g:yankring_replace_n_pkey = '<m-p>'
+let g:yankring_replace_n_nkey = '<m-n>'
 
 " MATCHIT
 " Using the plugin distributed with VIM
 runtime macros/matchit.vim
 
-" EXPERIMENTAL
-command! KillWhitespace :normal :%s/ *$//g<cr><c-o><cr> 
+" Remove tabs / unwanted whitespace and ^M characters.
+command! RemoveWhitespace :normal :%s/ *$//g<cr><c-o>:noh<cr>
 
 " NON PUBLIC SETTINGS
 " so ~/_vimrc_private
