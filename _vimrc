@@ -125,9 +125,6 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 " Map ; to : as well, to prevent typo.
 nnoremap ; :
 
-" Faster ESC
-inoremap jk <esc>
-
 " USER INTERFACE
 highlight SpellBad term=underline gui=undercurl guisp=Orange
 
@@ -227,10 +224,10 @@ nnoremap gG :OpenURL http://www.google.com/search?q=<cword><CR>
 
 " ANY FILE
  " Save when losing focus.
-autocmd FocusLost * :call AutoSave()
+autocmd FocusLost ^vim$ :call AutoSave()
 function! AutoSave()
-    if exists(&filetype) && &filetype != 'vim'
-        echo &filetype
+    if exists(&w:filetype)
+        echo &w:filetype
     else
         echo 'no filetype'
     endif
@@ -248,7 +245,7 @@ autocmd VimResized * exe "normal! \<c-w>="
 autocmd BufWritePost _vimrc source $MYVIMRC
 
 " Make _vimrc easy accessible.
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>ev :vsplit $HOME/vimfiles/_vimrc<cr>
 
 " ACTIONSCRIPT
 " ActionScript. Override the standard Altas (*.as).
