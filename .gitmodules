@@ -94,6 +94,3 @@
 [submodule "bundle/vim-commentary"]
 	path = bundle/vim-commentary
 	url = git://github.com/tpope/vim-commentary.git
-[submodule "bundle/vim-colors-github"]
-	path = bundle/vim-colors-github
-	url = git://github.com/xonecas/github-vim-colorscheme.git

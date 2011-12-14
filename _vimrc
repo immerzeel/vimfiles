@@ -287,8 +287,12 @@ nmap <leader><insert> :silent !ctags -aR *<cr>
 
 let g:tagbar_usearrows=1
 nnoremap <leader>l :TagbarToggle<CR>
+
 " NETRW
 let g:netrw_liststyle=3   " Show tree style listing.
+
+" RAGTAG
+let g:ragtag_global_maps = 1 " Enable global mappings.
 
 " NERDTREE
 noremap <leader>n :NERDTreeToggle<cr> " Toggle the NERDTree side window.
@@ -302,22 +306,17 @@ let NERDTreeDirArrows=1
 let g:snip_author='Pascal Immerzeel'
 nnoremap <leader>es :vsplit ~/vimfiles/snippets/<cr>
 
-" COMMAND-T
-" <leader>t is bound to open CommandT by default
-nnoremap <leader>tf :CommandTFlush<cr>
-
-" Open in current buffer directory
-" http://vimcasts.org/e/14
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>T :CommandT %%<cr>
+" CTRL-P
+let g:ctrlp_root_markers=['.settings', '.project']      " Custom markers for the root of the project.
+let g:ctrlp_dotfiles=0                                  " Ignore dot files.
 
 " ZENCODING
-let g:user_zen_leader_key = "<c-e>"
+let g:user_zen_leader_key="<c-e>"
 
 " YANKRING
 nnoremap <leader>y :YRShow<CR>
-let g:yankring_replace_n_pkey = '<m-p>'
-let g:yankring_replace_n_nkey = '<m-n>'
+let g:yankring_replace_n_pkey='<m-p>'
+let g:yankring_replace_n_nkey='<m-n>'
 
 " MATCHIT
 " Using the plugin distributed with VIM
