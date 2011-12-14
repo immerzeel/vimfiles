@@ -33,10 +33,10 @@ set hidden                         " Allow changing from an unsaved buffer.
 set debug=msg                      " Error messages don't disappear after one second on startup.
 
 " SHELL
-set shellslash                " Although backslashes suck, EasyTag and Syntastic conflict with 'shellslash'.
+set shellslash               " Although backslashes suck, EasyTag and Syntastic conflict with 'shellslash'.
 
 " DIFF
-set diffopt=vertical           " Use vertical split for diff mode.
+set diffopt=vertical         " Use vertical split for diff mode.
 
 " UNDO
 set undodir=$TEMP
@@ -44,13 +44,14 @@ set undofile
 set undolevels=1000         " maximum number of changes that can be undone
 set undoreload=10000        " maximum number lines to save for undo on a buffer reload
 
-" PASTE
+" COPY/PASTE CLIPBOARD
 set pastetoggle=<F2>        " Disable indenting when pasting from outside VIM.
+set clipboard=unnamed       " Cut/Copy in the OS will be P abled.
 
 " FORMATING
 set formatoptions=croq                  " t
-"                 ||||                  " |
-"                 ||||                  " + Break text on textwidth.
+"                 ||||                    |
+"                 ||||                    + Break text on textwidth.
 "                 |||+ Let 'gq' format comments.
 "                 ||+ Insert * when using 'O' or 'o' in Normal mode.
 "                 |+ Insert * when typing <Enter> in Insert mode.
