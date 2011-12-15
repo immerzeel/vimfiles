@@ -34,6 +34,20 @@ set debug=msg                      " Error messages don't disappear after one se
 
 " SHELL
 set shellslash               " Although backslashes suck, EasyTag and Syntastic conflict with 'shellslash'.
+if has('win32')
+    " Use powershell instead of the default cmd shell.
+    set shell=powershell.exe
+    set shellcmdflag=-c
+    set shellpipe=>
+    set shellredir=>
+
+    " Alternative version of using PowerShell.
+    " Start it via the normal command shell.
+    " set shell=cmd.exe
+    " set shellcmdflag=/c\ powershell.exe\ -NoLogo\ -NoProfile\ -NonInteractive\ -ExecutionPolicy\ RemoteSigned
+    " set shellpipe=|
+    " set shellredir=>
+endif
 
 " DIFF
 set diffopt=vertical         " Use vertical split for diff mode.
@@ -141,7 +155,9 @@ set guioptions=ace
 "              |+ Use GUI tabs, not console style tabs.
 "              + Autoselect and yank the text to system clipboard.
 " set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI " Set the GUI font.
-set guifont=Consolas:h10:cANSI " Set the GUI font.
+if has('win32')
+    set guifont=Consolas:h10:cANSI " Set the GUI font.
+endif
 
 set showmatch         " Show matching brace.
 set relativenumber    " Show line numbers relative to the current line.
@@ -158,6 +174,7 @@ if v:lang =~ "NL"
     autocmd GUIEnter * simalt ~ m " Start maximize!
 "                              |
 "                              + Maximize in Dutch version (for some reason we use Dutch Windows at work).
+"                                It uses a different shortcut to maximize the window.
 else
     autocmd GUIEnter * simalt ~ x " Start maximize!
     "                           |
@@ -214,8 +231,10 @@ nnoremap <leader>s :%s//<left>
 
 " open URL under cursor in browser.
 function! OpenURL(url)
-exe "!start cmd /cstart /b ".a:url.""
-    redraw!
+    if has('win32')
+        exe "!start cmd /cstart /b ".a:url.""
+        redraw!
+    endif
 endfunction
 command! -nargs=1 OpenURL :call OpenURL(<q-args>)
 
