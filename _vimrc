@@ -303,6 +303,7 @@ autocmd BufRead,BufNewFile *.oln set filetype=xoutliner
 " TAGBAR
 " Manual add a tags file to the current directory, include subdirs as well.
 nmap <leader><insert> :silent !ctags -aR *<cr>
+set tags=tags;/                                     " Look up the directory for tags files.
 
 let g:tagbar_usearrows=1
 nnoremap <leader>l :TagbarToggle<CR>
