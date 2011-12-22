@@ -276,7 +276,7 @@ autocmd FileType actionscript map <S-C-Enter> :silent !publish_all.jsfl<cr>
 
 " JAVASCRIPT
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType javascript set makeprg=jshint\ %
+autocmd FileType javascript set makeprg=jslint\ %
 autocmd FileType javascript set errorformat=%l:%c\ ->\ %m
 
 autocmd FileType javascript nnoremap gJ :OpenURL https://developer.mozilla.org/en-US/search?q=<cword><CR>
