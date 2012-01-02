@@ -346,4 +346,4 @@ runtime macros/matchit.vim
 command! RemoveWhitespace :normal :%s/ *$//g<cr><c-o>:noh<cr>
 
 " NON PUBLIC SETTINGS
-" so ~/_vimrc_private
+so ~/_vimrc_private
