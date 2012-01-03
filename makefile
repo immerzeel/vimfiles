@@ -6,4 +6,13 @@ clean:
 install:
 	@@print Install
 
-lint:
+pull:
+	@@echo Pulling origin and updating the submodules.
+	@@git pull
+	@@git submodule update --init
+
+push:
+	@@echo Committing th changes and pushing it to origin.
+	git add .
+	git commit -a
+	git push

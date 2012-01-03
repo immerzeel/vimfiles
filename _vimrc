@@ -1,17 +1,21 @@
-" GENERAL
+" GENERAL {{{
 set nocompatible                  " Turn of Vi compatibility.
 
 filetype off                    " force reloading *after* pathogen loaded
 
-" PATHOGEN
+" }}}
+" PATHOGEN {{{
 call pathogen#infect()
 
+" }}}
+" SYSTEM {{{
 filetype plugin indent on               " enable detection, plugins.
 
-set visualbell                          " Do not flash the screen when error occurs.
+set novisualbell                        " Do not flash the screen when error occurs.
 set noerrorbells                        " no audible signal as well.
 
 syntax on                               " Syntax coloring on.
+set encoding=utf-8
 set synmaxcol=2048                      " Maximum number of columns to search for syntax items.
 set linespace=3                         " Set the line height.
 set scrolloff=2                         " Keep the cursor padded with lines when scrolling.
@@ -24,8 +28,6 @@ set mouse=nvi                           " Allow the mouse in Normal, Visual and 
 set sessionoptions-=options,folds,slash " Don't save these settings to a session file.
 let mapleader=","                       " Use this character instead of '/'.
 
-" SYSTEM
-set encoding=utf-8
 set autoread                       " Detect changes made outside of VIM and reload the buffer.
 set nobackup                       " No backup files
 set noswapfile                     " Disable swapfiles, they collide all the time.
@@ -33,7 +35,8 @@ set hidden                         " Allow changing from an unsaved buffer.
 set debug=msg                      " Error messages don't disappear after one second on startup.
 set modelines=0                    " No modelines due to security exploits
 
-" SHELL
+" }}}
+" SHELL {{{
 set shellslash               " Although backslashes suck, EasyTag and Syntastic conflict with 'shellslash'.
 if has('win32')
     " Use powershell instead of the default cmd shell.
@@ -50,20 +53,25 @@ if has('win32')
     " set shellredir=>
 endif
 
-" DIFF
+" }}}
+" DIFF {{{
 set diffopt=vertical         " Use vertical split for diff mode.
 
-" UNDO
+" }}}
+" UNDO {{{
 set undodir=$TEMP
 set undofile
 set undolevels=1000         " maximum number of changes that can be undone
 set undoreload=10000        " maximum number lines to save for undo on a buffer reload
 
-" COPY/PASTE CLIPBOARD
+" }}}
+" COPY/PASTE CLIPBOARD {{{
 set pastetoggle=<F2>        " Disable indenting when pasting from outside VIM.
 set clipboard=unnamed       " Cut/Copy in the OS will be P abled.
 
-" FORMATING
+" }}}
+" FORMATING {{{
+set textwidth=80            " Set maximum line width.
 set formatoptions=croq                  " t
 "                 ||||                    |
 "                 ||||                    + Break text on textwidth.
@@ -73,33 +81,30 @@ set formatoptions=croq                  " t
 "                 + Break comment on textwidth.
 set comments=sl:/**,mb:\ *,exl:\ */,sr:/*,mb:*,exl:*/,://
 
-" FOLDING
+" }}}
+" FOLDING {{{
 set foldenable                                                       " Turn folding on.
-set foldmethod=syntax                                                " How the fold is used
+set foldmethod=marker                                                " How the fold is used
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo " Open folded text on these actions.
+set foldlevelstart=0                                                 " Allow folds at highest level.
 
-" INDENT
+" }}}
+" INDENT {{{
 filetype indent on " Indentation based on filetype.
 set smartindent    " Use intelligent indentation for C
 set autoindent     " Use the indentation of the previous line.
 set cindent        " Use C style indentation.
 
-" TABS
+" }}}
+" TABS {{{
 set shiftwidth=4 " Number of spaces for an indent.
 set tabstop=4    " Tab equals N space(bar)s.
 set expandtab    " Convert tabs to spaces.
 set smarttab     " A Tab expands to spaces in front of a line.
 
-" GUI TABS
-set tabpagemax=15
-map <leader>tc :tabclose<cr>
-map <leader>te :tabedit
-map <leader>tm :tabmove
-map <leader>tt :tabnew<cr>
+" }}}
+" ARROW KEYS {{{
 
-set guitablabel=%N\ %t
-
-" ARROW KEYS
 " Use the HJKL keys for navigation. NO CHEATING WITH ARROW KEYS!
 noremap <up> <nop>
 nnoremap <up> <nop>
@@ -121,7 +126,8 @@ nnoremap <right> <nop>
 vnoremap <right> <nop>
 inoremap <right> <nop>
 
-" WINDOWS
+" }}}
+" WINDOWS {{{
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
@@ -130,7 +136,9 @@ noremap <C-l> <C-w>l
 set splitbelow  " Put the new windows on the bottor on horizontal split.
 set splitright  " Put the new window on the right on vertical split.
 
-" HELP / MANUAL
+" }}}
+" HELP / MANUAL {{{
+
 " F1 key for Escape key, instead of help. That is the key I want to hit!
 noremap  <F1> <Esc>
 inoremap <F1> <Esc>
@@ -144,10 +152,12 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 " Map ; to : as well, to prevent typo.
 nnoremap ; :
 
-" USER INTERFACE
+" }}}
+" USER INTERFACE {{{
 highlight SpellBad term=underline gui=undercurl guisp=Orange
 
-" SOLARIZED COLOR SCHEME
+" }}}
+" SOLARIZED COLOR SCHEME {{{
 set background=dark                 " background settings for solarized
 let g:solarized_hitrail=1           " Correct the high contrast characters in the cursorline.
 
@@ -185,11 +195,13 @@ else
     "                           + Maximize in English version.
 endif
 
-" LIST
+" }}}
+" LIST {{{
 set list                                                            " Show tabs and end of lines as character.
 set listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:+,eol:¬     " Define the characters to represent tab / EOL.
 
-" STATUSLINE
+" }}}
+" STATUSLINE {{{
 set laststatus=2
 set statusline=%F\ %m\ %r\ %y\ %{fugitive#statusline()}%=%(Line:\ %l/%L\ [%p%%]\ Col:\ %c\ Buf:\ #%n%)\
 "               |   |   |   |    |                     |           |  |    |            |          |
@@ -211,10 +223,12 @@ set showmode                   " Show in which mode it is in.
 set showcmd                    " Show the command being used.
 set cmdheight=2                " Set the command height under the statusline.
 
-" CURSORLINE
+" }}}
+" CURSORLINE {{{
 set cursorline  " Highlight the line where the cursor is.
 
-" SEARCH
+" }}}
+" SEARCH {{{
 set ignorecase " ignore case in search.
 set incsearch  " Start search while typing.
 set hlsearch   " Highlight the search results.
@@ -246,16 +260,10 @@ nnoremap gb :OpenURL <cfile><CR>
 nnoremap gS :OpenURL http://www.stackoverflow.com/search?q=<cword><CR>
 nnoremap gG :OpenURL http://www.google.com/search?q=<cword><CR>
 
-" ANY FILE
+" }}}
+" ANY FILE {{{
  " Save when losing focus.
-autocmd FocusLost ^vim$ :call AutoSave()
-function! AutoSave()
-    if exists(&w:filetype)
-        echo &w:filetype
-    else
-        echo 'no filetype'
-    endif
-endfunction
+autocmd FocusLost * :wa
 
 " Highlight lines that are longer than 80 characters.
 autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
@@ -264,21 +272,25 @@ autocmd BufEnter * match OverLength /\%80v.*/
 " Resize splits when the window is resized
 autocmd VimResized * exe "normal! \<c-w>="
 
-" VIMRC
+" }}}
+" VIMRC {{{
 " Source the vimrc file after saving it.
 autocmd BufWritePost _vimrc source $MYVIMRC
 
 " Make _vimrc easy accessible.
 nnoremap <leader>ev :vsplit $HOME/vimfiles/_vimrc<cr>
 
-" ACTIONSCRIPT
+" }}}
+" ACTIONSCRIPT {{{
+
 " ActionScript. Override the standard Altas (*.as).
 autocmd BufNewFile,BufRead *.as set filetype=actionscript
 " autocmd FileType actionscript set dictionary=$HOME/vimfiles/dict/actionscript.dict
 autocmd FileType actionscript map <C-Enter> :silent !test_movie.jsfl<cr>
 autocmd FileType actionscript map <S-C-Enter> :silent !publish_all.jsfl<cr>
 
-" JAVASCRIPT
+" }}}
+" JAVASCRIPT {{{
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType javascript set makeprg=jslint\ %
 autocmd FileType javascript set errorformat=%l:%c\ ->\ %m
@@ -291,20 +303,24 @@ autocmd FileType html set makeprg=tidy\ -quiet\ -errors\ %
 autocmd FileType html set errorformat=line\ %l\ column\ %v\ -\ %m
 " autocmd FileType html set makeprg="tidy --new-blocklevel-tags 'section, article, aside, hgroup, header, footer, nav, figure, figcaption' --new-inline-tags 'video, audio, embed, mark, progress, meter, time, ruby, rt, rp, canvas, command, details, datalist' --new-empty-tags 'wbr, keygen' -e ".shellescape(expand('%'))." 2>&1 \\| grep -v '\<table\> lacks \"summary\" attribute' \\| grep -v 'not approved by W3C'"
 
-" CSS
+" }}}
+" CSS {{{
 autocmd FileType css set foldmethod=marker
 autocmd FileType css set foldmarker={,}
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 let javascript_enable_domhtmlcss=1
 
-" JSFL
+" }}}
+" JSFL {{{
 autocmd BufNewFile,BufRead *.jsfl set filetype=javascript
 "
-" VIMOUTLINER
+" }}}
+" VIMOUTLINER {{{
 autocmd BufRead,BufNewFile *.otl set filetype=vo_base
 autocmd BufRead,BufNewFile *.oln set filetype=xoutliner
 
-" TAGBAR
+" }}}
+" TAGBAR {{{
 " Manual add a tags file to the current directory, include subdirs as well.
 nmap <leader><insert> :silent !ctags -aR *<cr>
 set tags=tags;/                                     " Look up the directory for tags files.
@@ -312,13 +328,16 @@ set tags=tags;/                                     " Look up the directory for 
 let g:tagbar_usearrows=1
 nnoremap <leader>l :TagbarToggle<CR>
 
-" NETRW
+" }}}
+" NETRW {{{
 let g:netrw_liststyle=3   " Show tree style listing.
 
-" RAGTAG
+" }}}
+" RAGTAG {{{
 let g:ragtag_global_maps = 1 " Enable global mappings.
 
-" NERDTREE
+" }}}
+" NERDTREE {{{
 noremap <leader>n :NERDTreeToggle<cr> " Toggle the NERDTree side window.
 noremap <leader>nf :NERDTreeFind<cr>  " Find the current file in NERDTree.
 let NERDTreeHighlightCursorLine=1
@@ -326,28 +345,35 @@ let NERDTreeIgnore=[]
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 
-" SNIPMATE
+" }}}
+" SNIPMATE {{{
 let g:snip_author='Pascal Immerzeel'
 nnoremap <leader>es :vsplit ~/vimfiles/snippets/<cr>
 
-" CTRL-P
+" }}}
+" CTRL-P {{{
 let g:ctrlp_root_markers=['.settings', '.project']      " Custom markers for the root of the project.
 let g:ctrlp_dotfiles=0                                  " Ignore dot files.
 
-" ZENCODING
+" }}}
+" ZENCODING {{{
 let g:user_zen_leader_key="<c-e>"
 
-" YANKRING
+" }}}
+" YANKRING {{{
 nnoremap <leader>y :YRShow<CR>
 let g:yankring_replace_n_pkey='<m-p>'
 let g:yankring_replace_n_nkey='<m-n>'
 
-" MATCHIT
+" }}}
+" MATCHIT {{{
 " Using the plugin distributed with VIM
 runtime macros/matchit.vim
 
 " Remove tabs / unwanted whitespace and ^M characters.
 command! RemoveWhitespace :normal :%s/ *$//g<cr><c-o>:noh<cr>
 
-" NON PUBLIC SETTINGS
-so ~/_vimrc_private
+" }}}
+" NON PUBLIC SETTINGS {{{
+" so ~/_vimrc_private
+" }}}

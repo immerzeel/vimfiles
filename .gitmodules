@@ -142,6 +142,8 @@
 [submodule "bundle/vim-markdown"]
 	path = bundle/vim-markdown
 	url = git://github.com/tpope/vim-markdown.git
+    ignore = dirty
 [submodule "bundle/vim-gundo"]
 	path = bundle/vim-gundo
 	url = git://github.com/sjl/gundo.vim.git
+    ignore = dirty
