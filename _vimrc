@@ -27,10 +27,11 @@ let mapleader=","                       " Use this character instead of '/'.
 " SYSTEM
 set encoding=utf-8
 set autoread                       " Detect changes made outside of VIM and reload the buffer.
-set backupdir=$TEMP                " Save backup
-set noswapfile                     " Disable swapfiles, the collide all the time.
+set nobackup                       " No backup files
+set noswapfile                     " Disable swapfiles, they collide all the time.
 set hidden                         " Allow changing from an unsaved buffer.
 set debug=msg                      " Error messages don't disappear after one second on startup.
+set modelines=0                    " No modelines due to security exploits
 
 " SHELL
 set shellslash               " Although backslashes suck, EasyTag and Syntastic conflict with 'shellslash'.
@@ -126,6 +127,9 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
+set splitbelow  " Put the new windows on the bottor on horizontal split.
+set splitright  " Put the new window on the right on vertical split.
+
 " HELP / MANUAL
 " F1 key for Escape key, instead of help. That is the key I want to hit!
 noremap  <F1> <Esc>
@@ -183,7 +187,7 @@ endif
 
 " LIST
 set list                                                            " Show tabs and end of lines as character.
-set listchars=tab:>\ ,trail:·,extends:»,precedes:«,nbsp:+,eol:¬     " Define the characters to represent tab / EOL.
+set listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:+,eol:¬     " Define the characters to represent tab / EOL.
 
 " STATUSLINE
 set laststatus=2

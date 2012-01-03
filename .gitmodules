@@ -139,3 +139,9 @@
     path = bundle/vim-webapi
     url = git://github.com/mattn/webapi-vim.git
     ignore = dirty
+[submodule "bundle/vim-markdown"]
+	path = bundle/vim-markdown
+	url = git://github.com/tpope/vim-markdown.git
+[submodule "bundle/vim-gundo"]
+	path = bundle/vim-gundo
+	url = git://github.com/sjl/gundo.vim.git
