@@ -53,7 +53,7 @@ autocmd FocusLost * :wa
 
 " }
 " SHELL {
-set noshellslash               " Although backslashes suck, some plugins conflict with 'shellslash'.
+set shellslash               " Although backslashes suck, some plugins conflict with 'shellslash'.
 " if has('win32')
 "     " Use powershell instead of the default cmd shell.
 "     set shell=powershell.exe
@@ -441,6 +441,7 @@ nnoremap <leader>es :vsplit ~/vimfiles/snippets/<cr>
 
 " }
 " CTRL-P {
+let g:ctrlp_working_path_mode=0                         " Do not manage the root. Change manually.
 let g:ctrlp_root_markers=['.settings', '.project']      " Custom markers for the root of the project.
 let g:ctrlp_dotfiles=0                                  " Ignore dot files.
 
@@ -468,5 +469,5 @@ nnoremap ; :
 map <leader>W  :%s/\s\+$//<cr>:let @/=''<CR>
 " }
 " NON PUBLIC SETTINGS {
-so ~/_vimrc_private
+" so ~/_vimrc_private
 " }
