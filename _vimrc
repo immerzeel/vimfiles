@@ -15,7 +15,8 @@ set novisualbell                        " Do not flash the screen when error occ
 set noerrorbells                        " no audible signal as well.
 
 syntax on                               " Syntax coloring on.
-set encoding=utf-8
+set encoding=utf-8                      " Default setting.
+set fileformat=unix                     " Set always to UNIX line ends."
 set synmaxcol=2048                      " Maximum number of columns to search for syntax items.
 set modelines=0                    " No modelines due to security exploits
 set backspace=2                         " Allow backspacing over anything.
@@ -341,6 +342,7 @@ augroup ft_javascript
 
     autocmd FileType javascript nnoremap gJ :OpenURL https://developer.mozilla.org/en-US/search?q=<cword><CR>
     autocmd FileType javascript nnoremap gQ :OpenURL http://api.jquery.com/<cword><CR>
+    autocmd FileType javascript nnoremap gB :OpenURL http://documentcloud.github.com/backbone/<CR>
 augroup END
 
 
