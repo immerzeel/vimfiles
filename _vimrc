@@ -340,8 +340,11 @@ augroup ft_javascript
     autocmd FileType javascript set makeprg=jslint\ %
     autocmd FileType javascript set errorformat=%l:%c\ ->\ %m
 
-    autocmd FileType javascript nnoremap gJ :OpenURL https://developer.mozilla.org/en-US/search?q=<cword><CR>
-    autocmd FileType javascript nnoremap gQ :OpenURL http://api.jquery.com/<cword><CR>
+
+    autocmd filetype javascript noremap <buffer> <F1> :OpenURL https://developer.mozilla.org/en-US/search?q=<cword><CR>
+    autocmd filetype javascript noremap! <buffer> <F1> :OpenURL https://developer.mozilla.org/en-US/search?q=<cword><CR>
+
+    autocmd FileType javascript nnoremap gJ :OpenURL http://api.jquery.com/<cword><CR>
     autocmd FileType javascript nnoremap gB :OpenURL http://documentcloud.github.com/backbone/<CR>
 augroup END
 
@@ -381,6 +384,9 @@ augroup ft_css
     autocmd FileType css set foldmarker={,}
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
     autocmd FileType css set iskeyword+=-
+
+    autocmd FileType css noremap <buffer> <F1> :OpenURL https://www.google.com/search?sitesearch=www.w3schools.com&amp;as_q=<cword><CR>
+    autocmd FileType css noremap! <buffer> <F1> :OpenURL https://www.google.com/search?sitesearch=www.w3schools.com&amp;as_q=<cword><CR>
 
     autocmd BufNewFile,BufRead *.css nnoremap <buffer> <localleader>S viB<cr>:sort<cr>:noh<cr>
 augroup END
