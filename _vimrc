@@ -469,6 +469,10 @@ let g:yankring_replace_n_nkey='<M-n>'
 runtime macros/matchit.vim
 
 " }
+" POWERLINE { 
+" Allow fancy symbols in statusline.
+" let g:Powerline_symbols = 'fancy'
+" }
 " CUSTOM REMAPS {
 " Map ; to : as well, to prevent typo.
 nnoremap ; :

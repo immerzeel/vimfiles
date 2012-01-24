@@ -147,3 +147,7 @@
 	path = bundle/vim-gundo
 	url = git://github.com/sjl/gundo.vim.git
     ignore = dirty
+[submodule "bundle/vim-powerline"]
+	path = bundle/vim-powerline
+	url = git://github.com/Lokaltog/vim-powerline.git
+    ignore = dirty
