@@ -18,11 +18,11 @@ syntax on                               " Syntax coloring on.
 set encoding=utf-8                      " Default setting.
 set fileformat=unix                     " Set always to UNIX line ends."
 set synmaxcol=2048                      " Maximum number of columns to search for syntax items.
-set modelines=0                    " No modelines due to security exploits
+set modelines=0                         " No modelines due to security exploits
 set backspace=2                         " Allow backspacing over anything.
 set nostartofline                       " Leave the cursor where it was.
 set sessionoptions-=options,folds,slash " Don't save these settings to a session file.
-let mapleader=","                       " Use this character instead of '/'.
+let mapleader=','                       " Use this character instead of '/'.
 let maplocalleader='\'
 
 set debug=msg                      " Error messages don't disappear after one second on startup.
@@ -194,6 +194,7 @@ if has('win32')
 endif
 
 set showmatch         " Show matching brace.
+set matchtime=5       " Blink the matching brace X times.
 set fillchars=""      " No characters in windows separators.
 set lazyredraw        " Don't redraw while performing macros.
 set shortmess=atI
@@ -218,10 +219,12 @@ endif
 
 " }
 " LIST & LINE NUMBERS {
-set nonumber                                                        " No line numbers.
-set norelativenumber                                                " No relative numbering."
 set list                                                            " Show tabs and end of lines as character.
 set listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:+,eol:¬     " Define the characters to represent tab / EOL.
+
+" Toggle relative/absolute number in Insert/Normal mode.
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
 
 " }
 " STATUSLINE {
@@ -246,9 +249,6 @@ set wildignore+=.git,.svn      " Ignore Version Control files and directories.
 set showmode                   " Show in which mode it is in.
 set showcmd                    " Show the command being used.
 set cmdheight=2                " Set the command height under the statusline.
-
-au InsertEnter * hi StatusLine ctermfg=196 guifg=#FF3145
-au InsertLeave * hi StatusLine ctermfg=130 guifg=#CD5907
 
 " }
 " CURSOR {
@@ -354,13 +354,14 @@ augroup END
 augroup ft_html
     autocmd!
 
-    autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType html set makeprg=tidy\ -quiet\ -errors\ %
-    autocmd FileType html set errorformat=line\ %l\ column\ %v\ -\ %m
-    " autocmd FileType html set makeprg="tidy --new-blocklevel-tags 'section, article, aside, hgroup, header, footer, nav, figure, figcaption' --new-inline-tags 'video, audio, embed, mark, progress, meter, time, ruby, rt, rp, canvas, command, details, datalist' --new-empty-tags 'wbr, keygen' -e ".shellescape(expand('%'))." 2>&1 \\| grep -v '\<table\> lacks \"summary\" attribute' \\| grep -v 'not approved by W3C'"
+    autocmd FileType html,xhtml set omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType html,xhtml set makeprg=tidy\ -quiet\ -errors\ %
+    autocmd FileType html,xhtml set errorformat=line\ %l\ column\ %v\ -\ %m
+    autocmd FileType html,xhtml set iskeyword+=-,_
+    " autocmd FileType html,xhtml set makeprg="tidy --new-blocklevel-tags 'section, article, aside, hgroup, header, footer, nav, figure, figcaption' --new-inline-tags 'video, audio, embed, mark, progress, meter, time, ruby, rt, rp, canvas, command, details, datalist' --new-empty-tags 'wbr, keygen' -e ".shellescape(expand('%'))." 2>&1 \\| grep -v '\<table\> lacks \"summary\" attribute' \\| grep -v 'not approved by W3C'"
 
     " Fold the current tag.
-    autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
+    autocmd FileType html,xhtml nnoremap <buffer> <localleader>f Vatzf
 augroup END
 
 " }
@@ -392,7 +393,6 @@ augroup ft_css
 augroup END
 
 let javascript_enable_domhtmlcss=1
-
 " }
 " JSFL {
 augroup ft_jsfl
