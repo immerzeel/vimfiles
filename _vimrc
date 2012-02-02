@@ -222,6 +222,7 @@ endif
 set list                                                            " Show tabs and end of lines as character.
 set listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:+,eol:¬     " Define the characters to represent tab / EOL.
 
+set relativenumber " Show relatively numbered lines.
 " Toggle relative/absolute number in Insert/Normal mode.
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
@@ -427,7 +428,9 @@ nnoremap <leader>l :TagbarToggle<CR>
 
 " }
 " NETRW {
-let g:netrw_liststyle=3 " Show tree style listing.
+let g:netrw_liststyle=1 " Show tree style listing.
+let g:netrw_cygwin=1 " Assumes SCP under Windows is from Cygwin.
+let g:netrw_winsize=100 " Width of the opened NETRW window.
 
 " }
 " RAGTAG {
@@ -435,12 +438,14 @@ let g:ragtag_global_maps=1 " Enable global mappings.
 
 " }
 " NERDTREE {
+let loaded_nerd_tree=1
 noremap <leader>n :NERDTreeToggle<cr> " Toggle the NERDTree side window.
 noremap <leader>nf :NERDTreeFind<cr>  " Find the current file in NERDTree.
 let NERDTreeHighlightCursorLine=1
 let NERDTreeIgnore=[]
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
+let NERDTreeHijackNetrw=0
 
 " }
 " SNIPMATE {
