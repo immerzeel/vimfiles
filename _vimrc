@@ -347,6 +347,7 @@ augroup ft_javascript
 
     autocmd FileType javascript nnoremap gJ :OpenURL http://api.jquery.com/<cword><CR>
     autocmd FileType javascript nnoremap gB :OpenURL http://documentcloud.github.com/backbone/<CR>
+    autocmd FileType javascript nnoremap g_ :OpenURL http://documentcloud.github.com/underscore/<CR>
 augroup END
 
 
@@ -438,15 +439,14 @@ let g:ragtag_global_maps=1 " Enable global mappings.
 
 " }
 " NERDTREE {
-let loaded_nerd_tree=1
 noremap <leader>n :NERDTreeToggle<cr> " Toggle the NERDTree side window.
 noremap <leader>nf :NERDTreeFind<cr>  " Find the current file in NERDTree.
-let NERDTreeHighlightCursorLine=1
-let NERDTreeIgnore=[]
-let NERDTreeMinimalUI=1
-let NERDTreeDirArrows=1
-let NERDTreeHijackNetrw=0
-
+let NERDTreeHighlightCursorLine=1 " Highlight the cursorline.
+let NERDTreeIgnore=[] " Ignore list.
+let NERDTreeMinimalUI=1 " Minimal GUI for the NERDTree view.
+let NERDTreeDirArrows=1 " Show little arrows in front of directories 
+let NERDTreeHijackNetrw=1 " Use NERDTree instead of NetRW on 'e' and 'o'.
+let NERDTreeChDirMode=2 " Change NERDTree listing when CWD changes.
 " }
 " SNIPMATE {
 let g:snip_author='Pascal Immerzeel'
@@ -465,9 +465,6 @@ let g:user_zen_leader_key="<c-e>"
 " }
 " YANKRING {
 nnoremap <leader>y :YRShow<CR>
-let g:yankring_replace_n_pkey='<M-p>'
-let g:yankring_replace_n_nkey='<M-n>'
-
 " }
 " MATCHIT {
 " Using the plugin distributed with VIM

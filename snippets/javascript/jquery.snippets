@@ -1,9 +1,9 @@
 snippet $
 	$('${1}')${2}
-snippet $this
-	$(this)
 snippet jq
 	jQuery('${1}')${2}
+snippet $this
+	$(this)
 snippet jqthis
 	jQuery(this)${1}
 snippet that
@@ -30,3 +30,7 @@ snippet stop
 	.stop(${1:true}, ${1:true})${3:}
 snippet trig
 	trigger("${1:click}")${2}
+snippet ready
+	jQuery(document).ready(function() {
+		${1:}
+	});
