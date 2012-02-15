@@ -78,10 +78,6 @@
     path = bundle/vim-snipmate-mw-utils
     url = git://github.com/MarcWeber/vim-addon-mw-utils.git
     ignore = dirty
-[submodule "bundle/vim-yankring"]
-    path = bundle/vim-yankring
-    url = git://github.com/vim-scripts/YankRing.vim.git
-    ignore = dirty
 [submodule "bundle/vim-closetag"]
     path = bundle/vim-closetag
     url = git://github.com/vim-scripts/closetag.vim.git
@@ -153,4 +149,8 @@
 [submodule "bundle/vim-rainbow-parentheses"]
 	path = bundle/vim-rainbow-parentheses
 	url = git://github.com/kien/rainbow_parentheses.vim.git
+    ignore = dirty
+[submodule "bundle/vim-yankstack"]
+	path = bundle/vim-yankstack
+	url = git://github.com/maxbrunsfeld/vim-yankstack.git
     ignore = dirty
