@@ -480,8 +480,7 @@ let g:ctrlp_jump_to_buffer=2                            " Jump to tab AND buffer
 let g:user_zen_leader_key="<c-e>"
 
 " }
-" YANKRING {
-nnoremap <leader>y :YRShow<CR>
+" YANKSTACK {
 " }
 " MATCHIT {
 " Using the plugin distributed with VIM
