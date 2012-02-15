@@ -112,6 +112,15 @@ endfunction
 set foldtext=MyFoldText()
 
 " }
+" iPAD {
+if &term == "xterm-ipad"
+  nnoremap <Tab> <Esc>
+  vnoremap <Tab> <Esc>gV
+  onoremap <Tab> <Esc>
+  inoremap <Tab> <Esc>`^
+  inoremap <Leader><Tab> <Tab>
+endif
+" }
 " INDENT {
 filetype indent on " Indentation based on filetype.
 set smartindent    " Use intelligent indentation for C
@@ -341,6 +350,7 @@ augroup ft_javascript
     autocmd FileType javascript set makeprg=jslint\ %
     autocmd FileType javascript set errorformat=%l:%c\ ->\ %m
 
+    autocmd FileType javascript set nofoldenable
 
     autocmd filetype javascript noremap <buffer> <F1> :OpenURL https://developer.mozilla.org/en-US/search?q=<cword><CR>
     autocmd filetype javascript noremap! <buffer> <F1> :OpenURL https://developer.mozilla.org/en-US/search?q=<cword><CR>
@@ -349,8 +359,13 @@ augroup ft_javascript
     autocmd FileType javascript nnoremap gB :OpenURL http://documentcloud.github.com/backbone/<CR>
     autocmd FileType javascript nnoremap g_ :OpenURL http://documentcloud.github.com/underscore/<CR>
 augroup END
+" }
+" JSON {
+augroup ft_json
+    autocmd!
 
-
+    autocmd BufNewFile,BufRead *.json set filetype=json syntax=javascript
+augroup END
 " }
 " HTML {
 augroup ft_html
@@ -457,6 +472,8 @@ nnoremap <leader>es :vsplit ~/vimfiles/snippets/<cr>
 let g:ctrlp_working_path_mode=0                         " Do not manage the root. Change manually.
 let g:ctrlp_root_markers=['.settings', '.project']      " Custom markers for the root of the project.
 let g:ctrlp_dotfiles=0                                  " Ignore dot files.
+let g:ctrlp_mru_files=1                                 " Enable Most Recent Used files feature.
+let g:ctrlp_jump_to_buffer=2                            " Jump to tab AND buffer if already open.
 
 " }
 " ZENCODING {
