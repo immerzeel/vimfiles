@@ -27,6 +27,10 @@ snippet proto
 	`expand("%:t:r")`.prototype.${1:method} = function(${2:argument}) {
 		${3:// body}
 	};
+snippet method
+	${1:functionName}: function (${2}) {
+		${3}
+	},
 snippet var
 	`expand("%:t:r")`.prototype.${1:variable} = ${2:value};${3:}
 snippet log
