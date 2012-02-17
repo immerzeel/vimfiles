@@ -154,3 +154,7 @@
 	path = bundle/vim-yankstack
 	url = git://github.com/maxbrunsfeld/vim-yankstack.git
     ignore = dirty
+[submodule "bundle/vim-jshint"]
+	path = bundle/vim-jshint
+	url = git://github.com/walm/jshint.vim.git
+    ignore = dirty
