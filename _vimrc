@@ -254,7 +254,8 @@ set statusline=%F\ %m\ %r\ %y\ %{fugitive#statusline()}%=%(Line:\ %l/%L\ [%p%%]\
 "               + Full path to file.
 
 set wildmenu                   " Turn on command line completion wild style.
-set wildmode=list:longest      " List all matches and complete to the longest string.
+" set wildmode=list:longest    " List all matches and complete to the longest string.
+set wildmode=longest,list,full " List all matches and complete to the longest string.
 set wildignore+=.git,.svn      " Ignore Version Control files and directories.
 set showmode                   " Show in which mode it is in.
 set showcmd                    " Show the command being used.
