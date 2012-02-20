@@ -324,6 +324,13 @@ augroup END
 nnoremap <leader>ev :vsplit $HOME/vimfiles/_vimrc<cr>
 
 " }
+" PENTADACTYL {
+augroup ft_pentadactyl
+    au!
+    au BufNewFile,BufRead .pentadactylrc set filetype=vim
+    nnoremap <leader>ep :vsplit ~/pentafiles/pentadactylrc<cr>
+augroup END
+" }
 " QUICKFIX {
 augroup ft_quickfix
     autocmd!
@@ -440,8 +447,11 @@ nmap <leader><insert> :silent !ctags -aR *<cr>
 set tags=tags;/ " Look up the directory for tags files.
 
 let g:tagbar_usearrows=1
-nnoremap <leader>l :TagbarToggle<CR>
+nnoremap <leader>t :TagbarToggle<cr>
 
+" }
+" GUNDO {
+nnoremap <leader>g :GundoToggle<cr>
 " }
 " NETRW {
 let g:netrw_liststyle=1 " Show tree style listing.
@@ -469,12 +479,18 @@ nnoremap <leader>es :vsplit ~/vimfiles/snippets/<cr>
 
 " }
 " CTRL-P {
+let g:ctrlp_dont_split='NERD_tree_2'
+let g:ctrlp_map='<leader>,'                             " Remap the default mapping.
 let g:ctrlp_working_path_mode=0                         " Do not manage the root. Change manually.
 let g:ctrlp_root_markers=['.settings', '.project']      " Custom markers for the root of the project.
 let g:ctrlp_dotfiles=0                                  " Ignore dot files.
 let g:ctrlp_mru_files=1                                 " Enable Most Recent Used files feature.
 let g:ctrlp_jump_to_buffer=2                            " Jump to tab AND buffer if already open.
 
+" }
+" RAINBOW PARENTHESES {
+nnoremap <leader>r :RainbowParenthesesToggle<cr>
+let g:rbpt_max=16
 " }
 " ZENCODING {
 let g:user_zen_leader_key="<c-e>"
@@ -492,8 +508,6 @@ runtime macros/matchit.vim
 " let g:Powerline_symbols = 'fancy'
 " }
 " CUSTOM REMAPS {
-" Map ; to : as well, to prevent typo.
-nnoremap ; :
 
 " Clean whitespace
 map <leader>W  :%s/\s\+$//<cr>:let @/=''<CR>
