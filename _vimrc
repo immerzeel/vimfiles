@@ -80,7 +80,7 @@ set undoreload=10000        " maximum number lines to save for undo on a buffer 
 " }
 " COPY/PASTE CLIPBOARD {
 set pastetoggle=<F2>        " Disable indenting when pasting from outside VIM.
-set clipboard=unnamed       " Cut/Copy in the OS will be P abled.
+" set clipboard=unnamed       " Cut/Copy in the OS will be P abled.
 
 " }
 " FORMATING {
@@ -497,7 +497,8 @@ let g:rbpt_max=16
 let g:user_zen_leader_key="<c-e>"
 
 " }
-" YANKSTACK {
+" YANKRING {
+nnoremap <leader>y :YRShow<cr>
 " }
 " MATCHIT {
 " Using the plugin distributed with VIM
