@@ -3,7 +3,7 @@ My Vimfiles settings and bundles.
 
 WINDOWS
     INSTALL
-        echo source ~/vimfiles/_vimrc > %HOME%\_vimrc
+        ln -s ~/vimfiles/_vimrc > ~\_vimrc (In Cygwin)
 
     UPDATE
         cd <home_dir>\vimfiles

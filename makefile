@@ -16,3 +16,5 @@ push:
 	git add .
 	git commit -a
 	git push
+
+#.PHONY clean install pull push
