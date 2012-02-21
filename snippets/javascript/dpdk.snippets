@@ -1,4 +1,43 @@
+snippet dpdk.view
+	define(function () {
+		return Backbone.ExtendedView.extend({
+	          template: _.template("" +
+	              "<div>Home.View</div>" +
+	          ""),
+	  
+	          // HTML Rendering
+	  
+	          renderChange: function (previousFragment, previousFragmentLanguage, currentFragment, currentFragmentLanguage) {
+	              return true;
+	          },
+	  
+	          render: function (previousFragment, previousFragmentLanguage, currentFragment, currentFragmentLanguage) {
+	              //this.modelAsJSON = this.model.toJSON();
+	              //console.log("MAIN MENU this.modelAsJSON", this.modelAsJSON);
+	              this.el.html(this.template);
+	              this.renderCompleted();
+	          }
+	  	});
+	});
 snippet seq
 	var sequence = new Backbone.Sequence();
 	sequence.add(${1})
 	sequence.execute();
+snippet site.view
+	${1:viewName}: {
+		"el": "$1-${2:element}",
+
+		"fragmentsByLanguage": {
+			"en": ["$1/*deeplink"]${5:,}
+		}
+
+		"cache": ${4:true}
+	}${3:,}
+snippet site.model
+	"${1:modelName}": {
+		"restPathByLanguage": {
+			"en": "$1",
+		},
+
+		"cache": true
+	},
