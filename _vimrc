@@ -80,7 +80,7 @@ set undoreload=10000        " maximum number lines to save for undo on a buffer 
 " }
 " COPY/PASTE CLIPBOARD {
 set pastetoggle=<F2>        " Disable indenting when pasting from outside VIM.
-" set clipboard=unnamed       " Cut/Copy in the OS will be P abled.
+set clipboard=unnamed       " Cut/Copy in the OS will be P abled.
 
 " }
 " FORMATING {
@@ -102,6 +102,7 @@ set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo " Open fold
 set foldlevelstart=0                                                 " Allow folds at highest level.
 
 nnoremap <leader>z zMzvzz       " Focus on the current fold.
+nnoremap <space> za             " Toggle folders open/close.
 
 " Set a custom foldtext for a collapsed fold.
 function! MyFoldText()
@@ -285,7 +286,7 @@ vnoremap / /\v
 
 " Substitute
 nnoremap <leader>s :%s//<left>
-
+nnoremap <Leader>S :%s/<c-r>=expand('<cword>')<cr>//c<left><left>
 " }
 " OPENURL {
 " open URL under cursor in browser.
@@ -355,8 +356,8 @@ augroup ft_javascript
     autocmd!
 
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType javascript set makeprg=jslint\ %
-    autocmd FileType javascript set errorformat=%l:%c\ ->\ %m
+    autocmd FileType javascript set makeprg=jshint\ %
+    autocmd FileType javascript set errorformat=%f:\ line\ %l,\ col\ %c,\ %m
 
     autocmd FileType javascript set nofoldenable
 
@@ -455,10 +456,10 @@ nnoremap <leader>t :TagbarToggle<cr>
 nnoremap <leader>g :GundoToggle<cr>
 " }
 " NETRW {
-let g:netrw_liststyle=1 " Show tree style listing.
-let g:netrw_cygwin=1 " Assumes SCP under Windows is from Cygwin.
-let g:netrw_winsize=100 " Width of the opened NETRW window.
-
+let g:netrw_liststyle=1     " Show tree style listing.
+let g:netrw_cygwin=1        " Assumes SCP under Windows is from Cygwin.
+let g:netrw_ftp_cmd='tftp'  " Use Cygwin's ftp.
+let g:netrw_winsize=100     " Width of the opened NETRW window.
 " }
 " RAGTAG {
 let g:ragtag_global_maps=1 " Enable global mappings.
@@ -513,6 +514,10 @@ runtime macros/matchit.vim
 
 " Clean whitespace
 map <leader>W  :%s/\s\+$//<cr>:let @/=''<CR>
+
+" double percentage sign in command mode is expanded
+" to directory of current file - http://vimcasts.org/e/14
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
 " }
 " NON PUBLIC SETTINGS {
 " so ~/_vimrc_private

@@ -19,6 +19,11 @@ snippet dpdk.view
 	          }
 	  	});
 	});
+snippet dpdk.model
+	define(function() {
+		return Backbone.ExtendedModel.extend({
+		});
+	});
 snippet seq
 	var sequence = new Backbone.Sequence();
 	sequence.add(${1})
@@ -41,3 +46,16 @@ snippet site.model
 
 		"cache": true
 	},
+snippet mark.button
+	"<div id='${1:name}-button' class='button'>" +
+		"<div class='normal'>" +
+			"<div class='front'></div>" +
+			"<div class='middle'><%= label %></div>" +
+			"<div class='back'></div>" +
+			"</div>" +
+		"<div class='active'>" +
+			"<div class='front'></div>" +
+			"<div class='middle'><%= label %></div>" +
+			"<div class='back'></div>" +
+		"</div>" +
+	"</div>" +
