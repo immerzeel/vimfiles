@@ -457,8 +457,7 @@ nnoremap <leader>g :GundoToggle<cr>
 " }
 " NETRW {
 let g:netrw_liststyle=1     " Show tree style listing.
-let g:netrw_cygwin=1        " Assumes SCP under Windows is from Cygwin.
-let g:netrw_ftp_cmd='tftp'  " Use Cygwin's ftp.
+let g:netrw_cygwin=0        " Assumes SCP under Windows is from Cygwin.
 let g:netrw_winsize=100     " Width of the opened NETRW window.
 " }
 " RAGTAG {
