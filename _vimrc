@@ -325,6 +325,9 @@ augroup END
 " Make _vimrc easy accessible.
 nnoremap <leader>ev :vsplit $HOME/vimfiles/_vimrc<cr>
 
+" Source
+vnoremap <leader>xv y:execute @@<cr>
+nnoremap <leader>xv ^vg_y:execute @@<cr>
 " }
 " PENTADACTYL {
 augroup ft_pentadactyl
