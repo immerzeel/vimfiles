@@ -460,9 +460,14 @@ nnoremap <leader>g :GundoToggle<cr>
 " }
 " NETRW {
 let g:netrw_liststyle=3                        " Show tree style listing.
-let g:netrw_cygwin=1                           " Assumes SCP under Windows is from Cygwin.
-let g:netrw_ftp_cmd='c:/cygwin/bin/ftp.exe -n' " Use Cygwin's FTP client. Remember to install inetutils.
 let g:netrw_winsize=200                        " Width of the opened NETRW window.
+let g:netrw_cygwin=0
+let g:netrw_ignorenetrc=1                      " Do not ignore netrc.
+" let g:netrw_fastbrowse    = 2
+" let g:netrw_keepdir       = 0
+" let g:netrw_retmap        = 1
+" let g:netrw_silent        = 1
+" let g:netrw_special_syntax= 1
 " }
 " RAGTAG {
 let g:ragtag_global_maps=1 " Enable global mappings.
