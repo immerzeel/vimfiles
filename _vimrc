@@ -461,8 +461,7 @@ nnoremap <leader>g :GundoToggle<cr>
 " NETRW {
 let g:netrw_liststyle=3                        " Show tree style listing.
 let g:netrw_winsize=200                        " Width of the opened NETRW window.
-let g:netrw_cygwin=0
-let g:netrw_ignorenetrc=1                      " Do not ignore netrc.
+let g:netrw_altv=1                             " Open new window vertically to the right.
 " let g:netrw_fastbrowse    = 2
 " let g:netrw_keepdir       = 0
 " let g:netrw_retmap        = 1
