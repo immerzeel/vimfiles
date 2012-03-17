@@ -394,6 +394,16 @@ augroup ft_html
 augroup END
 
 " }
+" PHP {
+augroup ft_php
+    autocmd!
+
+    autocmd FileType php set iskeyword+=_
+
+    autocmd FileType php nnoremap gH :OpenURL http://api.drupal.org/api/search/7/api/search/4.7/<cword><CR>
+augroup END
+
+" }
 " MARKDOWN {
 augroup ft_markdown
     autocmd!
