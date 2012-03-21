@@ -41,8 +41,8 @@ set scrolloff=2                         " Keep the cursor padded with lines when
 set sidescrolloff=2                     " Keep the cursor padded when side scrolling.
 
  " Use visual lines, not text object line.
-map j gj
-map k gk
+noremap j gj
+noremap k gk
 
 " }
 " BACKUP & SWAP {
@@ -278,7 +278,7 @@ set gdefault   " Use global(g) option by default.
 set path+=./** " Search recursively down the current path.
 
 " Disable highlighted search results.
-map <leader><space> :noh<cr>
+noremap <leader><space> :noh<cr>
 
 " Use sane regex in normal mode.
 nnoremap / /\v
@@ -349,8 +349,8 @@ augroup ft_actionscript
     " ActionScript. Override the standard Altas (*.as).
     autocmd BufNewFile,BufRead *.as set filetype=actionscript
 
-    autocmd FileType actionscript map <C-Enter> :silent !test_movie.jsfl<cr>
-    autocmd FileType actionscript map <S-C-Enter> :silent !publish_all.jsfl<cr>
+    autocmd FileType actionscript noremap <C-Enter> :silent !test_movie.jsfl<cr>
+    autocmd FileType actionscript noremap <S-C-Enter> :silent !publish_all.jsfl<cr>
 augroup END
 
 " }
@@ -458,7 +458,7 @@ augroup END
 " }
 " TAGBAR {
 " Manual add a tags file to the current directory, include subdirs as well.
-nmap <leader><insert> :silent !ctags -aR *<cr>
+nnoremap <leader><insert> :silent !ctags -aR *<cr>
 set tags=tags;/ " Look up the directory for tags files.
 
 let g:tagbar_usearrows=1
@@ -507,6 +507,9 @@ let g:ctrlp_mru_files=1                                 " Enable Most Recent Use
 let g:ctrlp_jump_to_buffer=2                            " Jump to tab AND buffer if already open.
 
 " }
+" EASYGREP {
+let  g:EasyGrepRecursive=1
+" }
 " RAINBOW PARENTHESES {
 nnoremap <leader>r :RainbowParenthesesToggle<cr>
 let g:rbpt_max=16
@@ -530,7 +533,7 @@ runtime macros/matchit.vim
 " CUSTOM REMAPS {
 
 " Clean whitespace
-map <leader>W  :%s/\s\+$//<cr>:let @/=''<CR>
+noremap <leader>W  :%s/\s\+$//<cr>:let @/=''<CR>
 
 " double percentage sign in command mode is expanded
 " to directory of current file - http://vimcasts.org/e/14
