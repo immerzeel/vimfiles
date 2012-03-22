@@ -122,10 +122,6 @@
     path = bundle/vim-commentary
     url = git://github.com/tpope/vim-commentary.git
     ignore = dirty
-[submodule "bundle/vim-jslint"]
-    path = bundle/vim-jslint
-    url = git://github.com/hallettj/jslint.vim
-    ignore = dirty
 [submodule "bundle/vim-gist"]
     path = bundle/vim-gist
     url = git://github.com/mattn/gist-vim.git
@@ -141,14 +137,6 @@
 [submodule "bundle/vim-gundo"]
 	path = bundle/vim-gundo
 	url = git://github.com/sjl/gundo.vim.git
-    ignore = dirty
-[submodule "bundle/vim-powerline"]
-	path = bundle/vim-powerline
-	url = git://github.com/Lokaltog/vim-powerline.git
-    ignore = dirty
-[submodule "bundle/vim-rainbow-parentheses"]
-	path = bundle/vim-rainbow-parentheses
-	url = git://github.com/kien/rainbow_parentheses.vim.git
     ignore = dirty
 [submodule "bundle/vim-jshint"]
 	path = bundle/vim-jshint
