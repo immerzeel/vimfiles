@@ -284,6 +284,10 @@ noremap <leader><space> :noh<cr>
 nnoremap / /\v
 vnoremap / /\v
 
+" Run yanked/selected regex.
+vnoremap <leader>xr y/<c-r>0<cr>
+nnoremap <leader>xr ^vg_y/<c-r>0<cr>
+
 " Substitute
 nnoremap <leader>s :%s//<left>
 nnoremap <Leader>S :%s/<c-r>=expand('<cword>')<cr>//c<left><left>
@@ -364,7 +368,6 @@ augroup ft_javascript
 
     autocmd FileType javascript set nofoldenable
 
-    autocmd filetype javascript noremap <buffer> <F1> :OpenURL https://developer.mozilla.org/en-US/search?q=<cword><CR>
     autocmd filetype javascript noremap! <buffer> <F1> :OpenURL https://developer.mozilla.org/en-US/search?q=<cword><CR>
 
     autocmd FileType javascript nnoremap gJ :OpenURL http://api.jquery.com/<cword><CR>
@@ -472,6 +475,7 @@ nnoremap <leader>g :GundoToggle<cr>
 let g:netrw_liststyle=3                        " Show tree style listing.
 let g:netrw_winsize=200                        " Width of the opened NETRW window.
 let g:netrw_altv=1                             " Open new window vertically to the right.
+" let g:netrw_ftp_cmd='c:/cygwin/bin/ftp.exe'
 " let g:netrw_fastbrowse    = 2
 " let g:netrw_keepdir       = 0
 " let g:netrw_retmap        = 1
