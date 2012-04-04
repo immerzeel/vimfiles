@@ -514,10 +514,6 @@ let g:ctrlp_jump_to_buffer=2                            " Jump to tab AND buffer
 " EASYGREP {
 let  g:EasyGrepRecursive=1
 " }
-" RAINBOW PARENTHESES {
-nnoremap <leader>r :RainbowParenthesesToggle<cr>
-let g:rbpt_max=16
-" }
 " ZENCODING {
 let g:user_zen_leader_key="<c-e>"
 
@@ -530,9 +526,9 @@ nnoremap <leader>y :YRShow<cr>
 runtime macros/matchit.vim
 
 " }
-" POWERLINE { 
-" Allow fancy symbols in statusline.
-" let g:Powerline_symbols = 'fancy'
+" FTPSYNC { 
+" Which protocol to use for transfer. 'scp' is default.
+let g:FtpSync_Proto='ftp'
 " }
 " CUSTOM REMAPS {
 
