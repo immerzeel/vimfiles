@@ -512,7 +512,13 @@ let g:ctrlp_jump_to_buffer=2                            " Jump to tab AND buffer
 
 " }
 " EASYGREP {
-let  g:EasyGrepRecursive=1
+" Recursive down directories.
+let  g:EasyGrepRecursive=1 
+
+" Don't use vimgrep, use the program set by grepprg.
+let  g:EasyGrepCommand=1 
+set grepprg=grep\ -nH
+" set grepprg=findstr\ /n\ /s
 " }
 " ZENCODING {
 let g:user_zen_leader_key="<c-e>"
