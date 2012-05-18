@@ -121,6 +121,7 @@ if &term == "xterm-ipad"
   inoremap <Tab> <Esc>`^
   inoremap <Leader><Tab> <Tab>
 endif
+
 " }
 " INDENT {
 filetype indent on " Indentation based on filetype.
@@ -201,6 +202,23 @@ set guioptions=ace
 
 if has('win32')
     set guifont=Consolas:h10:cANSI " Set the GUI font.
+
+    if v:lang =~ "NL"
+        " Start maximize!
+        autocmd GUIEnter * simalt ~ m
+    "                              |
+    "                              + Maximize in Dutch version (for some reason we use Dutch Windows at work).
+    "                                It uses a different shortcut to maximize the window.
+    else
+        " Start maximize!
+        autocmd GUIEnter * simalt ~ x
+        "                           |
+        "                           + Maximize in English version.
+    endif
+endif
+
+if has('gui_macvim')
+    set guifont=Monaco:h15 " Set the GUI font.
 endif
 
 set showmatch         " Show matching brace.
@@ -214,18 +232,6 @@ set shortmess=atI
 "             + Collection of abbriviating methods.
 set virtualedit=block " Allow the cursor on non-character positions.
 
-if v:lang =~ "NL"
-    " Start maximize!
-    autocmd GUIEnter * simalt ~ m
-"                              |
-"                              + Maximize in Dutch version (for some reason we use Dutch Windows at work).
-"                                It uses a different shortcut to maximize the window.
-else
-    " Start maximize!
-    autocmd GUIEnter * simalt ~ x
-    "                           |
-    "                           + Maximize in English version.
-endif
 
 " }
 " LIST & LINE NUMBERS {
@@ -295,9 +301,15 @@ nnoremap <Leader>S :%s/<c-r>=expand('<cword>')<cr>//c<left><left>
 " OPENURL {
 " open URL under cursor in browser.
 function! OpenURL(url)
-    if has('win32')
-        exe "!start cmd /cstart /b ".a:url.""
-        redraw!
+    if s:uri != ""
+        if has('win32')
+            exe "!start cmd /cstart /b ".a:url.""
+            redraw!
+        else 
+            exec "!open \"" . a:uri . "\""
+        endif
+    else
+        echo "No URI found in line."
     endif
 endfunction
 command! -nargs=1 OpenURL :call OpenURL(<q-args>)
@@ -318,7 +330,7 @@ augroup ft_vimrc
     autocmd!
 
     " Source the vimrc file after saving it.
-    autocmd BufWritePost _vimrc source $MYVIMRC
+    autocmd BufWritePost .vimrc source $MYVIMRC
 
     " Bind <F1> to show the keyword under cursor
     " general help can still be entered manually, with :h
@@ -327,7 +339,7 @@ augroup ft_vimrc
 augroup END
 
 " Make _vimrc easy accessible.
-nnoremap <leader>ev :vsplit $HOME/vimfiles/_vimrc<cr>
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 " Source
 vnoremap <leader>xv y:execute @@<cr>
