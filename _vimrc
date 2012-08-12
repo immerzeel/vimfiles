@@ -25,7 +25,7 @@ set sessionoptions-=options,folds,slash " Don't save these settings to a session
 let mapleader=','                       " Use this character instead of '/'.
 let maplocalleader='\'
 
-set debug=msg                      " Error messages don't disappear after one second on startup.
+" set debug=msg                      " Error messages don't disappear after one second on startup.
 
 " }
 " MOUSE {
@@ -207,7 +207,7 @@ set showmatch         " Show matching brace.
 set matchtime=5       " Blink the matching brace X times.
 set fillchars=""      " No characters in windows separators.
 set lazyredraw        " Don't redraw while performing macros.
-set shortmess=atI
+set shortmess=atIA
 "             |||
 "             ||+ Disable intro screen.
 "             |+ Truncate file message at the start if path doesn't fit.
