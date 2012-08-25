@@ -5,15 +5,12 @@ filetype off                    " force reloading *after* pathogen loaded
 
 " }
 " VUNDLE {
-let bundle_dir=$HOME . '/.vim/bundle/'
-
 " Download and install Vundle if no directory in bundle.
-if !isdirectory(bundle_dir . '/vundle')
-  exec '!git clone https://github.com/gmarik/vundle.git' . shellescape(bundle_dir) . '/vundle'
-  BundleInstall
+if !isdirectory(expand('~/.vim/bundle/vundle'))
+  exec '!git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle'
 endif
 
-set rtp+=bundle_dir . '/vundle'
+set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
 " required! 
@@ -56,6 +53,9 @@ Bundle 'tpope/vim-markdown'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'mattn/webapi-vim'
 Bundle 'chrismetcalf/vim-yankring'
+Bundle 'msanders/cocoa.vim'
+
+Bundle 'TTCoach'
 
 " }
 " SYSTEM {
@@ -313,27 +313,6 @@ nnoremap <leader>xr ^vg_y/<c-r>0<cr>
 nnoremap <leader>s :%s//<left>
 nnoremap <Leader>S :%s/<c-r>=expand('<cword>')<cr>//c<left><left>
 " }
-" OPENURL {
-" open URL under cursor in browser.
-function! OpenURL(url)
-    if s:uri != ""
-        if has('win32')
-            exe "!start cmd /cstart /b ".a:url.""
-            redraw!
-        else 
-            exec "!open \"" . a:uri . "\""
-        endif
-    else
-        echo "No URI found in line."
-    endif
-endfunction
-command! -nargs=1 OpenURL :call OpenURL(<q-args>)
-
-nnoremap gb :OpenURL <cfile><CR>
-nnoremap gS :OpenURL http://www.stackoverflow.com/search?q=<cword><CR>
-nnoremap gG :OpenURL http://www.google.com/search?q=<cword><CR>
-
-" }
 " ANY FILE {
 
 " Resize splits when the window is resized
@@ -359,13 +338,6 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " Source
 vnoremap <leader>xv y:execute @@<cr>
 nnoremap <leader>xv ^vg_y:execute @@<cr>
-" }
-" PENTADACTYL {
-augroup ft_pentadactyl
-    au!
-    au BufNewFile,BufRead .pentadactylrc set filetype=vim
-    nnoremap <leader>ep :vsplit ~/pentafiles/pentadactylrc<cr>
-augroup END
 " }
 " QUICKFIX {
 augroup ft_quickfix
@@ -463,29 +435,6 @@ augroup END
 
 let javascript_enable_domhtmlcss=1
 " }
-" JSFL {
-augroup ft_jsfl
-    autocmd!
-
-    autocmd BufNewFile,BufRead *.jsfl set filetype=javascript
-augroup END
-"
-" }
-" VIMOUTLINER {
-augroup ft_otl
-    autocmd!
-
-    autocmd BufRead,BufNewFile *.otl set filetype=vo_base
-    autocmd BufRead,BufNewFile *.oln set filetype=xoutliner
-
-    " Trigger an undo point after these characters.
-    autocmd Filetype *.otl,*.oln inoremap . .<C-g>u
-    autocmd Filetype *.otl,*.oln inoremap ! !<C-g>u
-    autocmd Filetype *.otl,*.oln inoremap ? ?<C-g>u
-    autocmd Filetype *.otl,*.oln inoremap : :<C-g>u
-augroup END
-
-" }
 " NEOCOMPLCACHE {
 let g:neocomplcache_enable_at_startup = 1 " Enable the plugin.
 " }
@@ -497,9 +446,6 @@ set tags=tags;/ " Look up the directory for tags files.
 let g:tagbar_usearrows=1
 nnoremap <leader>t :TagbarToggle<cr>
 
-" }
-" GUNDO {
-nnoremap <leader>g :GundoToggle<cr>
 " }
 " NETRW {
 let g:netrw_liststyle=3                        " Show tree style listing.
@@ -526,21 +472,6 @@ let NERDTreeDirArrows=1 " Show little arrows in front of directories
 let NERDTreeHijackNetrw=1 " Use NERDTree instead of NetRW on 'e' and 'o'.
 let NERDTreeChDirMode=2 " Change NERDTree listing when CWD changes.
 " }
-" SNIPMATE {
-let g:snip_author='Pascal Immerzeel'
-nnoremap <leader>es :vsplit ~/vimfiles/snippets/<cr>
-
-" }
-" CTRL-P {
-let g:ctrlp_dont_split='NERD_tree_2'
-let g:ctrlp_map='<leader>,'                             " Remap the default mapping.
-let g:ctrlp_working_path_mode=0                         " Do not manage the root. Change manually.
-let g:ctrlp_root_markers=['.settings', '.project']      " Custom markers for the root of the project.
-let g:ctrlp_dotfiles=0                                  " Ignore dot files.
-let g:ctrlp_mru_files=1                                 " Enable Most Recent Used files feature.
-let g:ctrlp_jump_to_buffer=2                            " Jump to tab AND buffer if already open.
-
-" }
 " EASYGREP {
 " Recursive down directories.
 let  g:EasyGrepRecursive=1 
@@ -549,10 +480,6 @@ let  g:EasyGrepRecursive=1
 let  g:EasyGrepCommand=1 
 set grepprg=grep\ -nH
 " set grepprg=findstr\ /n\ /s
-" }
-" ZENCODING {
-let g:user_zen_leader_key="<c-e>"
-
 " }
 " YANKRING {
 nnoremap <leader>y :YRShow<cr>
