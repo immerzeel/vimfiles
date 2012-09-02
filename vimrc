@@ -22,16 +22,19 @@ Bundle 'Shougo/neocomplcache'
 
 Bundle 'ych/srcexpl'
 
+Bundle 'Shougo/vimfiler'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/unite-outline'
 Bundle 'Shougo/unite-session'
 Bundle 'Shougo/unite-ssh'
-Bundle 'Shougo/unite-help'
+Bundle 't9md/vim-unite-ack'
 
 Bundle 'Shougo/vimshell'
 Bundle 'Shougo/vimproc'
 Bundle 'thinca/vim-quickrun'
 Bundle 'tyru/open-browser.vim'
+
+Bundle 'mileszs/ack.vim'
 
 Bundle 'jQuery'
 Bundle 'Shougo/jscomplete-vim'
@@ -39,6 +42,7 @@ Bundle 'rstacruz/sparkup'
 
 Bundle 'godlygeek/tabular'
 Bundle 'taku-o/vim-toggle'
+Bundle 'kana/vim-smartinput'
 
 Bundle 'mattn/gist-vim'
 Bundle 'tpope/vim-git'
@@ -54,7 +58,6 @@ Bundle 'tpope/vim-eunuch'
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'mattn/webapi-vim'
-Bundle 'chrismetcalf/vim-yankring'
 Bundle 'msanders/cocoa.vim'
 
 Bundle 'TTCoach'
@@ -369,9 +372,9 @@ augroup ft_javascript
 
     autocmd FileType javascript set nofoldenable
 
-    autocmd filetype javascript noremap! <buffer> <F1> :OpenURL https://developer.mozilla.org/en-US/search?q=<cword><CR>
+    autocmd filetype javascript noremap! <buffer> <F1> :OpenBrowser https://developer.mozilla.org/en-US/search?q=<cword><CR>
 
-    autocmd FileType javascript nnoremap gJ :OpenURL http://api.jquery.com/<cword><CR>
+    autocmd FileType javascript nnoremap gJ :OpenBrowser http://api.jquery.com/<cword><CR>
     autocmd FileType javascript nnoremap gB :OpenURL http://documentcloud.github.com/backbone/<CR>
     autocmd FileType javascript nnoremap g_ :OpenURL http://documentcloud.github.com/underscore/<CR>
 augroup END
@@ -440,6 +443,9 @@ let javascript_enable_domhtmlcss=1
 " NEOCOMPLCACHE {
 let g:neocomplcache_enable_at_startup = 1 " Enable the plugin.
 " }
+" VIMFILER {
+let g:vimfiler_as_default_explorer = 1 " Enable the plugin.
+" }
 " TAGBAR {
 " Manual add a tags file to the current directory, include subdirs as well.
 nnoremap <leader><insert> :silent !ctags -aR *<cr>
@@ -453,6 +459,7 @@ nnoremap <leader>t :TagbarToggle<cr>
 let g:netrw_liststyle=3                        " Show tree style listing.
 let g:netrw_winsize=200                        " Width of the opened NETRW window.
 let g:netrw_altv=1                             " Open new window vertically to the right.
+let g:netrw_rsync_cmd="rsync -Raze"            " Extra options for rsyc.
 " let g:netrw_ftp_cmd='c:/cygwin/bin/ftp.exe'
 " let g:netrw_fastbrowse    = 2
 " let g:netrw_keepdir       = 0
@@ -474,15 +481,6 @@ let NERDTreeDirArrows=1 " Show little arrows in front of directories
 let NERDTreeHijackNetrw=1 " Use NERDTree instead of NetRW on 'e' and 'o'.
 let NERDTreeChDirMode=2 " Change NERDTree listing when CWD changes.
 " }
-" EASYGREP {
-" Recursive down directories.
-let  g:EasyGrepRecursive=1 
-
-" Don't use vimgrep, use the program set by grepprg.
-let  g:EasyGrepCommand=1 
-set grepprg=grep\ -nH
-" set grepprg=findstr\ /n\ /s
-" }
 " YANKRING {
 nnoremap <leader>y :YRShow<cr>
 " }
@@ -490,10 +488,6 @@ nnoremap <leader>y :YRShow<cr>
 " Using the plugin distributed with VIM
 runtime macros/matchit.vim
 
-" }
-" FTPSYNC { 
-" Which protocol to use for transfer. 'scp' is default.
-let g:FtpSync_Proto='ftp'
 " }
 " CUSTOM REMAPS {
 
