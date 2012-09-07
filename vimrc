@@ -38,7 +38,7 @@ Bundle 'mileszs/ack.vim'
 
 Bundle 'jQuery'
 Bundle 'Shougo/jscomplete-vim'
-Bundle 'rstacruz/sparkup'
+Bundle 'sjl/vim-sparkup'
 
 Bundle 'godlygeek/tabular'
 Bundle 'taku-o/vim-toggle'
@@ -136,7 +136,6 @@ set undoreload=10000        " maximum number lines to save for undo on a buffer 
 " COPY/PASTE CLIPBOARD {
 set pastetoggle=<F2>        " Disable indenting when pasting from outside VIM.
 set clipboard=unnamed       " Cut/Copy in the OS will be P abled.
-
 " }
 " FORMATING {
 set formatoptions=croq                  " t
@@ -147,7 +146,6 @@ set formatoptions=croq                  " t
 "                 |+ Insert * when typing <Enter> in Insert mode.
 "                 + Break comment on textwidth.
 set comments=sl:/**,mb:\ *,exl:\ */,sr:/*,mb:*,exl:*/,://
-
 " }
 " FOLDING {
 set foldenable                                                       " Turn folding on.
@@ -488,6 +486,11 @@ nnoremap <leader>y :YRShow<cr>
 " Using the plugin distributed with VIM
 runtime macros/matchit.vim
 
+" }
+" GIST {
+let g:gist_clip_command='pbcopy'
+let g:gist_open_browser_after_post=1
+let g:gist_detect_filetype=1
 " }
 " CUSTOM REMAPS {
 
