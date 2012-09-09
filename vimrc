@@ -26,7 +26,6 @@ Bundle 'Shougo/vimfiler'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/unite-outline'
 Bundle 'Shougo/unite-session'
-Bundle 'Shougo/unite-ssh'
 Bundle 't9md/vim-unite-ack'
 
 Bundle 'Shougo/vimshell'
@@ -36,17 +35,16 @@ Bundle 'tyru/open-browser.vim'
 
 Bundle 'mileszs/ack.vim'
 
-Bundle 'jQuery'
 Bundle 'Shougo/jscomplete-vim'
 Bundle 'sjl/vim-sparkup'
+Bundle 'jshint.vim'
 
 Bundle 'godlygeek/tabular'
 Bundle 'taku-o/vim-toggle'
 Bundle 'kana/vim-smartinput'
 
 Bundle 'mattn/gist-vim'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-fugitive'
+Bundle 'vcscommand.vim'
 
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-abolish'
@@ -59,9 +57,6 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'mattn/webapi-vim'
 Bundle 'msanders/cocoa.vim'
-
-Bundle 'TTCoach'
-
 " }
 " SYSTEM {
 filetype plugin indent on               " enable detection, plugins.
@@ -264,7 +259,7 @@ autocmd InsertLeave * :set relativenumber
 " }
 " STATUSLINE {
 set laststatus=2
-set statusline=%F\ %m\ %r\ %y\ %{fugitive#statusline()}%=%(Line:\ %l/%L\ [%p%%]\ Col:\ %c\ Buf:\ #%n%)\
+set statusline=%F\ %m\ %r\ %y\ %{VCSCommandGetStatusLine()}%=%(Line:\ %l/%L\ [%p%%]\ Col:\ %c\ Buf:\ #%n%)\
 "               |   |   |   |    |                     |           |  |    |            |          |
 "               |   |   |   |    |                     |           |  |    |            |          + Buffer.
 "               |   |   |   |    |                     |           |  |    |            + Column number.
@@ -272,7 +267,7 @@ set statusline=%F\ %m\ %r\ %y\ %{fugitive#statusline()}%=%(Line:\ %l/%L\ [%p%%]\
 "               |   |   |   |    |                     |           |  + Total number of lines.
 "               |   |   |   |    |                     |           + Line number.
 "               |   |   |   |    |                     + Define a group and make it right aligned.
-"               |   |   |   |    + Show Git repository status.
+"               |   |   |   |    + Show repository status.
 "               |   |   |   + Filetype mode.
 "               |   |   + Read Only flag.
 "               |   + Modified flag.
@@ -491,6 +486,9 @@ runtime macros/matchit.vim
 let g:gist_clip_command='pbcopy'
 let g:gist_open_browser_after_post=1
 let g:gist_detect_filetype=1
+" }
+" SVN {
+vnoremap gl :<C-U>!svn blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 " }
 " CUSTOM REMAPS {
 
