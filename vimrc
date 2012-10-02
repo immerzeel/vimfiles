@@ -44,6 +44,7 @@ Bundle 'taku-o/vim-toggle'
 Bundle 'kana/vim-smartinput'
 
 Bundle 'mattn/gist-vim'
+Bundle 'tpope/vim-git'
 Bundle 'vcscommand.vim'
 
 Bundle 'tpope/vim-unimpaired'
@@ -71,7 +72,6 @@ set synmaxcol=2048                      " Maximum number of columns to search fo
 set modelines=0                         " No modelines due to security exploits
 set backspace=2                         " Allow backspacing over anything.
 set nostartofline                       " Leave the cursor where it was.
-set sessionoptions-=options,folds,slash " Don't save these settings to a session file.
 let mapleader=','                       " Use this character instead of '/'.
 let maplocalleader='\'
 
@@ -360,16 +360,7 @@ augroup ft_javascript
     autocmd!
 
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType javascript set makeprg=jshint\ %
-    autocmd FileType javascript set errorformat=%f:\ line\ %l,\ col\ %c,\ %m
-
     autocmd FileType javascript set nofoldenable
-
-    autocmd filetype javascript noremap! <buffer> <F1> :OpenBrowser https://developer.mozilla.org/en-US/search?q=<cword><CR>
-
-    autocmd FileType javascript nnoremap gJ :OpenBrowser http://api.jquery.com/<cword><CR>
-    autocmd FileType javascript nnoremap gB :OpenURL http://documentcloud.github.com/backbone/<CR>
-    autocmd FileType javascript nnoremap g_ :OpenURL http://documentcloud.github.com/underscore/<CR>
 augroup END
 " }
 " JSON {
@@ -441,7 +432,7 @@ let g:vimfiler_as_default_explorer = 1 " Enable the plugin.
 " }
 " TAGBAR {
 " Manual add a tags file to the current directory, include subdirs as well.
-nnoremap <leader><insert> :silent !ctags -aR *<cr>
+nnoremap <leader>tg :silent !ctags -aR *<cr>
 set tags=tags;/ " Look up the directory for tags files.
 
 let g:tagbar_usearrows=1
@@ -459,6 +450,12 @@ let g:netrw_rsync_cmd="rsync -Raze"            " Extra options for rsyc.
 " let g:netrw_retmap        = 1
 " let g:netrw_silent        = 1
 " let g:netrw_special_syntax= 1
+" }
+" NETRW {
+let g:vimfiler_as_default_explorer=1           " Override NETRW as default.
+let g:netrw_winsize=200                        " Width of the opened NETRW window.
+let g:netrw_altv=1                             " Open new window vertically to the right.
+let g:netrw_rsync_cmd="rsync -Raze"            " Extra options for rsyc.
 " }
 " RAGTAG {
 let g:ragtag_global_maps=1 " Enable global mappings.
