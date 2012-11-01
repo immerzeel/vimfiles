@@ -1,12 +1,11 @@
-My Vimfiles settings and bundles.
-
+Vim Setup
+=========
+Setup for my Vim.
+I use Cygwin's version of vim, for the convenience of the unix tools I use
+often.
 
 WINDOWS
-    INSTALL
-        ln -s ~/vimfiles/_vimrc > ~\_vimrc (In Cygwin)
-
-    UPDATE
-        cd <home_dir>\vimfiles
-        git submodule update --init
-
-    (Remember to replace the '\\' with '/' in .gitmodules)
+-------
+### INSTALL
+`ln -s ~/vimfiles > ~\.vim`
+`ln -s ~/vimfiles/.vimrc > ~\.vimrc`

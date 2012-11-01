@@ -16,19 +16,17 @@ call vundle#rc()
 " required! 
 Bundle 'gmarik/vundle'
 
-Bundle 'scrooloose/nerdtree'
-Bundle 'Shougo/neocomplcache-snippets-complete'
+Bundle 'Shougo/neosnippet'
 Bundle 'Shougo/neocomplcache'
 
 Bundle 'ych/srcexpl'
+Bundle 'scrooloose/nerdtree'
 
-Bundle 'Shougo/vimfiler'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/unite-outline'
 Bundle 'Shougo/unite-session'
 Bundle 't9md/vim-unite-ack'
 
-Bundle 'Shougo/vimshell'
 Bundle 'Shougo/vimproc'
 Bundle 'thinca/vim-quickrun'
 Bundle 'tyru/open-browser.vim'
@@ -36,7 +34,6 @@ Bundle 'tyru/open-browser.vim'
 Bundle 'mileszs/ack.vim'
 
 Bundle 'Shougo/jscomplete-vim'
-Bundle 'sjl/vim-sparkup'
 Bundle 'jshint.vim'
 
 Bundle 'godlygeek/tabular'
@@ -45,7 +42,7 @@ Bundle 'kana/vim-smartinput'
 
 Bundle 'mattn/gist-vim'
 Bundle 'tpope/vim-git'
-Bundle 'vcscommand.vim'
+Bundle 'mattn/zencoding-vim'
 
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-abolish'
@@ -55,6 +52,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-eunuch'
 
+Bundle 'jelera/vim-javascript-syntax'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'mattn/webapi-vim'
 Bundle 'msanders/cocoa.vim'
@@ -105,13 +103,6 @@ autocmd FocusLost * :wa
 " }
 " SHELL {
 set shellslash               " Although backslashes suck, some plugins conflict with 'shellslash'.
-" if has('win32')
-"     " Use powershell instead of the default cmd shell.
-"     set shell=powershell.exe
-"     set shellcmdflag=-c
-"     set shellpipe=>
-"     set shellredir=>
-" endif
 
 " Change working directory to the current file path.
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
@@ -214,6 +205,7 @@ set guioptions=ace
 " set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI " Set the GUI font.
 
 if has('win32')
+
     set guifont=Consolas:h10:cANSI " Set the GUI font.
 
     if v:lang =~ "NL"
@@ -249,7 +241,7 @@ set virtualedit=block " Allow the cursor on non-character positions.
 " }
 " LIST & LINE NUMBERS {
 set list                                                            " Show tabs and end of lines as character.
-set listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:+,eol:¬     " Define the characters to represent tab / EOL.
+set listchars=tab:Þ\ ,trail:·,extends:»,precedes:«,nbsp:+,eol:¬     " Define the characters to represent tab / EOL.
 
 set relativenumber " Show relatively numbered lines.
 " Toggle relative/absolute number in Insert/Normal mode.
@@ -259,19 +251,7 @@ autocmd InsertLeave * :set relativenumber
 " }
 " STATUSLINE {
 set laststatus=2
-set statusline=%F\ %m\ %r\ %y\ %{VCSCommandGetStatusLine()}%=%(Line:\ %l/%L\ [%p%%]\ Col:\ %c\ Buf:\ #%n%)\
-"               |   |   |   |    |                     |           |  |    |            |          |
-"               |   |   |   |    |                     |           |  |    |            |          + Buffer.
-"               |   |   |   |    |                     |           |  |    |            + Column number.
-"               |   |   |   |    |                     |           |  |    + Percentage of file.
-"               |   |   |   |    |                     |           |  + Total number of lines.
-"               |   |   |   |    |                     |           + Line number.
-"               |   |   |   |    |                     + Define a group and make it right aligned.
-"               |   |   |   |    + Show repository status.
-"               |   |   |   + Filetype mode.
-"               |   |   + Read Only flag.
-"               |   + Modified flag.
-"               + Full path to file.
+set statusline=%F\ %m\ %r\ %y\ %=%(Line:\ %l/%L\ [%p%%]\ Col:\ %c\ Buf:\ #%n%)\
 
 set wildmenu                   " Turn on command line completion wild style.
 " set wildmode=list:longest    " List all matches and complete to the longest string.
@@ -416,9 +396,6 @@ augroup ft_css
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
     autocmd FileType css set iskeyword+=-
 
-    autocmd FileType css noremap <buffer> <F1> :OpenURL https://www.google.com/search?sitesearch=www.w3schools.com&amp;as_q=<cword><CR>
-    autocmd FileType css noremap! <buffer> <F1> :OpenURL https://www.google.com/search?sitesearch=www.w3schools.com&amp;as_q=<cword><CR>
-
     autocmd BufNewFile,BufRead *.css nnoremap <buffer> <localleader>S viB<cr>:sort<cr>:noh<cr>
 augroup END
 
@@ -444,14 +421,8 @@ let g:netrw_liststyle=3                        " Show tree style listing.
 let g:netrw_winsize=200                        " Width of the opened NETRW window.
 let g:netrw_altv=1                             " Open new window vertically to the right.
 let g:netrw_rsync_cmd="rsync -Raze"            " Extra options for rsyc.
-" let g:netrw_ftp_cmd='c:/cygwin/bin/ftp.exe'
-" let g:netrw_fastbrowse    = 2
-" let g:netrw_keepdir       = 0
-" let g:netrw_retmap        = 1
-" let g:netrw_silent        = 1
-" let g:netrw_special_syntax= 1
 " }
-" NETRW {
+" VIMFILER {
 let g:vimfiler_as_default_explorer=1           " Override NETRW as default.
 let g:netrw_winsize=200                        " Width of the opened NETRW window.
 let g:netrw_altv=1                             " Open new window vertically to the right.
@@ -460,19 +431,6 @@ let g:netrw_rsync_cmd="rsync -Raze"            " Extra options for rsyc.
 " RAGTAG {
 let g:ragtag_global_maps=1 " Enable global mappings.
 
-" }
-" NERDTREE {
-noremap <leader>n :NERDTreeToggle<cr> " Toggle the NERDTree side window.
-noremap <leader>nf :NERDTreeFind<cr>  " Find the current file in NERDTree.
-let NERDTreeHighlightCursorLine=1 " Highlight the cursorline.
-let NERDTreeIgnore=[] " Ignore list.
-let NERDTreeMinimalUI=1 " Minimal GUI for the NERDTree view.
-let NERDTreeDirArrows=1 " Show little arrows in front of directories 
-let NERDTreeHijackNetrw=1 " Use NERDTree instead of NetRW on 'e' and 'o'.
-let NERDTreeChDirMode=2 " Change NERDTree listing when CWD changes.
-" }
-" YANKRING {
-nnoremap <leader>y :YRShow<cr>
 " }
 " MATCHIT {
 " Using the plugin distributed with VIM
