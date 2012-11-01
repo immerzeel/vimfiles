@@ -375,8 +375,8 @@ augroup ft_html
     autocmd!
 
     autocmd FileType html,xhtml set omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType html,xhtml set makeprg=tidy\ -quiet\ -errors\ %
-    autocmd FileType html,xhtml set errorformat=line\ %l\ column\ %v\ -\ %m
+    " autocmd FileType html,xhtml set makeprg=tidy\ -quiet\ -errors\ %
+    " autocmd FileType html,xhtml set errorformat=line\ %l\ column\ %v\ -\ %m
     autocmd FileType html,xhtml set iskeyword+=-,_
     " autocmd FileType html,xhtml set makeprg="tidy --new-blocklevel-tags 'section, article, aside, hgroup, header, footer, nav, figure, figcaption' --new-inline-tags 'video, audio, embed, mark, progress, meter, time, ruby, rt, rp, canvas, command, details, datalist' --new-empty-tags 'wbr, keygen' -e ".shellescape(expand('%'))." 2>&1 \\| grep -v '\<table\> lacks \"summary\" attribute' \\| grep -v 'not approved by W3C'"
 
