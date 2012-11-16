@@ -16,23 +16,24 @@ call vundle#rc()
 " required! 
 Bundle 'gmarik/vundle'
 
-Bundle 'Shougo/neosnippet'
-Bundle 'Shougo/neocomplcache'
+" Bundle 'Shougo/neosnippet'
+" Bundle 'Shougo/neocomplcache'
 
 Bundle 'ych/srcexpl'
 Bundle 'scrooloose/nerdtree'
 
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/unite-outline'
-Bundle 'Shougo/unite-session'
-Bundle 't9md/vim-unite-ack'
+" Bundle 'Shougo/unite.vim'
+" Bundle 'Shougo/unite-outline'
+" Bundle 'Shougo/unite-session'
+" Bundle 't9md/vim-unite-ack'
 
-Bundle 'Shougo/vimproc'
+" Bundle 'Shougo/vimproc'
 Bundle 'thinca/vim-quickrun'
 Bundle 'tyru/open-browser.vim'
 
 Bundle 'mileszs/ack.vim'
 
+Bundle 'jelera/vim-javascript-syntax'
 Bundle 'Shougo/jscomplete-vim'
 Bundle 'jshint.vim'
 
@@ -52,7 +53,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-eunuch'
 
-Bundle 'jelera/vim-javascript-syntax'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'mattn/webapi-vim'
 Bundle 'msanders/cocoa.vim'
@@ -66,8 +66,6 @@ set noerrorbells                        " no audible signal as well.
 syntax on                               " Syntax coloring on.
 set encoding=utf-8                      " Default setting.
 set fileformat=unix                     " Set always to UNIX line ends."
-set synmaxcol=2048                      " Maximum number of columns to search for syntax items.
-set modelines=0                         " No modelines due to security exploits
 set backspace=2                         " Allow backspacing over anything.
 set nostartofline                       " Leave the cursor where it was.
 let mapleader=','                       " Use this character instead of '/'.
@@ -79,19 +77,14 @@ let maplocalleader='\'
 " MOUSE {
 set mousehide                           " Hide the mouse cursor while typing.
 set mouse=nvi                           " Allow the mouse in Normal, Visual and Insert mode.
-
 " }
 " WRAP & WINDOW LIMITS {
 set textwidth=80                        " Set maximum line width.
 set nowrap                              " Do not wrap long lines.
-set linespace=3                         " Set the line height.
-set scrolloff=2                         " Keep the cursor padded with lines when scrolling.
-set sidescrolloff=2                     " Keep the cursor padded when side scrolling.
 
  " Use visual lines, not text object line.
 noremap j gj
 noremap k gk
-
 " }
 " BACKUP & SWAP {
 set nobackup                       " No backup files
@@ -106,18 +99,15 @@ set shellslash               " Although backslashes suck, some plugins conflict 
 
 " Change working directory to the current file path.
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-
 " }
 " DIFF {
 set diffopt=vertical         " Use vertical split for diff mode.
-
 " }
 " UNDO {
 set undodir=$TEMP
 set undofile
 set undolevels=1000         " maximum number of changes that can be undone
 set undoreload=10000        " maximum number lines to save for undo on a buffer reload
-
 " }
 " COPY/PASTE CLIPBOARD {
 set pastetoggle=<F2>        " Disable indenting when pasting from outside VIM.
@@ -150,21 +140,18 @@ function! MyFoldText()
   return v:folddashes . sub
 endfunction
 set foldtext=MyFoldText()
-
 " }
 " INDENT {
 filetype indent on " Indentation based on filetype.
 set smartindent    " Use intelligent indentation for C
 set autoindent     " Use the indentation of the previous line.
 set cindent        " Use C style indentation.
-
 " }
 " TABS {
 set shiftwidth=4 " Number of spaces for an indent.
 set tabstop=4    " Tab equals N space(bar)s.
 set expandtab    " Convert tabs to spaces.
 set smarttab     " A Tab expands to spaces in front of a line.
-
 " }
 " BUFFERS {
 set splitbelow  " Put the new windows on the bottor on horizontal split.
@@ -174,21 +161,16 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
+
+" Split vertically.
 noremap <leader>v <C-w>v
 
 set autoread                       " Detect changes made outside of VIM and reload the buffer.
 set hidden                         " Allow changing from an unsaved buffer.
-
 " }
 " HELP / MANUAL {
-
-" F1 key for Escape key, instead of help. That is the key I want to hit!
-noremap  <F1> <Esc>
-inoremap <F1> <Esc>
-
 " Nullify the <shift -k> for manual.
 nnoremap K <nop>
-
 " }
 " COLORSCHEME {
 set background=dark                 " background settings for solarized
@@ -205,21 +187,9 @@ set guioptions=ace
 " set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI " Set the GUI font.
 
 if has('win32')
-
     set guifont=Consolas:h10:cANSI " Set the GUI font.
-
-    if v:lang =~ "NL"
-        " Start maximize!
-        autocmd GUIEnter * simalt ~ m
-    "                              |
-    "                              + Maximize in Dutch version (for some reason we use Dutch Windows at work).
-    "                                It uses a different shortcut to maximize the window.
-    else
-        " Start maximize!
-        autocmd GUIEnter * simalt ~ x
-        "                           |
-        "                           + Maximize in English version.
-    endif
+    " Start maximize!
+    autocmd GUIEnter * simalt ~ x
 endif
 
 if has('gui_macvim')
@@ -236,18 +206,22 @@ set shortmess=atIA
 "             |+ Truncate file message at the start if path doesn't fit.
 "             + Collection of abbriviating methods.
 set virtualedit=block " Allow the cursor on non-character positions.
-
-
 " }
 " LIST & LINE NUMBERS {
 set list                                                            " Show tabs and end of lines as character.
-set listchars=tab:Þ\ ,trail:·,extends:»,precedes:«,nbsp:+,eol:¬     " Define the characters to represent tab / EOL.
+
+" Define the characters to represent tab / EOL.
+set listchars=tab:\ \
+set listchars+=trail:·
+set listchars+=extends:»
+set listchars+=precedes:«
+set listchars+=nbsp:+
+set listchars+=eol:¬ 
 
 set relativenumber " Show relatively numbered lines.
 " Toggle relative/absolute number in Insert/Normal mode.
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
-
 " }
 " STATUSLINE {
 set laststatus=2
@@ -260,12 +234,10 @@ set wildignore+=.git,.svn      " Ignore Version Control files and directories.
 set showmode                   " Show in which mode it is in.
 set showcmd                    " Show the command being used.
 set cmdheight=2                " Set the command height under the statusline.
-
 " }
 " CURSOR {
 set colorcolumn=+1                      " Highlight the 'textwidth' with a vertical line.
 set cursorline                          " Highlight the line where the cursor is.
-
 " }
 " SEARCH {
 set ignorecase " ignore case in search.
@@ -289,13 +261,12 @@ nnoremap <leader>xr ^vg_y/<c-r>0<cr>
 
 " Substitute
 nnoremap <leader>s :%s//<left>
-nnoremap <Leader>S :%s/<c-r>=expand('<cword>')<cr>//c<left><left>
+nnoremap <Leader>S :%s/<c-r><c-w><cr>//c<left><left>
 " }
 " ANY FILE {
 
 " Resize splits when the window is resized
 autocmd VimResized * exe "normal! \<c-w>="
-
 " }
 " VIMRC {
 augroup ft_vimrc
@@ -306,8 +277,7 @@ augroup ft_vimrc
 
     " Bind <F1> to show the keyword under cursor
     " general help can still be entered manually, with :h
-    autocmd filetype *.vim noremap <buffer> <F1> <Esc>:help <C-r><C-w><CR>
-    autocmd filetype *.vim noremap! <buffer> <F1> <Esc>:help <C-r><C-w><CR>
+    autocmd FileType vim noremap <F2> :h <cword>
 augroup END
 
 " Make _vimrc easy accessible.
@@ -404,9 +374,6 @@ let javascript_enable_domhtmlcss=1
 " NEOCOMPLCACHE {
 let g:neocomplcache_enable_at_startup = 1 " Enable the plugin.
 " }
-" VIMFILER {
-let g:vimfiler_as_default_explorer = 1 " Enable the plugin.
-" }
 " TAGBAR {
 " Manual add a tags file to the current directory, include subdirs as well.
 nnoremap <leader>tg :silent !ctags -aR *<cr>
@@ -422,11 +389,9 @@ let g:netrw_winsize=200                        " Width of the opened NETRW windo
 let g:netrw_altv=1                             " Open new window vertically to the right.
 let g:netrw_rsync_cmd="rsync -Raze"            " Extra options for rsyc.
 " }
-" VIMFILER {
-let g:vimfiler_as_default_explorer=1           " Override NETRW as default.
-let g:netrw_winsize=200                        " Width of the opened NETRW window.
-let g:netrw_altv=1                             " Open new window vertically to the right.
-let g:netrw_rsync_cmd="rsync -Raze"            " Extra options for rsyc.
+" NERDTREE {
+noremap <leader>n  :NERDTreeToggle<cr>
+noremap <leader>nf :NERDTreeFind<cr>
 " }
 " RAGTAG {
 let g:ragtag_global_maps=1 " Enable global mappings.
@@ -443,7 +408,6 @@ let g:gist_open_browser_after_post=1
 let g:gist_detect_filetype=1
 " }
 " SVN {
-vnoremap gl :<C-U>!svn blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 " }
 " CUSTOM REMAPS {
 
