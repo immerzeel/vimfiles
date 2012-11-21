@@ -16,21 +16,10 @@ call vundle#rc()
 " required! 
 Bundle 'gmarik/vundle'
 
-" Bundle 'Shougo/neosnippet'
-" Bundle 'Shougo/neocomplcache'
-
-Bundle 'ych/srcexpl'
 Bundle 'scrooloose/nerdtree'
 
-" Bundle 'Shougo/unite.vim'
-" Bundle 'Shougo/unite-outline'
-" Bundle 'Shougo/unite-session'
-" Bundle 't9md/vim-unite-ack'
-
-" Bundle 'Shougo/vimproc'
 Bundle 'thinca/vim-quickrun'
 Bundle 'tyru/open-browser.vim'
-
 Bundle 'mileszs/ack.vim'
 
 Bundle 'jelera/vim-javascript-syntax'
@@ -38,7 +27,6 @@ Bundle 'Shougo/jscomplete-vim'
 Bundle 'jshint.vim'
 
 Bundle 'godlygeek/tabular'
-Bundle 'taku-o/vim-toggle'
 Bundle 'kana/vim-smartinput'
 
 Bundle 'mattn/gist-vim'
@@ -52,6 +40,7 @@ Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-vividchalk'
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'mattn/webapi-vim'
@@ -100,6 +89,10 @@ set shellslash               " Although backslashes suck, some plugins conflict 
 " Change working directory to the current file path.
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 " }
+" HELP {
+" Disable the help button, Apple's keyboard is hard enough.
+nnoremap <F1> <nop>
+" }
 " DIFF {
 set diffopt=vertical         " Use vertical split for diff mode.
 " }
@@ -122,6 +115,8 @@ set formatoptions=croq                  " t
 "                 |+ Insert * when typing <Enter> in Insert mode.
 "                 + Break comment on textwidth.
 set comments=sl:/**,mb:\ *,exl:\ */,sr:/*,mb:*,exl:*/,://
+" Format paragraph.
+nnoremap Q gqip 
 " }
 " FOLDING {
 set foldenable                                                       " Turn folding on.
@@ -132,14 +127,6 @@ set foldlevelstart=0                                                 " Allow fol
 
 nnoremap <leader>z zMzvzz       " Focus on the current fold.
 nnoremap <space> za             " Toggle folders open/close.
-
-" Set a custom foldtext for a collapsed fold.
-function! MyFoldText()
-  let line = getline(v:foldstart)
-  let sub = substitute(line, '"\|/\*\|\*/\|{\d\=', '', 'g') " } Added these markers to prevent folding.
-  return v:folddashes . sub
-endfunction
-set foldtext=MyFoldText()
 " }
 " INDENT {
 filetype indent on " Indentation based on filetype.
@@ -167,10 +154,6 @@ noremap <leader>v <C-w>v
 
 set autoread                       " Detect changes made outside of VIM and reload the buffer.
 set hidden                         " Allow changing from an unsaved buffer.
-" }
-" HELP / MANUAL {
-" Nullify the <shift -k> for manual.
-nnoremap K <nop>
 " }
 " COLORSCHEME {
 set background=dark                 " background settings for solarized
@@ -229,15 +212,16 @@ set statusline=%F\ %m\ %r\ %y\ %=%(Line:\ %l/%L\ [%p%%]\ Col:\ %c\ Buf:\ #%n%)\
 
 set wildmenu                   " Turn on command line completion wild style.
 " set wildmode=list:longest    " List all matches and complete to the longest string.
-set wildmode=longest,list,full " List all matches and complete to the longest string.
+" set wildmode=longest,list,full " List all matches and complete to the longest string.
+set wildmode=full              " List all matches and complete to the longest string.
 set wildignore+=.git,.svn      " Ignore Version Control files and directories.
 set showmode                   " Show in which mode it is in.
 set showcmd                    " Show the command being used.
 set cmdheight=2                " Set the command height under the statusline.
 " }
 " CURSOR {
-set colorcolumn=+1                      " Highlight the 'textwidth' with a vertical line.
-set cursorline                          " Highlight the line where the cursor is.
+set colorcolumn=+1 " Highlight the 'textwidth' with a vertical line.
+set cursorline     " Highlight the line where the cursor is.
 " }
 " SEARCH {
 set ignorecase " ignore case in search.
@@ -275,17 +259,13 @@ augroup ft_vimrc
     " Source the vimrc file after saving it.
     autocmd BufWritePost .vimrc source $MYVIMRC
 
-    " Bind <F1> to show the keyword under cursor
-    " general help can still be entered manually, with :h
-    autocmd FileType vim noremap <F2> :h <cword>
+    " Set to empty, defaults to Vim's internal help.
+    autocmd FileType vim setlocal keywordprg=:help
+
 augroup END
 
 " Make _vimrc easy accessible.
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-
-" Source
-vnoremap <leader>xv y:execute @@<cr>
-nnoremap <leader>xv ^vg_y:execute @@<cr>
 " }
 " QUICKFIX {
 augroup ft_quickfix
@@ -298,10 +278,10 @@ augroup ft_actionscript
     autocmd!
 
     " ActionScript. Override the standard Altas (*.as).
-    autocmd BufNewFile,BufRead *.as set filetype=actionscript
+    autocmd BufNewFile,BufRead *.as setlocal filetype=actionscript
 
-    autocmd FileType actionscript noremap <C-Enter> :silent !test_movie.jsfl<cr>
-    autocmd FileType actionscript noremap <S-C-Enter> :silent !publish_all.jsfl<cr>
+    autocmd FileType actionscript noremap <buffer> <C-Enter> :silent !test_movie.jsfl<cr>
+    autocmd FileType actionscript noremap <buffer> <S-C-Enter> :silent !publish_all.jsfl<cr>
 augroup END
 
 " }
@@ -309,25 +289,25 @@ augroup END
 augroup ft_javascript
     autocmd!
 
-    autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType javascript set nofoldenable
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType javascript setlocal nofoldenable
 augroup END
 " }
 " JSON {
 augroup ft_json
     autocmd!
 
-    autocmd BufNewFile,BufRead *.json set filetype=json syntax=javascript
+    autocmd BufNewFile,BufRead *.json setlocal filetype=json syntax=javascript
 augroup END
 " }
 " HTML {
 augroup ft_html
     autocmd!
 
-    autocmd FileType html,xhtml set omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType html,xhtml set makeprg=tidy\ -quiet\ -errors\ %
-    autocmd FileType html,xhtml set errorformat=line\ %l\ column\ %v\ -\ %m
-    autocmd FileType html,xhtml set iskeyword+=-,_
+    autocmd FileType html,xhtml setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType html,xhtml setlocal makeprg=tidy\ -quiet\ -errors\ %
+    autocmd FileType html,xhtml setlocal errorformat=line\ %l\ column\ %v\ -\ %m
+    autocmd FileType html,xhtml setlocal iskeyword+=-,_
     " autocmd FileType html,xhtml set makeprg="tidy --new-blocklevel-tags 'section, article, aside, hgroup, header, footer, nav, figure, figcaption' --new-inline-tags 'video, audio, embed, mark, progress, meter, time, ruby, rt, rp, canvas, command, details, datalist' --new-empty-tags 'wbr, keygen' -e ".shellescape(expand('%'))." 2>&1 \\| grep -v '\<table\> lacks \"summary\" attribute' \\| grep -v 'not approved by W3C'"
 
     " Fold the current tag.
@@ -339,9 +319,8 @@ augroup END
 augroup ft_php
     autocmd!
 
-    autocmd FileType php set iskeyword+=_
-
-    autocmd FileType php nnoremap gH :OpenURL http://api.drupal.org/api/search/7/api/search/4.7/<cword><CR>
+    autocmd FileType php setlocal iskeyword+=_
+    autocmd FileType php setlocal keywordprg=:OpenBrowser http://api.drupal.org/api/search/7/api/search/4.7/
 augroup END
 
 " }
@@ -357,16 +336,16 @@ augroup ft_markdown
     autocmd Filetype markdown nnoremap <buffer> <localleader>3 I### <ESC>
 augroup END
 " }
-" CSS {
+" CSS / SCSS {
 augroup ft_css
     autocmd!
 
-    autocmd FileType css set foldmethod=marker
-    autocmd FileType css set foldmarker={,}
-    autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-    autocmd FileType css set iskeyword+=-
+    autocmd FileType css,scss setlocal foldmethod=marker
+    autocmd FileType css,scss setlocal foldmarker={,}
+    autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType css,scss setlocal iskeyword+=-
 
-    autocmd BufNewFile,BufRead *.css nnoremap <buffer> <localleader>S viB<cr>:sort<cr>:noh<cr>
+    autocmd BufNewFile,BufRead *.css,*.scss nnoremap <buffer> <localleader>S viB<cr>:sort<cr>:noh<cr>
 augroup END
 
 let javascript_enable_domhtmlcss=1
@@ -407,7 +386,10 @@ let g:gist_clip_command='pbcopy'
 let g:gist_open_browser_after_post=1
 let g:gist_detect_filetype=1
 " }
-" SVN {
+" EX {
+" Move on the commandline like in the shell.
+cnoremap <c-a> <home>
+cnoremap <c-e> <end>
 " }
 " CUSTOM REMAPS {
 
@@ -420,4 +402,9 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 " }
 " NON PUBLIC SETTINGS {
 " so ~/_vimrc_private
+" If an .exrc exists, source it.
+if filereadable(".exrc")
+    echom "Local .exrc loaded."
+    source .exrc
+endif
 " }
