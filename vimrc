@@ -19,7 +19,7 @@ Bundle 'gmarik/vundle'
 " Bundle 'Shougo/neosnippet'
 " Bundle 'Shougo/neocomplcache'
 
-Bundle 'ych/srcexpl'
+Bundle 'wesleyche/SrcExpl'
 Bundle 'scrooloose/nerdtree'
 
 " Bundle 'Shougo/unite.vim'
@@ -52,6 +52,7 @@ Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-haml'
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'mattn/webapi-vim'
@@ -407,8 +408,6 @@ let g:gist_clip_command='pbcopy'
 let g:gist_open_browser_after_post=1
 let g:gist_detect_filetype=1
 " }
-" SVN {
-" }
 " CUSTOM REMAPS {
 
 " Clean whitespace
@@ -420,4 +419,7 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 " }
 " NON PUBLIC SETTINGS {
 " so ~/_vimrc_private
+if exists('./exrc')
+    source ./exrc
+endif
 " }
