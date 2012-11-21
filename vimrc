@@ -30,9 +30,9 @@ Bundle 'godlygeek/tabular'
 Bundle 'kana/vim-smartinput'
 
 Bundle 'mattn/gist-vim'
-Bundle 'tpope/vim-git'
 Bundle 'mattn/zencoding-vim'
 
+Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-repeat'
@@ -41,6 +41,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-vividchalk'
+Bundle 'tpope/vim-haml'
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'mattn/webapi-vim'
@@ -308,7 +309,6 @@ augroup ft_html
     autocmd FileType html,xhtml setlocal makeprg=tidy\ -quiet\ -errors\ %
     autocmd FileType html,xhtml setlocal errorformat=line\ %l\ column\ %v\ -\ %m
     autocmd FileType html,xhtml setlocal iskeyword+=-,_
-    " autocmd FileType html,xhtml set makeprg="tidy --new-blocklevel-tags 'section, article, aside, hgroup, header, footer, nav, figure, figcaption' --new-inline-tags 'video, audio, embed, mark, progress, meter, time, ruby, rt, rp, canvas, command, details, datalist' --new-empty-tags 'wbr, keygen' -e ".shellescape(expand('%'))." 2>&1 \\| grep -v '\<table\> lacks \"summary\" attribute' \\| grep -v 'not approved by W3C'"
 
     " Fold the current tag.
     autocmd FileType html,xhtml nnoremap <buffer> <localleader>f Vatzf
