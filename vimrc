@@ -1,4 +1,4 @@
-" GENERAL {
+"  {
 set nocompatible                  " Turn of Vi compatibility.
 
 filetype off                    " force reloading *after* pathogen loaded
@@ -23,11 +23,12 @@ Bundle 'tyru/open-browser.vim'
 Bundle 'mileszs/ack.vim'
 
 Bundle 'jelera/vim-javascript-syntax'
-Bundle 'Shougo/jscomplete-vim'
 Bundle 'jshint.vim'
 
+Bundle 'VisIncr'
 Bundle 'godlygeek/tabular'
-Bundle 'kana/vim-smartinput'
+Bundle 'kana/vim-list:smartinput'
+Bundle 'majutsushi/tagbar'
 
 Bundle 'mattn/gist-vim'
 Bundle 'mattn/zencoding-vim'
@@ -212,8 +213,6 @@ set laststatus=2
 set statusline=%F\ %m\ %r\ %y\ %=%(Line:\ %l/%L\ [%p%%]\ Col:\ %c\ Buf:\ #%n%)\
 
 set wildmenu                   " Turn on command line completion wild style.
-" set wildmode=list:longest    " List all matches and complete to the longest string.
-" set wildmode=longest,list,full " List all matches and complete to the longest string.
 set wildmode=full              " List all matches and complete to the longest string.
 set wildignore+=.git,.svn      " Ignore Version Control files and directories.
 set showmode                   " Show in which mode it is in.
