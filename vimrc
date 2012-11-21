@@ -46,6 +46,8 @@ Bundle 'tpope/vim-haml'
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'mattn/webapi-vim'
+Bundle 'kana/vspec'
+
 Bundle 'msanders/cocoa.vim'
 " }
 " SYSTEM {
