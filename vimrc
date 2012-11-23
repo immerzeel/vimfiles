@@ -27,7 +27,7 @@ Bundle 'jshint.vim'
 
 Bundle 'VisIncr'
 Bundle 'godlygeek/tabular'
-Bundle 'kana/vim-list:smartinput'
+Bundle 'kana/vim-smartinput'
 Bundle 'majutsushi/tagbar'
 
 Bundle 'mattn/gist-vim'
