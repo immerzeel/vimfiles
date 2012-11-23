@@ -48,6 +48,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'mattn/webapi-vim'
 Bundle 'kana/vspec'
 
+Bundle 'RipRip/clang_complete'
 Bundle 'msanders/cocoa.vim'
 " }
 " SYSTEM {
