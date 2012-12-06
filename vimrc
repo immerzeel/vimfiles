@@ -322,7 +322,6 @@ augroup ft_php
     autocmd!
 
     autocmd FileType php setlocal iskeyword+=_
-    autocmd FileType php setlocal keywordprg=:OpenBrowser http://api.drupal.org/api/search/7/api/search/4.7/
 augroup END
 
 " }
