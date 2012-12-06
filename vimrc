@@ -199,12 +199,12 @@ set virtualedit=block " Allow the cursor on non-character positions.
 set list                                                            " Show tabs and end of lines as character.
 
 " Define the characters to represent tab / EOL.
-set listchars=tab:\ \
+set listchars=tab:>\ 
 set listchars+=trail:·
 set listchars+=extends:»
 set listchars+=precedes:«
 set listchars+=nbsp:+
-set listchars+=eol:¬ 
+set listchars+=eol:¬
 
 set relativenumber " Show relatively numbered lines.
 " Toggle relative/absolute number in Insert/Normal mode.
