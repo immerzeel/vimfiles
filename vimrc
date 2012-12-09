@@ -53,7 +53,7 @@ Bundle 'msanders/cocoa.vim'
 " SYSTEM {
 filetype plugin indent on               " enable detection, plugins.
 
-set novisualbell                        " Do not flash the screen when error occurs.
+set visualbell t_vb=                    " Do not flash the screen when error occurs.
 set noerrorbells                        " no audible signal as well.
 
 syntax on                               " Syntax coloring on.
