@@ -27,7 +27,7 @@ Bundle 'jshint.vim'
 
 Bundle 'VisIncr'
 Bundle 'godlygeek/tabular'
-Bundle 'kana/vim-list:smartinput'
+Bundle 'kana/vim-smartinput'
 Bundle 'majutsushi/tagbar'
 
 Bundle 'mattn/gist-vim'
@@ -48,6 +48,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'mattn/webapi-vim'
 Bundle 'kana/vspec'
 
+Bundle 'RipRip/clang_complete'
 Bundle 'msanders/cocoa.vim'
 " }
 " SYSTEM {
@@ -198,12 +199,12 @@ set virtualedit=block " Allow the cursor on non-character positions.
 set list                                                            " Show tabs and end of lines as character.
 
 " Define the characters to represent tab / EOL.
-set listchars=tab:\ \
+set listchars=tab:>\ 
 set listchars+=trail:·
 set listchars+=extends:»
 set listchars+=precedes:«
 set listchars+=nbsp:+
-set listchars+=eol:¬ 
+set listchars+=eol:¬
 
 set relativenumber " Show relatively numbered lines.
 " Toggle relative/absolute number in Insert/Normal mode.
@@ -321,7 +322,6 @@ augroup ft_php
     autocmd!
 
     autocmd FileType php setlocal iskeyword+=_
-    autocmd FileType php setlocal keywordprg=:OpenBrowser http://api.drupal.org/api/search/7/api/search/4.7/
 augroup END
 
 " }
