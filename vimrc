@@ -164,7 +164,7 @@ set hidden                         " Allow changing from an unsaved buffer.
 set background=dark                 " background settings for solarized
 let g:solarized_hitrail=1           " Correct the high contrast characters in the cursorline.
 
-colorscheme solarized               " Color scheme of VIM.
+colorscheme vividchalk              " Color scheme of VIM.
 " }
 " GUI OPTIONS {
 set guioptions=ace
