@@ -43,6 +43,8 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-vividchalk'
 Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-scriptease'
+Bundle 'tpope/vim-rsi'
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'mattn/webapi-vim'
