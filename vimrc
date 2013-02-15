@@ -4,63 +4,68 @@ set nocompatible                  " Turn of Vi compatibility.
 filetype off                    " force reloading *after* pathogen loaded
 
 " VUNDLE {1
-" Download and install Vundle if no directory in bundle.
-if !isdirectory(expand('~/.vim/bundle/vundle'))
-  exec '!git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle'
-endif
-
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
 " required! 
 Bundle 'gmarik/vundle'
 
+Bundle 'tpope/vim-sensible'
+
+" File management
 Bundle 'scrooloose/nerdtree'
-
-Bundle 'thinca/vim-quickrun'
-Bundle 'tyru/open-browser.vim'
 Bundle 'mileszs/ack.vim'
+Bundle 'majutsushi/tagbar'
 
+" Themeing
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tpope/vim-markdown'
+
+" Search
+Bundle 'tpope/vim-abolish'
+
+" Web Development
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'jshint.vim'
+Bundle 'mattn/zencoding-vim'
+Bundle 'tpope/vim-haml'
 
+" Text
 Bundle 'VisIncr'
 Bundle 'godlygeek/tabular'
 Bundle 'kana/vim-smartinput'
-Bundle 'majutsushi/tagbar'
-
-Bundle 'mattn/gist-vim'
-Bundle 'mattn/zencoding-vim'
-
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-sleuth'
 Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-unimpaired'
+
+" Git
+Bundle 'tpope/vim-fugitive'
+Bundle 'mattn/gist-vim'
+
+" Unix
+Bundle 'thinca/vim-quickrun'
 Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-vividchalk'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-scriptease'
 Bundle 'tpope/vim-rsi'
+Bundle 'tyru/open-browser.vim'
 
-Bundle 'altercation/vim-colors-solarized'
+" VimScript
+Bundle 'kana/vim-vspec'
 Bundle 'mattn/webapi-vim'
-Bundle 'kana/vspec'
+Bundle 'tpope/vim-scriptease'
 
-Bundle 'RipRip/clang_complete'
+" Objective-C
+Bundle 'Rip-Rip/clang_complete'
 Bundle 'msanders/cocoa.vim'
+
 " SYSTEM {1
-filetype plugin indent on               " enable detection, plugins.
 
 set visualbell t_vb=                    " Do not flash the screen when error occurs.
 set noerrorbells                        " no audible signal as well.
 
-syntax on                               " Syntax coloring on.
 set encoding=utf-8                      " Default setting.
 set fileformat=unix                     " Set always to UNIX line ends."
-set backspace=2                         " Allow backspacing over anything.
 set nostartofline                       " Leave the cursor where it was.
 let mapleader=','                       " Use this character instead of '/'.
 let maplocalleader='\'
@@ -68,7 +73,7 @@ set cryptmethod=blowfish              " More secure method. Use vim -x {foobar}
 
 " MOUSE {1
 set mousehide                           " Hide the mouse cursor while typing.
-set mouse=nvi                           " Allow the mouse in Normal, Visual and Insert mode.
+
 " WRAP & WINDOW LIMITS {1
 set textwidth=80                        " Set maximum line width.
 set nowrap                              " Do not wrap long lines.
@@ -76,10 +81,6 @@ set nowrap                              " Do not wrap long lines.
  " Use visual lines, not text object line.
 noremap j gj
 noremap k gk
-" BACKUP & SWAP {1
-set nobackup                       " No backup files
-set noswapfile                     " Disable swapfiles, they collide all the time.
-
  " Save when losing focus.
 autocmd FocusLost * :wa
 
@@ -88,19 +89,23 @@ set shellslash               " Although backslashes suck, some plugins conflict 
 
 " Change working directory to the current file path.
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+
 " HELP {1
 " Disable the help button, Apple's keyboard is hard enough.
 nnoremap <F1> <nop>
+
 " DIFF {1
 set diffopt=vertical         " Use vertical split for diff mode.
+
 " UNDO {1
-set undodir=$TEMP
 set undofile
 set undolevels=1000         " maximum number of changes that can be undone
 set undoreload=10000        " maximum number lines to save for undo on a buffer reload
+
 " COPY/PASTE CLIPBOARD {1
 set pastetoggle=<F2>        " Disable indenting when pasting from outside VIM.
 set clipboard=unnamed       " Cut/Copy in the OS will be P abled.
+
 " FORMATING {1
 set formatoptions=croq                  " t
 "                 ||||                    |
@@ -112,6 +117,7 @@ set formatoptions=croq                  " t
 set comments=sl:/**,mb:\ *,exl:\ */,sr:/*,mb:*,exl:*/,://
 " Format paragraph.
 nnoremap Q gqip 
+
 " FOLDING {1
 set foldenable                                                       " Turn folding on.
 set foldmethod=marker                                                " How the fold is used
@@ -121,16 +127,17 @@ set foldlevelstart=0                                                 " Allow fol
 
 nnoremap <leader>z zMzvzz       " Focus on the current fold.
 nnoremap <space> za             " Toggle folders open/close.
+
 " INDENT {1
 filetype indent on " Indentation based on filetype.
 set smartindent    " Use intelligent indentation for C
-set autoindent     " Use the indentation of the previous line.
 set cindent        " Use C style indentation.
+
 " TABS {1
 set shiftwidth=4 " Number of spaces for an indent.
 set tabstop=4    " Tab equals N space(bar)s.
 set expandtab    " Convert tabs to spaces.
-set smarttab     " A Tab expands to spaces in front of a line.
+
 " BUFFERS {1
 set splitbelow  " Put the new windows on the bottor on horizontal split.
 set splitright  " Put the new window on the right on vertical split.
@@ -143,13 +150,14 @@ noremap <C-l> <C-w>l
 " Split vertically.
 noremap <leader>v <C-w>v
 
-set autoread                       " Detect changes made outside of VIM and reload the buffer.
 set hidden                         " Allow changing from an unsaved buffer.
+
 " COLORSCHEME {1
 set background=dark                 " background settings for solarized
 let g:solarized_hitrail=1           " Correct the high contrast characters in the cursorline.
 
-colorscheme vividchalk              " Color scheme of VIM.
+colorscheme solarized              " Color scheme of VIM.
+
 " GUI OPTIONS {1
 set guioptions=ace
 "              |||
@@ -159,16 +167,15 @@ set guioptions=ace
 " set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI " Set the GUI font.
 
 if has('win32')
-    set guifont=Consolas:h10:cANSI " Set the GUI font.
+    set guifont=Consolas:h12:cANSI " Set the GUI font.
     " Start maximize!
     autocmd GUIEnter * simalt ~ x
 endif
 
 if has('gui_macvim')
-    set guifont=Monaco:h15 " Set the GUI font.
+    set guifont=Inconsolata:h14 " Set the GUI font.
 endif
 
-set showmatch         " Show matching brace.
 set matchtime=5       " Blink the matching brace X times.
 set fillchars=""      " No characters in windows separators.
 set lazyredraw        " Don't redraw while performing macros.
@@ -178,45 +185,30 @@ set shortmess=atIA
 "             |+ Truncate file message at the start if path doesn't fit.
 "             + Collection of abbriviating methods.
 set virtualedit=block " Allow the cursor on non-character positions.
+
 " LIST & LINE NUMBERS {1
-set list                                                            " Show tabs and end of lines as character.
+set list    " Show tabs and end of lines as character.
+set number  " Show line numbers.
 
-" Define the characters to represent tab / EOL.
-set listchars=tab:>\ 
-set listchars+=trail:·
-set listchars+=extends:»
-set listchars+=precedes:«
-set listchars+=nbsp:+
-set listchars+=eol:¬
-
-set relativenumber " Show relatively numbered lines.
-" Toggle relative/absolute number in Insert/Normal mode.
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
 " STATUSLINE {1
-set laststatus=2
 set statusline=%F\ %m\ %r\ %y\ %=%(Line:\ %l/%L\ [%p%%]\ Col:\ %c\ Buf:\ #%n%)\
 
-set wildmenu                   " Turn on command line completion wild style.
 set wildmode=full              " List all matches and complete to the longest string.
 set wildignore+=.git,.svn      " Ignore Version Control files and directories.
 set showmode                   " Show in which mode it is in.
-set showcmd                    " Show the command being used.
 set cmdheight=2                " Set the command height under the statusline.
+
 " CURSOR {1
 set colorcolumn=+1 " Highlight the 'textwidth' with a vertical line.
 set cursorline     " Highlight the line where the cursor is.
+
 " SEARCH {1
 set ignorecase " ignore case in search.
-set incsearch  " Start search while typing.
 set hlsearch   " Highlight the search results.
 set wrapscan   " Search from to the beginning of the file, when the end is reached.
 set smartcase  " when capitals are used, activate case-sensitive search automatically
 set gdefault   " Use global(g) option by default.
 set path+=./** " Search recursively down the current path.
-
-" Disable highlighted search results.
-noremap <leader><space> :noh<cr>
 
 " Use sane regex in normal mode.
 nnoremap / /\v
@@ -229,10 +221,12 @@ nnoremap <leader>xr ^vg_y/<c-r>0<cr>
 " Substitute
 nnoremap <leader>s :%s//<left>
 nnoremap <Leader>S :%s/<c-r><c-w><cr>//c<left><left>
+
 " ANY FILE {1
 
 " Resize splits when the window is resized
 autocmd VimResized * exe "normal! \<c-w>="
+
 " VIMRC {1
 augroup ft_vimrc
     autocmd!
@@ -247,11 +241,13 @@ augroup END
 
 " Make _vimrc easy accessible.
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
 " QUICKFIX {1
 augroup ft_quickfix
     autocmd!
     autocmd Filetype qf setlocal colorcolumn=0 nolist nocursorline nowrap
 augroup END
+
 " ACTIONSCRIPT {1
 augroup ft_actionscript
     autocmd!
@@ -270,12 +266,14 @@ augroup ft_javascript
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
     autocmd FileType javascript setlocal nofoldenable
 augroup END
+
 " JSON {1
 augroup ft_json
     autocmd!
 
     autocmd BufNewFile,BufRead *.json setlocal filetype=json syntax=javascript
 augroup END
+
 " HTML {1
 augroup ft_html
     autocmd!
@@ -307,6 +305,7 @@ augroup ft_markdown
     autocmd Filetype markdown nnoremap <buffer> <localleader>2 yypVr-
     autocmd Filetype markdown nnoremap <buffer> <localleader>3 I### <ESC>
 augroup END
+
 " CSS / SCSS {1
 augroup ft_css
     autocmd!
@@ -320,8 +319,10 @@ augroup ft_css
 augroup END
 
 let javascript_enable_domhtmlcss=1
+
 " NEOCOMPLCACHE {1
 let g:neocomplcache_enable_at_startup = 1 " Enable the plugin.
+
 " TAGBAR {1
 " Manual add a tags file to the current directory, include subdirs as well.
 nnoremap <leader>tg :silent !ctags -aR *<cr>
@@ -335,20 +336,18 @@ let g:netrw_liststyle=3                        " Show tree style listing.
 let g:netrw_winsize=200                        " Width of the opened NETRW window.
 let g:netrw_altv=1                             " Open new window vertically to the right.
 let g:netrw_rsync_cmd="rsync -Raze"            " Extra options for rsyc.
+
 " NERDTREE {1
 noremap <leader>n  :NERDTreeToggle<cr>
 noremap <leader>nf :NERDTreeFind<cr>
 " RAGTAG {1
 let g:ragtag_global_maps=1 " Enable global mappings.
 
-" MATCHIT {1
-" Using the plugin distributed with VIM
-runtime macros/matchit.vim
-
 " GIST {1
 let g:gist_clip_command='pbcopy'
 let g:gist_open_browser_after_post=1
 let g:gist_detect_filetype=1
+
 " EX {1
 " Move on the commandline like in the shell.
 cnoremap <c-a> <home>
@@ -361,8 +360,10 @@ noremap <leader>W  :%s/\s\+$//<cr>
 " double percentage sign in command mode is expanded
 " to directory of current file - http://vimcasts.org/e/14
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
 " NON PUBLIC SETTINGS {1
 " so ~/_vimrc_private
+"
 " If an .exrc exists, source it.
 if filereadable(".exrc")
     echom "Local .exrc loaded."
