@@ -4,6 +4,8 @@ Setup for my Vim.
 I use Cygwin's version of vim, for the convenience of the unix tools I use
 often.
 
+Install script is still a work in progress.
+
 WINDOWS
 -------
 ### INSTALL
