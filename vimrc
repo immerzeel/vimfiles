@@ -214,6 +214,7 @@ set cindent " Use C style indentation.
 " 15. Folding {{{1
 " ================
 set foldenable " Turn folding on.
+set foldmethod=marker " Fold on markers.
 
 nnoremap <leader>z zMzvzz " Focus on the current fold.
 nnoremap <space> za " Toggle folders open/close.
@@ -264,7 +265,6 @@ cnoremap <c-e> <end>
 
 " 23. Language specific {{{1
 " ==========================
-
 " Vimrc {{{2
 augroup ft_vimrc
     autocmd!
@@ -327,10 +327,10 @@ augroup END
 
 let javascript_enable_domhtmlcss=1
 
-" 23. Language specific {{{1
+" 24. multi-byte characters {{{1
 " ==========================
 
-" 24. Various {{{1
+" 25. Various {{{1
 " ================
 
 " Tagbar {{{2
@@ -354,6 +354,15 @@ let g:ragtag_global_maps=1 " Enable global mappings.
 let g:gist_clip_command='pbcopy'
 let g:gist_open_browser_after_post=1
 let g:gist_detect_filetype=1
+
+" }}}
+" Clang complete {{{2
+let g:clang_auto=1
+let g:clang_auto_user_options='path, .clang_complete'
+let g:clang_copen=1
+let g:clang_use_library=1
+let g:clang_snippets=1
+let g:clang_snippets='clang_complete'
 
 " }}}
 " so ~/_vimrc_private
