@@ -334,12 +334,13 @@ let javascript_enable_domhtmlcss=1
 
 " 25. Various {{{1
 " ================
-" SnipMate {{{1
+" SnipMate {{{2
 let g:snip_author='Pascal Immerzeel'
 let snippets_dir="$HOME/vim/snippets"
 
 " Easy access to filetype snippet file.
 nnoremap <leader>es :execute 'vs $HOME/vimfiles/snippets/'.&filetype.'.snippet'<cr>
+
 " Tagbar {{{2
 let g:tagbar_usearrows=1
 nnoremap <leader>t :TagbarToggle<cr>
@@ -369,7 +370,7 @@ let g:clang_auto_user_options='path, .clang_complete'
 let g:clang_copen=1
 let g:clang_use_library=1
 let g:clang_snippets=1
-let g:clang_snippets='clang_complete'
+let g:clang_snippets='snipmate'
 
 " }}}
 " so ~/_vimrc_private
