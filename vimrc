@@ -3,6 +3,7 @@
 set nocompatible " Turn off Vi compatibility.
 set pastetoggle=<F2> " Disable indenting when pasting from outside VIM.
 set runtimepath+=~/.vim/bundle/vundle " Add Vundle to the runtime path.
+set runtimepath+=~/.vim/snippets:~/.vim/bundle/vundle " Add Vundle to the runtime path.
 
 filetype off " Required for Vundle.
 call vundle#rc()
@@ -336,10 +337,10 @@ let javascript_enable_domhtmlcss=1
 " ================
 " SnipMate {{{2
 let g:snip_author='Pascal Immerzeel'
-let snippets_dir="$HOME/vim/snippets"
+let snippets_dir="$HOME/.vim/snippets"
 
 " Easy access to filetype snippet file.
-nnoremap <leader>es :execute 'vs $HOME/vimfiles/snippets/'.&filetype.'.snippets'<cr>
+nnoremap <leader>es :execute 'vs $HOME/.vim/snippets/'.&filetype.'.snippets'<cr>
 
 " Tagbar {{{2
 let g:tagbar_usearrows=1
