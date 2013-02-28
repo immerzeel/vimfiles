@@ -1,5 +1,6 @@
 **/tags
 *~
+*.swp
 sessions/
 .netrwhist
 bundle

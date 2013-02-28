@@ -54,7 +54,9 @@ Bundle 'mattn/webapi-vim'
 Bundle 'tpope/vim-scriptease'
 
 " Objective-C
+Bundle 'kiwi.vim'
 Bundle 'Rip-Rip/clang_complete'
+Bundle 'Match-Bracket-for-Objective-C'
 Bundle 'msanders/cocoa.vim'
 
 " 2. Moving around, searching and patterns {{{1
@@ -332,7 +334,12 @@ let javascript_enable_domhtmlcss=1
 
 " 25. Various {{{1
 " ================
+" SnipMate {{{1
+let g:snip_author='Pascal Immerzeel'
+let snippets_dir="$HOME/vim/snippets"
 
+" Easy access to filetype snippet file.
+nnoremap <leader>es :execute 'vs $HOME/vimfiles/snippets/'.&filetype.'.snippet'<cr>
 " Tagbar {{{2
 let g:tagbar_usearrows=1
 nnoremap <leader>t :TagbarToggle<cr>
