@@ -3,7 +3,7 @@
 set nocompatible " Turn off Vi compatibility.
 set pastetoggle=<F2> " Disable indenting when pasting from outside VIM.
 set runtimepath+=~/.vim/bundle/vundle " Add Vundle to the runtime path.
-set runtimepath+=~/.vim/snippets:~/.vim/bundle/vundle " Add Vundle to the runtime path.
+set runtimepath+=~/.vim/snippets " Add Vundle to the runtime path.
 
 filetype off " Required for Vundle.
 call vundle#rc()
@@ -60,6 +60,7 @@ Bundle 'Rip-Rip/clang_complete'
 Bundle 'Match-Bracket-for-Objective-C'
 Bundle 'msanders/cocoa.vim'
 
+filetype plugin indent on " Required
 " 2. Moving around, searching and patterns {{{1
 " =============================================
 set nostartofline " Leave the cursor where it was.
@@ -92,7 +93,7 @@ noremap k gk
 set tags=tags;/ " Look up the directory for tags files.
 
 " Manual add a tags file to the current directory, include subdirs as well.
-nnoremap <leader>tg :silent !ctags -aR *<cr>
+nnoremap <leader>ct :silent !ctags -aR *<cr>
 
 " 4. Displaying text {{{1
 " =======================
@@ -330,6 +331,26 @@ augroup END
 
 let javascript_enable_domhtmlcss=1
 
+" Snippet {{{2
+augroup ft_snippet
+    autocmd!
+
+    " Reload the snippets after saving.
+    autocmd BufWritePost *.snippets :call ReloadAllSnippets()
+augroup END
+
+" C / C++ / Objective-C {{{2
+augroup ft_objc
+    autocmd!
+
+    " Fix header types  seen as objcpp, breaks m/h switching.
+    autocmd BufNewFile,BufRead *.h set filetype=objc
+
+    " Add c and cpp also to the objc syntax highlighting.
+    autocmd BufNewFile,BufRead *.cpp set filetype=objc
+    autocmd BufNewFile,BufRead *.c set filetype=objc
+augroup END
+
 " 24. multi-byte characters {{{1
 " ==========================
 
@@ -346,6 +367,7 @@ nnoremap <leader>es :execute 'vs $HOME/.vim/snippets/'.&filetype.'.snippets'<cr>
 let g:tagbar_usearrows=1
 nnoremap <leader>t :TagbarToggle<cr>
 
+let tlist_objc_settings    = 'objc;i:interface;c:class;m:method;p:property'
 " Netrw {{{2
 let g:netrw_liststyle=3                        " Show tree style listing.
 let g:netrw_winsize=200                        " Width of the opened NETRW window.
