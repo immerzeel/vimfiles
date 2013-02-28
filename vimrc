@@ -339,7 +339,7 @@ let g:snip_author='Pascal Immerzeel'
 let snippets_dir="$HOME/vim/snippets"
 
 " Easy access to filetype snippet file.
-nnoremap <leader>es :execute 'vs $HOME/vimfiles/snippets/'.&filetype.'.snippet'<cr>
+nnoremap <leader>es :execute 'vs $HOME/vimfiles/snippets/'.&filetype.'.snippets'<cr>
 
 " Tagbar {{{2
 let g:tagbar_usearrows=1
