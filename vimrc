@@ -248,6 +248,7 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " ==================================
 autocmd FocusLost * :wa " Save when losing focus.
 set cryptmethod=blowfish " More secure method. Use vim -x {foobar}
+set autoread " Refresh the buffer automatically after external file change.
 
 " 19. The swap file {{{1
 " ======================
