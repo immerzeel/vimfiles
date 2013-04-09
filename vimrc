@@ -21,12 +21,16 @@ Bundle 'majutsushi/tagbar'
 
 " Colorscheme
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'sjl/badwolf'
+Bundle 'tpope/vim-vividchalk'
 
 " Language syntax
 Bundle 'tpope/vim-markdown'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'mattn/zencoding-vim'
 Bundle 'tpope/vim-haml'
+
+Bundle 'Lokaltog/vim-powerline'
 
 " Text manipulation
 Bundle 'VisIncr'
@@ -58,7 +62,9 @@ Bundle 'tpope/vim-scriptease'
 Bundle 'kiwi.vim'
 Bundle 'Rip-Rip/clang_complete'
 Bundle 'Match-Bracket-for-Objective-C'
-Bundle 'msanders/cocoa.vim'
+Bundle 'b4winckler/vim-objc'
+Bundle 'eraserhd/vim-ios'
+" Bundle 'msanders/cocoa.vim'
 
 filetype plugin indent on " Required
 " 2. Moving around, searching and patterns {{{1
@@ -363,6 +369,7 @@ let snippets_dir="$HOME/.vim/snippets"
 
 " Easy access to filetype snippet file.
 nnoremap <leader>es :execute 'vs $HOME/.vim/snippets/'.&filetype.'.snippets'<cr>
+nnoremap <leader>esd :execute 'vs $HOME/.vim/snippets/'<cr>
 
 " Tagbar {{{2
 let g:tagbar_usearrows=1
@@ -390,11 +397,15 @@ let g:gist_detect_filetype=1
 " }}}
 " Clang complete {{{2
 let g:clang_auto=1
-let g:clang_auto_user_options='path, .clang_complete'
-let g:clang_copen=1
 let g:clang_use_library=1
+let g:clang_periodic_quickfix=1
+let g:clang_close_preview=1
+
 let g:clang_snippets=1
 let g:clang_snippets='snipmate'
+let g:clang_auto_user_options='path, .clang_complete'
+" let g:clang_exec='/usr/local/bin/clang'
+" let g:clang_library_path='/usr/local/lib/libclang.dylib'
 
 " }}}
 " so ~/_vimrc_private

@@ -17,23 +17,32 @@ snippet s
 snippet d
 	@{${1}}${2}
 # static const
-	static ${1:NSObject} *const ${2:kFoo} = @"${3:}";${4:}
-# Object
-snippet var
-	${1:NSObject} *${2:foo};${3}
-snippet O
-	${1:NSObject} *${2:foo} = [${3:$1 alloc}]${4};${5}
-snippet o
-	${1:NSObject} *${2:foo} = ${3};${4}
-# Static Const
 snippet static
 	static ${1:NSObject} *const k${2:Foo} = ${3:@""};${4}
-# NSLog(...)
-snippet log
+# Object
+snippet O=
+	${1:NSObject} *${2:foo} = [${3:$1 alloc}]${4};${5}
+snippet o=
+	${1:NSObject} *${2:foo} = ${3};${4}
+snippet o
+	${1:NSObject} *${2:foo};${3}
+# NSLog statement
+snippet nslog
 	NSLog(@"`Filename()` - ${1:foo})");${2}
 # NSLog object
-snippet logv
-	NSLog(@"`Filename()` - ${1:foo}:%@", ${2:$1});${3}
+snippet nslogv
+	NSLog(@"`Filename()` - ${2:$1}:%@", ${1:foo});${3}
+# COCOA LUMBERJACK
+#
+# initial loglevel for file.
+snippet ddlvl 
+	static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+# DDLog statement.
+snippet ddlog
+	DDLog${2:Verbose}(@"`Filename()` - ${1:foo})");${3}
+# DDLog object
+snippet ddlogv
+	DDLog${3:Verbose}(@"`Filename()` - ${2:$1}:%@", ${1:foo});${3}
 # Class
 snippet objc
 	@interface ${1:`Filename('', 'someClass')`} : ${2:NSObject} {
