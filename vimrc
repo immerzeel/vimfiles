@@ -17,7 +17,7 @@ Bundle 'tpope/vim-sensible'
 Bundle 'scrooloose/nerdtree'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-abolish'
-Bundle 'majutsushi/tagbar'
+" Bundle 'majutsushi/tagbar'
 
 " Colorscheme
 Bundle 'altercation/vim-colors-solarized'
@@ -29,8 +29,6 @@ Bundle 'tpope/vim-markdown'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'mattn/zencoding-vim'
 Bundle 'tpope/vim-haml'
-
-Bundle 'Lokaltog/vim-powerline'
 
 " Text manipulation
 Bundle 'VisIncr'
