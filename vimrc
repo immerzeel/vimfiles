@@ -51,6 +51,9 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-rsi'
 Bundle 'tyru/open-browser.vim'
 
+" JavaScript
+Bundle 'marijnh/tern_for_vim'
+
 " VimScript
 Bundle 'kana/vim-vspec'
 Bundle 'mattn/webapi-vim'
