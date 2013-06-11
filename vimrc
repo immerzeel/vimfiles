@@ -195,7 +195,9 @@ set cmdheight=2                " Set the command height under the statusline.
 
 " 12. Selecting text {{{1
 " =======================
-set clipboard=unnamed       " Cut/Copy in the OS will be P abled.
+if $TMUX == ''
+    set clipboard=unnamed       " Cut/Copy in the OS will be P abled.
+endif
 
 " 13. Editing text {{{1
 " =====================
