@@ -39,7 +39,12 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-sleuth'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
-Bundle 'msanders/snipmate.vim'
+
+"SnipMate
+" Bundle 'msanders/snipmate.vim'
+Bundle "garbas/vim-snipmate"
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
 
 " Git
 Bundle 'tpope/vim-fugitive'
@@ -376,7 +381,6 @@ augroup END
 " ================
 " SnipMate {{{2
 let g:snip_author='Pascal Immerzeel'
-let snippets_dir="$HOME/.vim/snippets"
 
 " Easy access to filetype snippet file.
 nnoremap <leader>es :execute 'vs $HOME/.vim/snippets/'.&filetype.'.snippets'<cr>
