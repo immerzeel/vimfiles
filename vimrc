@@ -382,7 +382,7 @@ let snippets_dir="$HOME/.vim/snippets"
 nnoremap <leader>es :execute 'vs $HOME/.vim/snippets/'.&filetype.'.snippets'<cr>
 nnoremap <leader>esd :execute 'vs $HOME/.vim/snippets/'<cr>
 
-" Tagbar {{{2
+" Tagbar {{{4
 let g:tagbar_usearrows=1
 nnoremap <leader>t :TagbarToggle<cr>
 
