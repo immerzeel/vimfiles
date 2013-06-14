@@ -380,6 +380,10 @@ augroup END
 
 " 25. Various {{{1
 " ================
+" Tern for Vim {{{2
+let g:tern_map_keys=1
+let g:tern_show_argument_hints='on_hold'
+
 " SnipMate {{{2
 let g:snip_author='Pascal Immerzeel'
 
