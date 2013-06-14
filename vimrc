@@ -392,10 +392,10 @@ nnoremap <leader>es :execute 'vs $HOME/.vim/snippets/'.&filetype.'.snippets'<cr>
 nnoremap <leader>esd :execute 'vs $HOME/.vim/snippets/'<cr>
 
 " Tagbar {{{4
-let g:tagbar_usearrows=1
-nnoremap <leader>t :TagbarToggle<cr>
+" let g:tagbar_usearrows=1
+" nnoremap <leader>t :TagbarToggle<cr>
 
-let tlist_objc_settings    = 'objc;i:interface;c:class;m:method;p:property'
+" let tlist_objc_settings    = 'objc;i:interface;c:class;m:method;p:property'
 " Netrw {{{2
 let g:netrw_liststyle=3                        " Show tree style listing.
 let g:netrw_winsize=200                        " Width of the opened NETRW window.
