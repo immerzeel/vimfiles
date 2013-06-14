@@ -26,7 +26,8 @@ Bundle 'tpope/vim-vividchalk'
 
 " Language syntax
 Bundle 'tpope/vim-markdown'
-Bundle 'jelera/vim-javascript-syntax'
+" Bundle 'jelera/vim-javascript-syntax'
+Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'mattn/zencoding-vim'
 Bundle 'tpope/vim-haml'
 
