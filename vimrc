@@ -187,6 +187,7 @@ set visualbell t_vb= " Do not flash the screen when error occurs."{"}
 
 set background=dark " background settings for solarized
 let g:solarized_hitrail=1 " Correct the high contrast characters in the cursorline.
+let g:solarized_termcolors=256
 colorscheme solarized " Color scheme of VIM.
 
 set guioptions=ace
