@@ -270,6 +270,7 @@ set autoread " Refresh the buffer automatically after external file change.
 
 " 19. The swap file {{{1
 " ======================
+set dir=/tmp//
 
 " 20. Command line editing {{{1
 " =============================
