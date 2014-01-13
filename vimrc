@@ -21,14 +21,12 @@ Bundle 'tpope/vim-abolish'
 
 " Colorscheme
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'sjl/badwolf'
 Bundle 'tpope/vim-vividchalk'
 
 " Language syntax
 Bundle 'tpope/vim-markdown'
-" Bundle 'jelera/vim-javascript-syntax'
 Bundle 'othree/javascript-libraries-syntax.vim'
-Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
 Bundle 'tpope/vim-haml'
 
 " Text manipulation
@@ -57,9 +55,6 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-rsi'
 Bundle 'tyru/open-browser.vim'
 
-" JavaScript
-Bundle 'marijnh/tern_for_vim'
-
 " VimScript
 Bundle 'kana/vim-vspec'
 Bundle 'mattn/webapi-vim'
@@ -71,7 +66,6 @@ Bundle 'Rip-Rip/clang_complete'
 Bundle 'Match-Bracket-for-Objective-C'
 Bundle 'b4winckler/vim-objc'
 Bundle 'eraserhd/vim-ios'
-" Bundle 'msanders/cocoa.vim'
 
 filetype plugin indent on " Required
 " 2. Moving around, searching and patterns {{{1
