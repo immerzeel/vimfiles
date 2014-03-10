@@ -331,7 +331,9 @@ augroup ft_css
     autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
     autocmd FileType css,scss setlocal iskeyword+=-
 
-    autocmd BufNewFile,BufRead *.css,*.scss nnoremap <buffer> <localleader>S viB<cr>:sort<cr>:noh<cr>
+    " autocmd BufNewFile,BufRead *.css,*.scss nnoremap <buffer> <localleader>S viB<cr>:sort -i -b<cr>:noh<cr>
+    autocmd BufNewFile,BufRead *.css,*.scss nnoremap <buffer> <localleader>S :g#\({\n\)\@<=#.,/}/sort<CR>)
+
 augroup END
 
 let javascript_enable_domhtmlcss=1
