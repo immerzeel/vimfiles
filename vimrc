@@ -198,9 +198,9 @@ set textwidth=80 " Set maximum line width.
 
 set comments=sl:/**,mb:\ *,exl:\ */,sr:/*,mb:*,exl:*/,://
 
-set formatoptions=croq                  " t
-"                 ||||                    |
-"                 ||||                    + Break text on textwidth.
+set formatoptions=croq " t
+"                 ||||   |
+"                 ||||   + Break text on textwidth.
 "                 |||+ Let 'gq' format comments.
 "                 ||+ Insert * when using 'O' or 'o' in Normal mode.
 "                 |+ Insert * when typing <Enter> in Insert mode.
