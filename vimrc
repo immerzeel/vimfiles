@@ -14,15 +14,11 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-sensible'
 
 " File management / Search
-Bundle 'scrooloose/nerdtree'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-abolish'
-" Bundle 'majutsushi/tagbar'
 
 " Colorscheme
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'tpope/vim-vividchalk'
-Bundle 'gorodinskiy/vim-coloresque'
 
 " Language syntax
 Bundle 'tpope/vim-markdown'
@@ -41,14 +37,13 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 
 "SnipMate
-" Bundle 'msanders/snipmate.vim'
+Bundle 'msanders/snipmate.vim'
 Bundle "garbas/vim-snipmate"
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 
 " Git
 Bundle 'tpope/vim-fugitive'
-Bundle 'mattn/gist-vim'
 
 " Unix
 Bundle 'thinca/vim-quickrun'
@@ -60,13 +55,6 @@ Bundle 'tyru/open-browser.vim'
 Bundle 'kana/vim-vspec'
 Bundle 'mattn/webapi-vim'
 Bundle 'tpope/vim-scriptease'
-
-" Objective-C
-Bundle 'kiwi.vim'
-Bundle 'Rip-Rip/clang_complete'
-Bundle 'Match-Bracket-for-Objective-C'
-Bundle 'b4winckler/vim-objc'
-Bundle 'eraserhd/vim-ios'
 
 filetype plugin indent on " Required
 " 2. Moving around, searching and patterns {{{1
