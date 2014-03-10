@@ -208,11 +208,7 @@ set formatoptions=croq " t
 
 " 14. Tabs and indenting {{{1
 " ===========================
-set tabstop=4 " Tab equals N space(bar)s.
-set shiftwidth=4 " Number of spaces for an indent.
-set expandtab " Convert tabs to spaces.
-set smartindent " Use intelligent indentation for C
-set cindent " Use C style indentation.
+" Indenting is handled by vim-sleuth plugin.
 
 " 15. Folding {{{1
 " ================
@@ -378,7 +374,9 @@ nnoremap <leader>esd :execute 'vs $HOME/.vim/snippets/'<cr>
 
 " let tlist_objc_settings    = 'objc;i:interface;c:class;m:method;p:property'
 " Netrw {{{2
+let g:netrw_banner=0                           " Hide the info banner.
 let g:netrw_liststyle=3                        " Show tree style listing.
+let g:netrw_browse_split=4                     " Split maximizes NETRW, restores layout on close.
 let g:netrw_winsize=200                        " Width of the opened NETRW window.
 let g:netrw_altv=1                             " Open new window vertically to the right.
 let g:netrw_rsync_cmd="rsync -Raze"            " Extra options for rsyc.
