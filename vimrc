@@ -14,7 +14,7 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-sensible'
 
 " File management / Search
-Bundle 'mileszs/ack.vim'
+Bundle 'rking/ag.vim'
 Bundle 'tpope/vim-abolish'
 
 " Colorscheme
@@ -37,7 +37,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 
 "SnipMate
-Bundle 'msanders/snipmate.vim'
 Bundle "garbas/vim-snipmate"
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
