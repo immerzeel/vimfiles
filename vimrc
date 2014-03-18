@@ -193,7 +193,7 @@ endif
 set undofile
 set undolevels=1000 " maximum number of changes that can be undone
 set undoreload=10000 " maximum number lines to save for undo on a buffer reload
-set textwidth=80 " Set maximum line width.
+set textwidth=72 " Set maximum line width.
 
 set comments=sl:/**,mb:\ *,exl:\ */,sr:/*,mb:*,exl:*/,://
 
@@ -330,9 +330,7 @@ augroup ft_css
     autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
     autocmd FileType css,scss setlocal iskeyword+=-
 
-    " autocmd BufNewFile,BufRead *.css,*.scss nnoremap <buffer> <localleader>S viB<cr>:sort -i -b<cr>:noh<cr>
-    autocmd BufNewFile,BufRead *.css,*.scss nnoremap <buffer> <localleader>S :g#\({\n\)\@<=#.,/}/sort<CR>)
-
+    autocmd BufNewFile,BufRead *.css,*.scss nnoremap <buffer> <localleader>S viB<cr>:sort -i -b<cr>:noh<cr>
 augroup END
 
 let javascript_enable_domhtmlcss=1
@@ -369,11 +367,6 @@ let g:snip_author='Pascal Immerzeel'
 nnoremap <leader>es :execute 'vs $HOME/.vim/snippets/'.&filetype.'.snippets'<cr>
 nnoremap <leader>esd :execute 'vs $HOME/.vim/snippets/'<cr>
 
-" Tagbar {{{4
-" let g:tagbar_usearrows=1
-" nnoremap <leader>t :TagbarToggle<cr>
-
-" let tlist_objc_settings    = 'objc;i:interface;c:class;m:method;p:property'
 " Netrw {{{2
 let g:netrw_banner=0                           " Hide the info banner.
 let g:netrw_liststyle=3                        " Show tree style listing.
@@ -382,30 +375,10 @@ let g:netrw_winsize=200                        " Width of the opened NETRW windo
 let g:netrw_altv=1                             " Open new window vertically to the right.
 let g:netrw_rsync_cmd="rsync -Raze"            " Extra options for rsyc.
 
-" Nerdtree {{{2
-noremap <leader>n  :NERDTreeToggle<cr>
-noremap <leader>nf :NERDTreeFind<cr>
-
-" Ragtag {{{2
-let g:ragtag_global_maps=1 " Enable global mappings.
-
 " Gist {{{2
 let g:gist_clip_command='pbcopy'
 let g:gist_open_browser_after_post=1
 let g:gist_detect_filetype=1
-
-" }}}
-" Clang complete {{{2
-let g:clang_auto=1
-let g:clang_use_library=1
-let g:clang_periodic_quickfix=1
-let g:clang_close_preview=1
-
-let g:clang_snippets=1
-let g:clang_snippets='snipmate'
-let g:clang_auto_user_options='path, .clang_complete'
-" let g:clang_exec='/usr/local/bin/clang'
-" let g:clang_library_path='/usr/local/lib/libclang.dylib'
 
 " }}}
 " so ~/_vimrc_private
