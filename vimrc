@@ -118,7 +118,7 @@ set colorcolumn=+1 " Highlight the 'textwidth' with a vertical line.
 
 " 6. Multiple windows {{{1
 " ========================
-set statusline=%F\ %m\ %r\ %y\ %=%(Line:\ %l/%L\ [%p%%]\ Col:\ %c\ Buf:\ #%n%)\
+set statusline=%F\ %m\ %r\ %y\ %{fugitive#statusline()}%=%(Line:\ %l/%L\ [%p%%]\ Col:\ %c\ Buf:\ #%n%)\
 
 set hidden " Allow changing from an unsaved buffer.
 
