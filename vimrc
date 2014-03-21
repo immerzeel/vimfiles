@@ -13,7 +13,12 @@ Bundle 'gmarik/vundle'
 
 Bundle 'tpope/vim-sensible'
 
+" Session management
+Bundle 'tpope/vim-tbone'
+Bundle 'tpope/vim-obsession'
+
 " File management / Search
+Bundle 'tpope/vim-vinegar'
 Bundle 'rking/ag.vim'
 Bundle 'tpope/vim-abolish'
 
@@ -45,6 +50,7 @@ Bundle "tomtom/tlib_vim"
 Bundle 'tpope/vim-fugitive'
 
 " Unix
+Bundle 'sjl/vitality.vim'
 Bundle 'thinca/vim-quickrun'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-rsi'
@@ -370,9 +376,6 @@ nnoremap <leader>esd :execute 'vs $HOME/.vim/snippets/'<cr>
 " Netrw {{{2
 let g:netrw_banner=0                           " Hide the info banner.
 let g:netrw_liststyle=3                        " Show tree style listing.
-let g:netrw_browse_split=4                     " Split maximizes NETRW, restores layout on close.
-let g:netrw_winsize=200                        " Width of the opened NETRW window.
-let g:netrw_altv=1                             " Open new window vertically to the right.
 let g:netrw_rsync_cmd="rsync -Raze"            " Extra options for rsyc.
 
 " Gist {{{2
