@@ -1,4 +1,4 @@
-" 1. Important {{{1
+" 1. Important {{{0
 " =================
 set nocompatible " Turn off Vi compatibility.
 set pastetoggle=<F2> " Disable indenting when pasting from outside VIM.
@@ -16,6 +16,7 @@ Bundle 'tpope/vim-sensible'
 " Session management
 Bundle 'tpope/vim-tbone'
 Bundle 'tpope/vim-obsession'
+Bundle 'sjl/gundo.vim'
 
 " File management / Search
 Bundle 'tpope/vim-vinegar'
@@ -24,12 +25,19 @@ Bundle 'tpope/vim-abolish'
 
 " Colorscheme
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'tpope/vim-vividchalk'
+Bundle 'sjl/badwolf'
+
+" Statusline
+Bundle 'bling/vim-airline'
 
 " Language syntax
 Bundle 'tpope/vim-markdown'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'tpope/vim-haml'
+Bundle 'gorodinskiy/vim-coloresque'
+Bundle 'rodjek/vim-puppet'
 
 " Text manipulation
 Bundle 'VisIncr'
@@ -42,12 +50,15 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 
 "SnipMate
-Bundle "garbas/vim-snipmate"
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
+Bundle 'garbas/vim-snipmate'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'honza/vim-snippets'
 
 " Git
 Bundle 'tpope/vim-fugitive'
+Bundle 'mattn/gist-vim'
+Bundle 'gregsexton/gitv'
 
 " Unix
 Bundle 'sjl/vitality.vim'
@@ -115,12 +126,19 @@ if has('gui_macvim')
     set guifont=Inconsolata:h14 " Set the GUI font.
 endif
 
-" 5. Syntax, highlighting and spelling {{1
-" ========================
+" 5. Syntax, highlighting and spelling {{{1
+" =========================================
 set hlsearch " Highlight the search results.
 
 set cursorline     " Highlight the line where the cursor is.
 set colorcolumn=+1 " Highlight the 'textwidth' with a vertical line.
+
+set spelllang=en_us
+set spellfile+=$HOME/.spell/spellfile.add
+set thesaurus+=$HOME/.spell/thesaurus.txt
+
+" Set spelling on for git commits.
+autocmd Filetype gitcommit setlocal spell
 
 " 6. Multiple windows {{{1
 " ========================
@@ -139,6 +157,9 @@ noremap <C-l> <C-w>l
 
 " Split vertically.
 noremap <leader>v <C-w>v
+
+" Close all preview / quickfix / location list buffers.
+nnoremap <silent> <C-W>z :wincmd z<Bar>cclose<Bar>lclose<Bar><CR>
 
 " Resize splits when the window is resized
 autocmd VimResized * exe "normal! \<c-w>="
@@ -174,7 +195,6 @@ set visualbell t_vb= " Do not flash the screen when error occurs."{"}
 
 
 set background=dark " background settings for solarized
-let g:solarized_hitrail=1 " Correct the high contrast characters in the cursorline.
 let g:solarized_termcolors=256
 colorscheme solarized " Color scheme of VIM.
 
@@ -257,6 +277,7 @@ nnoremap <leader>3 :execute '3match InterestingWord3 /\<<c-r><c-w>\>/'<cr>
 autocmd FocusLost * :wa " Save when losing focus.
 set cryptmethod=blowfish " More secure method. Use vim -x {foobar}
 set autoread " Refresh the buffer automatically after external file change.
+set autowriteall " Save the file when it becomes 'hidden' and save ALL files on quit.
 
 " 19. The swap file {{{1
 " ======================
@@ -274,8 +295,8 @@ cnoremap <c-e> <end>
 " 21. Executing external commands {{{1
 " ====================================
 
-" 22. Running make and jumping to errors
-" ======================================
+" 22. Running make and jumping to errors {{{1
+" ===========================================
 
 " 23. Language specific {{{1
 " ==========================
@@ -319,7 +340,10 @@ augroup END
 augroup ft_markdown
     autocmd!
 
-    autocmd BufNewFile,BufRead *.m*down setlocal filetype=markdown
+    autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+
+    " Enable spellchecker.
+    autocmd Filetype markdown setlocal spell
 
     " Add headings.
     autocmd Filetype markdown nnoremap <buffer> <localleader>1 yypVr=
@@ -382,6 +406,7 @@ let g:netrw_rsync_cmd="rsync -Raze"            " Extra options for rsyc.
 let g:gist_clip_command='pbcopy'
 let g:gist_open_browser_after_post=1
 let g:gist_detect_filetype=1
+let g:gist_post_private=1
 
 " }}}
 " so ~/_vimrc_private
