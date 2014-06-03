@@ -79,10 +79,10 @@ set splitright " Put the new window on the right on vertical split.
 set splitbelow " Put the new windows on the bottor on horizontal split.
 
 " Move around the windows faster!
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " Split vertically.
 noremap <leader>v <C-w>v
@@ -167,8 +167,10 @@ set formatoptions=croq " t
 set foldenable " Turn folding on.
 set foldmethod=marker " Fold on markers.
 
-nnoremap <leader>z zMzvzz " Focus on the current fold.
-nnoremap <space> za " Toggle folders open/close.
+" Focus on the current fold.
+nnoremap <leader>z zMzvzz
+" Toggle folders open/close.
+nnoremap <space> za
 
 " 16. Diff {{{1
 " =============
@@ -192,6 +194,7 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 " Steve Losh's highlight word setup.
+" Only my colors are from the Dutch flag B^]=
 highlight InterestingWord1 ctermfg=Black ctermbg=DarkRed
 highlight InterestingWord2 ctermfg=Black ctermbg=White
 highlight InterestingWord3 ctermfg=Black ctermbg=DarkBlue
@@ -211,12 +214,8 @@ set dir=/tmp//
 
 " 20. Command line editing {{{1
 " =============================
-set wildmode=full              " List all matches and complete to the longest string.
-set wildignore+=.git,.svn      " Ignore Version Control files and directories.
-
-" Move on the commandline like in the shell.
-cnoremap <c-a> <home>
-cnoremap <c-e> <end>
+set wildmode=full       " List all matches and complete to the longest string.
+set wildignore+=.git    " Ignore Version Control files and directories.
 
 " 21. Executing external commands {{{1
 " ====================================
@@ -254,8 +253,6 @@ augroup ft_html
     autocmd!
 
     autocmd FileType html,xhtml setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType html,xhtml setlocal makeprg=tidy\ -quiet\ -errors\ %
-    autocmd FileType html,xhtml setlocal errorformat=line\ %l\ column\ %v\ -\ %m
     autocmd FileType html,xhtml setlocal iskeyword+=-,_
 
     " Fold the current tag.
@@ -267,11 +264,6 @@ augroup ft_markdown
     autocmd!
 
     autocmd BufNewFile,BufRead *.m*down setlocal filetype=markdown
-
-    " Add headings.
-    autocmd Filetype markdown nnoremap <buffer> <localleader>1 yypVr=
-    autocmd Filetype markdown nnoremap <buffer> <localleader>2 yypVr-
-    autocmd Filetype markdown nnoremap <buffer> <localleader>3 I### <ESC>
 augroup END
 
 " CSS / SCSS {{{2
@@ -319,10 +311,6 @@ let g:tern_show_argument_hints='on_hold'
 
 " SnipMate {{{2
 let g:snip_author='Pascal Immerzeel'
-
-" Easy access to filetype snippet file.
-nnoremap <leader>es :execute 'vs $HOME/.vim/snippets/'.&filetype.'.snippets'<cr>
-nnoremap <leader>esd :execute 'vs $HOME/.vim/snippets/'<cr>
 
 " Netrw {{{2
 let g:netrw_banner=0                           " Hide the info banner.
