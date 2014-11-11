@@ -50,6 +50,7 @@ set nowrap " Do not wrap long lines.
 set lazyredraw " Don't redraw while performing macros.
 set list " Show tabs and end of lines as character.
 set number " Show line numbers.
+set encoding=utf8 " Render special symbols correctly
 
 if has('win32')
     set guifont=Consolas:h12:cANSI " Set the GUI font.
@@ -263,7 +264,7 @@ augroup END
 augroup ft_markdown
     autocmd!
 
-    autocmd BufNewFile,BufRead *.m*down setlocal filetype=markdown
+    autocmd BufNewFile,BufRead *.markdown,*.md setlocal filetype=markdown
 augroup END
 
 " CSS / SCSS {{{2
@@ -322,6 +323,9 @@ let g:gist_clip_command='pbcopy'
 let g:gist_open_browser_after_post=1
 let g:gist_detect_filetype=1
 
+" Airline {{{2
+
+let airline_powerline_fonts = 1
 " }}}
 " so ~/_vimrc_private
 "
