@@ -9,6 +9,7 @@ runtime bundle/vim-pathogen/autoload/pathogen.vim
 silent! execute pathogen#infect()
 
 filetype plugin indent on " Required
+
 " 2. Moving around, searching and patterns {{{1
 " =============================================
 set nostartofline " Leave the cursor where it was.
@@ -50,7 +51,7 @@ set nowrap " Do not wrap long lines.
 set lazyredraw " Don't redraw while performing macros.
 set list " Show tabs and end of lines as character.
 set number " Show line numbers.
-set encoding=utf8 " Render special symbols correctly
+set encoding=utf-8 " Render special symbols correctly
 
 if has('win32')
     set guifont=Consolas:h12:cANSI " Set the GUI font.
@@ -122,7 +123,6 @@ set visualbell t_vb= " Do not flash the screen when error occurs.
 
 " background settings for solarized
 let g:solarized_hitrail=1 " Correct the high contrast characters in the cursorline.
-let g:solarized_termcolors=256
 colorscheme solarized " Color scheme of VIM. Suppress errors with `silent!`
 set background=dark
 
@@ -325,7 +325,8 @@ let g:gist_detect_filetype=1
 
 " Airline {{{2
 
-let airline_powerline_fonts = 1
+let airline_powerline_fonts=1
+let g:airline_theme='solarized'
 " }}}
 " so ~/_vimrc_private
 "
