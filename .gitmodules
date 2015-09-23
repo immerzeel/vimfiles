@@ -55,9 +55,6 @@
 [submodule "bundle/emmet-vim"]
 	path = bundle/emmet-vim
 	url = https://github.com/mattn/emmet-vim.git
-[submodule "bundle/vim-puppet"]
-	path = bundle/vim-puppet
-	url = https://github.com/rodjek/vim-puppet.git
 [submodule "bundle/VisIncr"]
 	path = bundle/VisIncr
 	url = https://github.com/vim-scripts/VisIncr.git
