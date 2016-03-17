@@ -275,7 +275,6 @@ augroup ft_css
     autocmd FileType css,scss setlocal foldmethod=marker
     autocmd FileType css,scss setlocal foldmarker={,}
     autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType css,scss setlocal iskeyword+=-
 
     autocmd BufNewFile,BufRead *.css,*.scss nnoremap <buffer> <localleader>S viB<cr>:sort -i -b<cr>:noh<cr>
 augroup END
