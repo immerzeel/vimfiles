@@ -306,10 +306,6 @@ augroup END
 
 " 25. Various {{{1
 " ================
-" Tern for Vim {{{2
-let g:tern_map_keys=1
-let g:tern_show_argument_hints='on_hold'
-
 " SnipMate {{{2
 let g:snip_author='Pascal Immerzeel'
 
@@ -318,16 +314,4 @@ let g:netrw_banner=0                           " Hide the info banner.
 let g:netrw_liststyle=3                        " Show tree style listing.
 let g:netrw_rsync_cmd="rsync -Raze"            " Extra options for rsyc.
 
-" Gist {{{2
-let g:gist_clip_command='pbcopy'
-let g:gist_open_browser_after_post=1
-let g:gist_detect_filetype=1
-
 " }}}
-" so ~/_vimrc_private
-"
-" If an .exrc exists, source it.
-if filereadable(".exrc")
-    echom "Local .exrc loaded."
-    source .exrc
-endif
