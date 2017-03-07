@@ -3,7 +3,7 @@
 set nocompatible " Turn off Vi compatibility.
 set pastetoggle=<F2> " Disable indenting when pasting from outside VIM.
 set runtimepath+=~/.vim/snippets " Add custom location for snippets.
-set runtimepath+=~/.fzf " Add FZF path.
+set runtimepath+=/usr/local/opt/fzf " Add FZF path.
 
 " Load plugins
 runtime bundle/vim-pathogen/autoload/pathogen.vim
