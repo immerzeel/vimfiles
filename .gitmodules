@@ -64,15 +64,24 @@
 [submodule "bundle/vim-coloresque"]
 	path = bundle/vim-coloresque
 	url = https://github.com/gorodinskiy/vim-coloresque.git
-[submodule "bundle/vim-pandoc-syntax"]
-	path = bundle/vim-pandoc-syntax
-	url = https://github.com/vim-pandoc/vim-pandoc-syntax.git
 [submodule "bundle/fzf.vim"]
 	path = bundle/fzf.vim
 	url = https://github.com/junegunn/fzf.vim.git
 [submodule "bundle/ultisnips"]
 	path = bundle/ultisnips
-	url = git@github.com:SirVer/ultisnips.git
+	url = https://github.com/SirVer/ultisnips.git
 [submodule "bundle/vim-snippets"]
 	path = bundle/vim-snippets
-	url = git@github.com:honza/vim-snippets.git
+	url = https://github.com/honza/vim-snippets.git
+[submodule "bundle/ansible-vim"]
+	path = bundle/ansible-vim
+	url = https://github.com/pearofducks/ansible-vim.git
+[submodule "bundle/vim-pandoc-syntax"]
+	path = bundle/vim-pandoc-syntax
+	url = https://github.com/vim-pandoc/vim-pandoc-syntax.git
+[submodule "bundle/vim-markdownfootnotes"]
+	path = bundle/vim-markdownfootnotes
+	url = https://github.com/vim-pandoc/vim-markdownfootnotes.git
+[submodule "bundle/vim-criticmarkup"]
+	path = bundle/vim-criticmarkup
+	url = https://github.com/vim-pandoc/vim-criticmarkup.git
