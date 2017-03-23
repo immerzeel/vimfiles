@@ -312,6 +312,6 @@ let g:snip_author='Pascal Immerzeel'
 " Netrw {{{2
 let g:netrw_banner=0                           " Hide the info banner.
 let g:netrw_liststyle=3                        " Show tree style listing.
-let g:netrw_rsync_cmd="rsync -Raze"            " Extra options for rsyc.
+let g:netrw_keepdir=1                          " Keep current dir immune from browsing
 
 " }}}
