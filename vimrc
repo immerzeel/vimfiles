@@ -54,17 +54,6 @@ set list " Show tabs and end of lines as character.
 set number " Show line numbers.
 set encoding=utf-8 " Render special symbols correctly
 
-if has('win32')
-    set guifont=Consolas:h12:cANSI " Set the GUI font.
-
-    " Start maximize!
-    autocmd GUIEnter * simalt ~ x
-endif
-
-if has('gui_macvim')
-    set guifont=Inconsolata:h14 " Set the GUI font.
-endif
-
 " 5. Syntax, highlighting and spelling {{{1
 " ========================
 set hlsearch " Highlight the search results.
@@ -80,15 +69,6 @@ set hidden " Allow changing from an unsaved buffer.
 
 set splitright " Put the new window on the right on vertical split.
 set splitbelow " Put the new windows on the bottor on horizontal split.
-
-" Move around the windows faster!
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-" Split vertically.
-noremap <leader>v <C-w>v
 
 " Resize splits when the window is resized
 autocmd VimResized * exe "normal! \<c-w>="
@@ -254,11 +234,10 @@ augroup END
 augroup ft_html
     autocmd!
 
-    autocmd FileType html,xhtml setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType html,xhtml setlocal iskeyword+=-,_
+    autocmd FileType html,xhtml,mustache setlocal iskeyword+=-,_
 
     " Fold the current tag.
-    autocmd FileType html,xhtml nnoremap <buffer> <localleader>f Vatzf
+    autocmd FileType html,xhtml,mustache nnoremap <buffer> <localleader>f Vatzf
 augroup END
 
 " Markdown {{{2
@@ -266,6 +245,7 @@ augroup ft_markdown
     autocmd!
 
     autocmd BufNewFile,BufRead *.markdown,*.md setlocal filetype=markdown
+    autocmd BufNewFile,BufRead *.markdown,*.md setlocal spell
 augroup END
 
 " CSS / SCSS {{{2
@@ -274,12 +254,9 @@ augroup ft_css
 
     autocmd FileType css,scss setlocal foldmethod=marker
     autocmd FileType css,scss setlocal foldmarker={,}
-    autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
 
     autocmd BufNewFile,BufRead *.css,*.scss nnoremap <buffer> <localleader>S viB<cr>:sort -i -b<cr>:noh<cr>
 augroup END
-
-let javascript_enable_domhtmlcss=1
 
 " Snippet {{{2
 augroup ft_snippet
@@ -287,18 +264,6 @@ augroup ft_snippet
 
     " Reload the snippets after saving.
     autocmd BufWritePost *.snippets :call ReloadAllSnippets()
-augroup END
-
-" C / C++ / Objective-C {{{2
-augroup ft_objc
-    autocmd!
-
-    " Fix header types  seen as objcpp, breaks m/h switching.
-    autocmd BufNewFile,BufRead *.h set filetype=objc
-
-    " Add c and cpp also to the objc syntax highlighting.
-    autocmd BufNewFile,BufRead *.cpp set filetype=objc
-    autocmd BufNewFile,BufRead *.c set filetype=objc
 augroup END
 
 " 24. multi-byte characters {{{1
@@ -313,5 +278,6 @@ let g:snip_author='Pascal Immerzeel'
 let g:netrw_banner=0                           " Hide the info banner.
 let g:netrw_liststyle=3                        " Show tree style listing.
 let g:netrw_keepdir=1                          " Keep current dir immune from browsing
+let g:netrw_preview=1                          " Preview vertically.
 
 " }}}
