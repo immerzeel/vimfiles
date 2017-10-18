@@ -219,7 +219,10 @@ augroup ft_vimrc
     autocmd!
 
     " Source the vimrc file after saving it.
-    autocmd BufWritePost .vimrc source $MYVIMRC
+    autocmd BufWritePost *.vimrc source $MYVIMRC
+
+    autocmd FileType *.vimrc compiler vint
+    autocmd BufWritePost *.vimrc silent make | silent redraw!
 augroup END
 
 " JavaScript {{{2
@@ -256,7 +259,7 @@ augroup ft_html
     autocmd FileType *.html,*.mustache nnoremap <buffer> <localleader>f Vatzf
 augroup END
 
-" YAML {{{2
+" Dockerfile {{{2
 augroup ft_dockerfile
     autocmd!
 
@@ -265,11 +268,19 @@ augroup ft_dockerfile
 augroup END
 
 " YAML {{{2
+augroup ft_ansible
+    autocmd!
+
+    autocmd FileType playbook.yml compiler ansible-lint
+    autocmd BufWritePost playbook.yml silent make | silent redraw!
+augroup END
+
+" YAML {{{2
 augroup ft_yaml
     autocmd!
 
-    autocmd FileType *.yaml compiler yamllint
-    autocmd BufWritePost *.yaml silent make | silent redraw!
+    autocmd FileType *.yaml,*.yml compiler yamllint
+    autocmd BufWritePost *.yaml,*.yml silent make | silent redraw!
 augroup END
 
 " Markdown {{{2
