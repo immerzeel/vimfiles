@@ -207,6 +207,13 @@ set wildignore+=.git    " Ignore Version Control files and directories.
 
 " 23. Language specific {{{1
 " ==========================
+" Quickfix {{{2
+augroup quickfix
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd VimEnter        *     cwindow
+augroup END
+
 " Vimrc {{{2
 augroup ft_vimrc
     autocmd!
@@ -219,13 +226,19 @@ augroup END
 augroup ft_javascript
     autocmd!
 
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType javascript setlocal nofoldenable
+    autocmd FileType *.js setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType *.js setlocal nofoldenable
+
+    autocmd FileType *.js compiler proselint
+    autocmd BufWritePost *.js silent make | silent redraw!
 augroup END
 
 " JSON {{{2
 augroup ft_json
     autocmd!
+
+    autocmd FileType *.json compiler jsonlint
+    autocmd BufWritePost *.json silent make | silent redraw!
 
     autocmd BufNewFile,BufRead *.json setlocal filetype=json syntax=javascript
 augroup END
@@ -234,10 +247,29 @@ augroup END
 augroup ft_html
     autocmd!
 
-    autocmd FileType html,xhtml,mustache setlocal iskeyword+=-,_
+    autocmd FileType *.html,*.mustache setlocal iskeyword+=-,_
+
+    autocmd FileType *.html,*.mustache compiler tidy
+    autocmd BufWritePost *.markdown,*.md silent make | silent redraw!
 
     " Fold the current tag.
-    autocmd FileType html,xhtml,mustache nnoremap <buffer> <localleader>f Vatzf
+    autocmd FileType *.html,*.mustache nnoremap <buffer> <localleader>f Vatzf
+augroup END
+
+" YAML {{{2
+augroup ft_dockerfile
+    autocmd!
+
+    autocmd FileType Dockerfile compiler hadolint
+    autocmd BufWritePost Dockerfile silent make | silent redraw!
+augroup END
+
+" YAML {{{2
+augroup ft_yaml
+    autocmd!
+
+    autocmd FileType *.yaml compiler yamllint
+    autocmd BufWritePost *.yaml silent make | silent redraw!
 augroup END
 
 " Markdown {{{2
@@ -246,14 +278,20 @@ augroup ft_markdown
 
     autocmd BufNewFile,BufRead *.markdown,*.md setlocal filetype=markdown
     autocmd BufNewFile,BufRead *.markdown,*.md setlocal spell
+
+    autocmd FileType *.markdown,*.md compiler proselint
+    autocmd BufWritePost *.markdown,*.md silent make | silent redraw!
 augroup END
 
 " CSS / SCSS {{{2
 augroup ft_css
     autocmd!
 
-    autocmd FileType css,scss setlocal foldmethod=marker
-    autocmd FileType css,scss setlocal foldmarker={,}
+    autocmd FileType *.css,*.scss setlocal foldmethod=marker
+    autocmd FileType *.css,*.scss setlocal foldmarker={,}
+
+    autocmd FileType *.css,*.scss compiler stylelint
+    autocmd BufWritePost *.css,*.scss silent make | silent redraw!
 
     autocmd BufNewFile,BufRead *.css,*.scss nnoremap <buffer> <localleader>S viB<cr>:sort -i -b<cr>:noh<cr>
 augroup END
