@@ -220,19 +220,16 @@ augroup ft_vimrc
 
     " Source the vimrc file after saving it.
     autocmd BufWritePost *.vimrc source $MYVIMRC
-
-    autocmd FileType *.vimrc compiler vint
-    autocmd BufWritePost *.vimrc silent make | silent redraw!
 augroup END
 
 " JavaScript {{{2
 augroup ft_javascript
     autocmd!
 
-    autocmd FileType *.js setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType *.js setlocal nofoldenable
+    autocmd FileType javascript,js setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType javascript,js setlocal nofoldenable
 
-    autocmd FileType *.js compiler proselint
+    autocmd FileType javascript,js setlocal makeprg=eslint
     autocmd BufWritePost *.js silent make | silent redraw!
 augroup END
 
@@ -240,8 +237,8 @@ augroup END
 augroup ft_json
     autocmd!
 
-    autocmd FileType *.json compiler jsonlint
-    autocmd BufWritePost *.json silent make | silent redraw!
+    autocmd FileType json setlocal makeprg=jsonlint
+    autocmd BufWritePost json silent make | silent redraw!
 
     autocmd BufNewFile,BufRead *.json setlocal filetype=json syntax=javascript
 augroup END
@@ -250,10 +247,10 @@ augroup END
 augroup ft_html
     autocmd!
 
-    autocmd FileType *.html,*.mustache setlocal iskeyword+=-,_
+    autocmd FileType html,mustache setlocal iskeyword+=-,_
 
-    autocmd FileType *.html,*.mustache compiler tidy
-    autocmd BufWritePost *.markdown,*.md silent make | silent redraw!
+    autocmd FileType html,mustache setlocal makeprg=tidy
+    autocmd BufWritePost *.html,*.mustache silent make % | silent redraw!
 
     " Fold the current tag.
     autocmd FileType *.html,*.mustache nnoremap <buffer> <localleader>f Vatzf
@@ -263,35 +260,35 @@ augroup END
 augroup ft_dockerfile
     autocmd!
 
-    autocmd FileType Dockerfile compiler hadolint
-    autocmd BufWritePost Dockerfile silent make | silent redraw!
+    autocmd FileType dockerfile setlocal makeprg=hadolint
+    autocmd BufWritePost dockerfile silent make % | silent redraw!
 augroup END
 
-" YAML {{{2
+" Ansible {{{2
 augroup ft_ansible
     autocmd!
+    autocmd BufNewFile,BufRead *.yaml,*.yml,*/{group,host}_vars/* setlocal filetype=ansible syntax=yaml
 
-    autocmd FileType playbook.yml compiler ansible-lint
-    autocmd BufWritePost playbook.yml silent make | silent redraw!
+    autocmd FileType yaml,yml setlocal makeprg=ansible-lint
+    autocmd BufWritePost *.yaml,*.yml silent make % | silent redraw!
 augroup END
 
 " YAML {{{2
 augroup ft_yaml
     autocmd!
 
-    autocmd FileType *.yaml,*.yml compiler yamllint
-    autocmd BufWritePost *.yaml,*.yml silent make | silent redraw!
+    autocmd FileType yaml,yml setlocal makeprg=yamllint
+    autocmd BufWritePost *.yaml,*.yml silent make % | silent redraw!
 augroup END
 
 " Markdown {{{2
 augroup ft_markdown
     autocmd!
 
-    autocmd BufNewFile,BufRead *.markdown,*.md setlocal filetype=markdown
     autocmd BufNewFile,BufRead *.markdown,*.md setlocal spell
 
-    autocmd FileType *.markdown,*.md compiler proselint
-    autocmd BufWritePost *.markdown,*.md silent make | silent redraw!
+    autocmd FileType pandoc setlocal makeprg=proselint
+    autocmd BufWritePost *.markdown,*.md silent make % | silent redraw!
 augroup END
 
 " CSS / SCSS {{{2
@@ -301,8 +298,8 @@ augroup ft_css
     autocmd FileType *.css,*.scss setlocal foldmethod=marker
     autocmd FileType *.css,*.scss setlocal foldmarker={,}
 
-    autocmd FileType *.css,*.scss compiler stylelint
-    autocmd BufWritePost *.css,*.scss silent make | silent redraw!
+    autocmd FileType css,scss setlocal makeprg=stylelint
+    autocmd BufWritePost *.css,*.scss silent make % | silent redraw!
 
     autocmd BufNewFile,BufRead *.css,*.scss nnoremap <buffer> <localleader>S viB<cr>:sort -i -b<cr>:noh<cr>
 augroup END
