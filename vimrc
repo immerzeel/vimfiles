@@ -230,6 +230,7 @@ augroup ft_javascript
     autocmd FileType javascript,js setlocal nofoldenable
 
     autocmd FileType javascript,js setlocal makeprg=eslint
+    autocmd FileType javascript,js setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma
     autocmd BufWritePost *.js silent make | silent redraw!
 augroup END
 
@@ -299,6 +300,7 @@ augroup ft_css
     autocmd FileType *.css,*.scss setlocal foldmarker={,}
 
     autocmd FileType css,scss setlocal makeprg=stylelint
+    autocmd FileType css,scss setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ es5
     autocmd BufWritePost *.css,*.scss silent make % | silent redraw!
 
     autocmd BufNewFile,BufRead *.css,*.scss nnoremap <buffer> <localleader>S viB<cr>:sort -i -b<cr>:noh<cr>
