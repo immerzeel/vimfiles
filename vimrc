@@ -289,7 +289,7 @@ augroup ft_markdown
     autocmd BufNewFile,BufRead *.markdown,*.md setlocal spell
 
     autocmd FileType pandoc setlocal makeprg=proselint
-    autocmd BufWritePost *.markdown,*.md silent make % | silent redraw!
+    autocmd BufWritePost *.markdown,*.md silent make "%" | silent redraw!
 augroup END
 
 " CSS / SCSS {{{2
