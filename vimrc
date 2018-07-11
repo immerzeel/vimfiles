@@ -119,9 +119,10 @@ set cmdheight=2 " Set the command height under the statusline.
 
 " 12. Selecting text {{{1
 " =======================
-if $TMUX == ''
-    set clipboard=unnamed       " Cut/Copy in the OS will be P abled.
-endif
+" Use `+y` to yank the text to the system clipboard. This prevents polluting clipboard
+
+" set clipboard=unnamed       " Cut/Copy in the OS will be enabled.
+
 
 " 13. Editing text {{{1
 " =====================
