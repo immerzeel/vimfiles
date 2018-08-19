@@ -60,6 +60,7 @@ set hlsearch " Highlight the search results.
 
 set cursorline     " Highlight the line where the cursor is.
 set colorcolumn=+1 " Highlight the 'textwidth' with a vertical line.
+set spellfile=~/.nl.add " Add words to the spelling file.
 
 " 6. Multiple windows {{{1
 " ========================
@@ -287,7 +288,7 @@ augroup END
 augroup ft_markdown
     autocmd!
 
-    autocmd BufNewFile,BufRead *.markdown,*.md setlocal spell
+    autocmd BufNewFile,BufRead *.markdown,*.md setlocal spell spelllang=nl
 
     autocmd FileType pandoc setlocal makeprg=proselint
     autocmd BufWritePost *.markdown,*.md silent make "%" | silent redraw!
@@ -320,8 +321,6 @@ augroup END
 
 " 25. Various {{{1
 " ================
-" SnipMate {{{2
-let g:snip_author='Pascal Immerzeel'
 
 " Netrw {{{2
 let g:netrw_banner=0                           " Hide the info banner.
