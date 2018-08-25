@@ -288,10 +288,10 @@ augroup END
 augroup ft_markdown
     autocmd!
 
-    autocmd BufNewFile,BufRead *.markdown,*.md setlocal spell spelllang=nl
+    autocmd BufNewFile,BufRead *.markdown,*.md,*.taskpaper setlocal spell spelllang=nl
 
     autocmd FileType pandoc setlocal makeprg=proselint
-    autocmd BufWritePost *.markdown,*.md silent make "%" | silent redraw!
+    autocmd BufWritePost *.markdown,*.md,*.taskpaper silent make "%" | silent redraw!
 augroup END
 
 " CSS / SCSS {{{2
@@ -327,5 +327,34 @@ let g:netrw_banner=0                           " Hide the info banner.
 let g:netrw_liststyle=3                        " Show tree style listing.
 let g:netrw_keepdir=1                          " Keep current dir immune from browsing
 let g:netrw_preview=1                          " Preview vertically.
+
+" Taskpaper {{{2
+let g:task_paper_date_format = "%d-%m-%Y"
+
+" Ultisnips {{{2
+let g:UltiSnipsListSnippets="<c-L>"
+let g:UltiSnipsSnippetDirectories=$HOME.'/.vim/UltiSnips'
+
+" FZF {{{2
+" current file directory
+nnoremap <space>- :FZF <c-r>=fnameescape(expand('%:p:h'))<cr>/<cr>
+
+" current working directory
+nnoremap <space>+ :FZF<cr>
+
+nnoremap <space>b :Buffers<cr>
+nnoremap <space>f/ :History/<cr>
+nnoremap <space>f: :History:<cr>
+nnoremap <space>fb :BLines<cr>
+nnoremap <space>fc :Commits<cr>
+nnoremap <space>ff :FZF<space>
+nnoremap <space>fg :GFiles<cr>
+nnoremap <space>fh :Helptags<cr>
+nnoremap <space>fl :Lines<cr>
+nnoremap <space>fm :Maps<cr>
+nnoremap <space>fr :History<cr>
+nnoremap <space>fs :GFiles?<cr>
+nnoremap <space>ft :Tags<cr>
+nnoremap <space><space> :Commands<cr>
 
 " }}}
