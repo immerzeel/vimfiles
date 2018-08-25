@@ -106,7 +106,7 @@ set visualbell t_vb= " Do not flash the screen when error occurs.
 " background settings for solarized
 let g:solarized_hitrail=1 " Correct the high contrast characters in the cursorline.
 colorscheme solarized " Color scheme of VIM. Suppress errors with `silent!`
-set background=dark
+call togglebg#map("<F5>") " Toggle `light` and `dark` colorscheme with one button.
 
 set guioptions=ace
 "              |||
@@ -154,7 +154,7 @@ set foldmethod=marker " Fold on markers.
 " Focus on the current fold.
 nnoremap <leader>z zMzvzz
 " Toggle folders open/close.
-nnoremap <space> za
+nnoremap <space>z za
 
 " 16. Diff {{{1
 " =============
@@ -176,15 +176,6 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 " Make _vimrc easy accessible.
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-
-" Steve Losh's highlight word setup.
-" Only my colors are from the Dutch flag B^]=
-highlight InterestingWord1 ctermfg=Black ctermbg=DarkRed
-highlight InterestingWord2 ctermfg=Black ctermbg=White
-highlight InterestingWord3 ctermfg=Black ctermbg=DarkBlue
-nnoremap <leader>1 :execute 'match InterestingWord1 /\<<c-r><c-w>\>/'<cr>
-nnoremap <leader>2 :execute '2match InterestingWord2 /\<<c-r><c-w>\>/'<cr>
-nnoremap <leader>3 :execute '3match InterestingWord3 /\<<c-r><c-w>\>/'<cr>
 
 " 18. Reading and writing files {{{1
 " ==================================
