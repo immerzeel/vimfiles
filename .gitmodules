@@ -67,9 +67,6 @@
 [submodule "bundle/vim-pandoc-syntax"]
 	path = bundle/vim-pandoc-syntax
 	url = https://github.com/vim-pandoc/vim-pandoc-syntax.git
-[submodule "bundle/vim-markdownfootnotes"]
-	path = bundle/vim-markdownfootnotes
-	url = https://github.com/vim-pandoc/vim-markdownfootnotes.git
 [submodule "bundle/vim-criticmarkup"]
 	path = bundle/vim-criticmarkup
 	url = https://github.com/vim-pandoc/vim-criticmarkup.git
