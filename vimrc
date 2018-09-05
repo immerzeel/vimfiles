@@ -30,7 +30,7 @@ Plugin 'kana/vim-smartinput'
 Plugin 'junegunn/fzf.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'davidoc/taskpaper'
+Plugin 'davidoc/taskpaper.vim'
 
 call vundle#end()
 filetype plugin indent on " Required
