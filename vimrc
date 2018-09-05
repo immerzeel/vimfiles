@@ -2,13 +2,37 @@
 " =================
 set nocompatible " Turn off Vi compatibility.
 set pastetoggle=<F2> " Disable indenting when pasting from outside VIM.
-set runtimepath+=~/.vim/snippets " Add custom location for snippets.
 set runtimepath+=/usr/local/opt/fzf " Add FZF path.
 
-" Load plugins
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-silent! execute pathogen#infect()
 
+" Load plugins
+set runtimepath+=~/.vim/bundle/Vundle.vim " Add Vundle plugin manager
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-vinegar'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-sleuth'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-dispatch'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'vim-pandoc/vim-criticmarkup'
+Plugin 'godlygeek/tabular'
+Plugin 'kana/vim-smartinput'
+Plugin 'junegunn/fzf.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'davidoc/taskpaper'
+
+call vundle#end()
 filetype plugin indent on " Required
 
 " 2. Moving around, searching and patterns {{{1
@@ -51,6 +75,8 @@ set fillchars="" " No characters in windows separators.
 set nowrap " Do not wrap long lines.
 set lazyredraw " Don't redraw while performing macros.
 set list " Show tabs and end of lines as character.
+set showbreak=↪\ 
+set listchars=tab:→\ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 set number " Show line numbers.
 set encoding=utf-8 " Render special symbols correctly
 
@@ -279,10 +305,17 @@ augroup END
 augroup ft_markdown
     autocmd!
 
-    autocmd BufNewFile,BufRead *.markdown,*.md,*.taskpaper setlocal spell spelllang=nl
+    autocmd BufNewFile,BufRead *.markdown,*.md, setlocal spell spelllang=nl
 
-    autocmd FileType pandoc setlocal makeprg=proselint
-    autocmd BufWritePost *.markdown,*.md,*.taskpaper silent make "%" | silent redraw!
+    autocmd FileType markdown,md setlocal makeprg=proselint
+    autocmd BufWritePost *.markdown,*.md silent make "%" | silent redraw!
+augroup END
+
+" Taskpaper {{{2
+augroup ft_taskpaper
+    autocmd!
+
+    autocmd BufNewFile,BufRead *.taskpaper setlocal spell spelllang=nl
 augroup END
 
 " CSS / SCSS {{{2
@@ -291,10 +324,6 @@ augroup ft_css
 
     autocmd FileType *.css,*.scss setlocal foldmethod=marker
     autocmd FileType *.css,*.scss setlocal foldmarker={,}
-
-    autocmd FileType css,scss setlocal makeprg=stylelint
-    autocmd FileType css,scss setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ es5
-    autocmd BufWritePost *.css,*.scss silent make % | silent redraw!
 
     autocmd BufNewFile,BufRead *.css,*.scss nnoremap <buffer> <localleader>S viB<cr>:sort -i -b<cr>:noh<cr>
 augroup END
@@ -321,7 +350,14 @@ let g:netrw_preview=1                          " Preview vertically.
 
 " Taskpaper {{{2
 let g:task_paper_date_format = "%d-%m-%Y"
-
+let g:task_paper_styles={'waiting-for': 'ctermfg=DarkMagenta',
+                        \'cancelled': 'ctermfg=Black',
+                        \ 'start': 'ctermfg=Green',
+                        \ 'due': 'ctermfg=Red'}
+nnoremap <buffer> <silent> <leader>t> :<c-u>call taskpaper#update_tag('start')<cr>
+nnoremap <buffer> <silent> <leader>t< :<c-u>call taskpaper#update_tag('due')<cr>
+nnoremap <buffer> <silent> <leader>t! :<c-u>call taskpaper#update_tag('priority')<cr>
+nnoremap <buffer> <silent> <leader>t8 :<c-u>call taskpaper#toggle_tag('waiting-for', '')<cr>
 " Ultisnips {{{2
 let g:UltiSnipsListSnippets="<c-L>"
 let g:UltiSnipsSnippetDirectories=$HOME.'/.vim/UltiSnips'
@@ -333,19 +369,16 @@ nnoremap <space>- :FZF <c-r>=fnameescape(expand('%:p:h'))<cr>/<cr>
 " current working directory
 nnoremap <space>+ :FZF<cr>
 
-nnoremap <space>b :Buffers<cr>
+nnoremap <space>fb :Buffers<cr>
 nnoremap <space>f/ :History/<cr>
 nnoremap <space>f: :History:<cr>
-nnoremap <space>fb :BLines<cr>
 nnoremap <space>fc :Commits<cr>
 nnoremap <space>ff :FZF<space>
 nnoremap <space>fg :GFiles<cr>
-nnoremap <space>fh :Helptags<cr>
 nnoremap <space>fl :Lines<cr>
-nnoremap <space>fm :Maps<cr>
+nnoremap <space>fm :Marks<cr>
 nnoremap <space>fr :History<cr>
-nnoremap <space>fs :GFiles?<cr>
-nnoremap <space>ft :Tags<cr>
+nnoremap <space>fs :Ag<space>
 nnoremap <space><space> :Commands<cr>
 
 " }}}
